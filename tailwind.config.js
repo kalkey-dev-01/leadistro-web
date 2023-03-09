@@ -16,6 +16,14 @@ module.exports = {
     },
     extend: {
       colors: {
+        leadistroDark: '#0a0708',
+        slate00: '#0f0f0f',
+        slate10: '#0A0708',
+        slate20: '#292929',
+        slate30: '#333333',
+        slate40: '#3d3d3d',
+        leadistroGray: '#767577',
+        leadistroWhite: '#FBFBFB',
         gray: {
           100: '#f7fafc',
           200: '#edf2f7',
