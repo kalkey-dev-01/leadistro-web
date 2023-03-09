@@ -5,7 +5,7 @@ import { Main } from '@/templates/Main';
 
 const Index = () => {
   const router = useRouter();
-
+  console.log(router);
   return (
     <Main
       meta={
@@ -15,12 +15,12 @@ const Index = () => {
         />
       }
     >
-      <a href="#">
+      {/* <a href="#">
         <img
           src={`${router.basePath}/assets/images/nextjs-starter-banner.png`}
           alt="Nextjs starter banner"
         />
-      </a>
+      </a> */}
       <h2 className="text-2xl font-bold">Start Again Or Complete The Design</h2>
       <p>
         <span role="img" aria-label="rocket">
