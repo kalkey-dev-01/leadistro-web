@@ -1,3 +1,5 @@
+/* eslint-disable import/no-extraneous-dependencies */
+import { Comfortaa, Poppins } from '@next/font/google';
 import type { ReactNode } from 'react';
 
 import Navbar from '@/components/Navbar';
@@ -8,13 +10,26 @@ type IMainProps = {
   children: ReactNode;
 };
 
+export const poppins = Poppins({
+  subsets: ['latin'],
+  weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
+  variable: '--font-poppins',
+});
+
+export const comfortaa = Comfortaa({
+  subsets: ['latin'],
+  variable: '--font-comfortaa',
+});
+
 const Main = (props: IMainProps) => (
-  <div className="w-full bg-leadistroDark px-1 text-white antialiased">
+  <div
+    className={`w-full bg-leadistroDark px-1 text-white antialiased ${comfortaa.className}  `}
+  >
     {props.meta}
 
     <div className="mx-auto max-w-screen-lg">
-      <header className="">
-        <Navbar />
+      <header className={`${poppins.className} `}>
+        <Navbar fontName={comfortaa} />
       </header>
       <div className="pt-16 pb-8">
         <h1 className="text-3xl font-bold text-white">{AppConfig.title}</h1>

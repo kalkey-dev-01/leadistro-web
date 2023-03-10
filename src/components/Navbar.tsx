@@ -4,7 +4,7 @@ import { useContext, useEffect, useState } from 'react';
 
 import { ScrollContext } from '@/utils/scroll-observer';
 
-const Navbar: FC<{}> = () => {
+const Navbar: FC<{ fontName: { className: string } }> = ({ fontName }) => {
   const { scrollY } = useContext(ScrollContext);
   const [showNav, setShowNav] = useState(true);
   const handleScroll = () => {
@@ -24,7 +24,7 @@ const Navbar: FC<{}> = () => {
         <li className="mx-4 my-2 flex-1">
           <Link
             href="/"
-            className=" border-none text-white hover:text-leadistroWhite"
+            className={`${fontName.className} border-none  text-white hover:text-leadistroWhite`}
           >
             leadistro
           </Link>

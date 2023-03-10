@@ -15,6 +15,10 @@ module.exports = {
       '6xl': '4rem',
     },
     extend: {
+      fontFamily: {
+        poppins: 'var(--font-poppins)',
+        comfortaa: 'var(--font-comfortaa)',
+      },
       colors: {
         leadistroDark: '#0a0708',
         slate00: '#0f0f0f',
