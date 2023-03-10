@@ -22,6 +22,7 @@
     "postbuild": "next-sitemap"
   },
   "dependencies": {
+    "@next/font": "^13.2.4",
     "@react-three/drei": "^9.57.1",
     "@react-three/fiber": "^8.12.0",
     "embla-carousel-autoplay": "^7.1.0",

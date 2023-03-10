@@ -1,6 +1,6 @@
-import Link from 'next/link';
 import type { ReactNode } from 'react';
 
+import Navbar from '@/components/Navbar';
 import { AppConfig } from '@/utils/AppConfig';
 
 type IMainProps = {
@@ -13,51 +13,8 @@ const Main = (props: IMainProps) => (
     {props.meta}
 
     <div className="mx-auto max-w-screen-lg">
-      <header className="sticky top-0 z-50 border-2 border-b border-white ">
-        <nav className="">
-          <ul className="flex flex-wrap items-center text-xl">
-            <li className="mx-4 my-2 flex-1">
-              <Link
-                href="/"
-                className=" border-none text-white hover:text-leadistroWhite"
-              >
-                leadistro
-              </Link>
-            </li>
-            <li className="mr-6">
-              <Link
-                href="/about/"
-                className="border-none text-white hover:text-leadistroWhite"
-              >
-                About
-              </Link>
-            </li>
-            <li className="mr-6">
-              <a
-                className="border-none text-white hover:text-leadistroWhite"
-                href="#"
-              >
-                Features
-              </a>
-            </li>
-            <li className="mr-6">
-              <a
-                className="border-none text-white hover:text-leadistroWhite"
-                href="#"
-              >
-                Pricing
-              </a>
-            </li>
-            <li className="mr-6">
-              <Link
-                href="/blog/"
-                className="border-none text-white hover:text-leadistroWhite"
-              >
-                Download
-              </Link>
-            </li>
-          </ul>
-        </nav>
+      <header className="">
+        <Navbar />
       </header>
       <div className="pt-16 pb-8">
         <h1 className="text-3xl font-bold text-white">{AppConfig.title}</h1>

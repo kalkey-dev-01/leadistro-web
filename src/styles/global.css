@@ -1,5 +1,7 @@
 @tailwind base;
-
+body {
+@apply bg-leadistroDark
+}
 a {
   @apply text-blue-700;
 }
