@@ -19,6 +19,9 @@ module.exports = {
         poppins: 'var(--font-poppins)',
         comfortaa: 'var(--font-comfortaa)',
       },
+      height: {
+        halfScreen: '50vh',
+      },
       colors: {
         leadistroDark: '#0a0708',
         slate00: '#0f0f0f',

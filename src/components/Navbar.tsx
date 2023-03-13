@@ -16,15 +16,15 @@ const Navbar: FC<{ fontName: { className: string } }> = ({ fontName }) => {
   }, [scrollY]);
   return (
     <nav
-      className={`fixed z-10 mx-auto w-full max-w-screen-lg border-2 border-white transition-all duration-300 ${
-        showNav ? 'top-0' : '-top-16'
+      className={`fixed z-10 w-full  max-w-screen-lg rounded-lg  border-2 border-white transition-all duration-300 ${
+        showNav ? 'top-2' : '-top-16'
       }`}
     >
-      <ul className="flex flex-wrap items-center text-xl">
+      <ul className="flex flex-row items-center text-xl">
         <li className="mx-4 my-2 flex-1">
           <Link
             href="/"
-            className={`${fontName.className} border-none  text-white hover:text-leadistroWhite`}
+            className={`${fontName.className} border-none text-white hover:text-leadistroWhite`}
           >
             leadistro
           </Link>
@@ -55,7 +55,7 @@ const Navbar: FC<{ fontName: { className: string } }> = ({ fontName }) => {
         </li>
         <li className="mr-6">
           <Link
-            href="/blog/"
+            href="/download/"
             className="border-none text-white hover:text-leadistroWhite"
           >
             Download
