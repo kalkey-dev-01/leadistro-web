@@ -1,18 +1,20 @@
 /* eslint-disable no-plusplus */
 // import { gsap } from 'gsap';
-import React from 'react';
+import React, { useContext } from 'react';
 
 // import ImageSequence from '@/components/ImageSequence';
 import { Meta } from '@/layouts/Meta';
 import { comfortaa, poppins } from '@/templates/Main';
 // import { Main } from '@/templates/Main';
 import MainWithThree from '@/templates/r3fMain';
+import { SizeContext } from '@/utils/size-observer';
 
 // eslint-disable-next-line unused-imports/no-unused-imports
 
 // HOME PAGE
 
 const Index = () => {
+  const { innerWidth } = useContext(SizeContext);
   // const Images: string[] = [];
   // for (let i = 10; i <= 171; i++) {
   //   const imageName = `/assets/images/seq${i}.png`;
@@ -58,13 +60,14 @@ const Index = () => {
             researcher app
           </h6>
         </div>
-        {/* !!!!//!The Second Item Of the Row */}
         <video
+          controls={false}
           autoPlay
           muted
           playsInline
-          loop
-          className="-z-20 h-full max-w-xl bg-transparent object-cover"
+          className={`h-full ${
+            innerWidth < 640 ? 'max-w-sm' : 'max-w-xl'
+          }  bg-transparent object-cover`}
         >
           <source
             // eslint-disable-next-line global-require
@@ -73,12 +76,9 @@ const Index = () => {
           />
         </video>
       </div>
-      {/* <a href="#">
-        <img
-          src={`${router.basePath}/assets/images/nextjs-starter-banner.png`}
-          alt="Nextjs starter banner"
-        />
-      </a> */}
+
+      {/* !!!!//! START SECOND SECTION */}
+      <section className="min-h-screen min-w-full bg-white"></section>
     </MainWithThree>
   );
 };

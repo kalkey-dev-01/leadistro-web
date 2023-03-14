@@ -27,7 +27,7 @@ const MainWithThree: React.FC<Props> = ({ children, meta }) => {
     <>
       <div
         className={`${
-          innerWidth < 450 ? 'min-h-[161.5vh]' : 'min-h-[211.5vh]'
+          innerWidth < 450 ? 'min-h-[201.5vh]' : 'min-h-[311.5vh]'
         } flex min-w-full flex-col items-center justify-between bg-black text-center md:text-start `}
       >
         {meta}
@@ -35,13 +35,13 @@ const MainWithThree: React.FC<Props> = ({ children, meta }) => {
         {/* Background Animation */}
         <div
           className={`absolute w-full object-cover ${
-            innerWidth < 450 ? 'h-[160vh]' : 'h-[210vh]'
+            innerWidth < 450 ? 'h-[200vh]' : 'h-[310vh]'
           }  `}
         >
           <Canvas>
             <ambientLight intensity={1.75} />
             <directionalLight
-              position={[-3 + x * 3, -numY * 0.001 + 2 - y * 3, 5]}
+              position={[-3 + x * 3, -numY * 0.001 + 2 - y * 3, 4 + x + y]}
               intensity={2.5}
             />
             <React.Suspense>
@@ -49,7 +49,11 @@ const MainWithThree: React.FC<Props> = ({ children, meta }) => {
                 visible
                 args={[1.0, 500, 500]}
                 scale={innerWidth < 640 ? 0.5 : 1}
-                position={[-1, 0.75 + numY, 2.5]}
+                position={
+                  innerWidth > 640
+                    ? [-1, 1.5 + numY, 2.25]
+                    : [0, 2.5 + numY, 0.5]
+                }
               >
                 <MeshDistortMaterial
                   color="#212529"

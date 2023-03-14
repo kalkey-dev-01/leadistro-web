@@ -19,7 +19,7 @@ const Navbar: FC<{ fontName: { className: string } }> = ({ fontName }) => {
   }, [scrollY]);
   return (
     <nav
-      className={` fixed z-10  w-full  transition-all duration-300 ${
+      className={` fixed z-50  w-full  transition-all duration-300 ${
         showNav ? 'top-2' : '-top-16'
       }`}
     >
