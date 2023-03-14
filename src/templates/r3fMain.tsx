@@ -28,7 +28,7 @@ const MainWithThree: React.FC<Props> = ({ children, meta }) => {
       <div
         className={`${
           innerWidth < 450 ? 'min-h-[161.5vh]' : 'min-h-[211.5vh]'
-        } flex min-w-full flex-col items-center justify-start bg-black py-2 text-center`}
+        } flex min-w-full flex-col items-center justify-between bg-black   py-2 text-center `}
       >
         {meta}
         <Navbar fontName={comfortaa} />
