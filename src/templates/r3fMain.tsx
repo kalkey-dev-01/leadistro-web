@@ -21,14 +21,14 @@ const MainWithThree: React.FC<Props> = ({ children, meta }) => {
   const { innerWidth } = useContext(SizeContext);
   const { scrollY } = useContext(ScrollContext);
   const { x, y } = useContext(MouseContext);
-  const numY = 0.35 - scrollY * 0.00425;
-  const distort = 0.3 + scrollY * 0.0006;
+  const numY = -scrollY * 0.00425;
+  const distort = 0.1 + scrollY * 0.0006;
   return (
     <>
       <div
         className={`${
           innerWidth < 450 ? 'min-h-[161.5vh]' : 'min-h-[211.5vh]'
-        } flex min-w-full flex-col items-center justify-between bg-black   py-2 text-center `}
+        } flex min-w-full flex-col items-center justify-between bg-black text-center md:text-start `}
       >
         {meta}
         <Navbar fontName={comfortaa} />
@@ -41,7 +41,7 @@ const MainWithThree: React.FC<Props> = ({ children, meta }) => {
           <Canvas>
             <ambientLight intensity={1.75} />
             <directionalLight
-              position={[-3 + x * 3, -numY * 0.001 + 2 - y * 3, 4]}
+              position={[-3 + x * 3, -numY * 0.001 + 2 - y * 3, 5]}
               intensity={2.5}
             />
             <React.Suspense>
@@ -49,7 +49,7 @@ const MainWithThree: React.FC<Props> = ({ children, meta }) => {
                 visible
                 args={[1.0, 500, 500]}
                 scale={innerWidth < 640 ? 0.5 : 1}
-                position={[0, numY, 2.5]}
+                position={[1, 0.75 + numY, 2.5]}
               >
                 <MeshDistortMaterial
                   color="#212529"

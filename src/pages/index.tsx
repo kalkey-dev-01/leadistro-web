@@ -7,6 +7,9 @@ import { Meta } from '@/layouts/Meta';
 import { comfortaa, poppins } from '@/templates/Main';
 // import { Main } from '@/templates/Main';
 import MainWithThree from '@/templates/r3fMain';
+
+// eslint-disable-next-line unused-imports/no-unused-imports
+
 // HOME PAGE
 
 const Index = () => {
@@ -35,25 +38,40 @@ const Index = () => {
         />
       }
     >
-      <div className="flex flex-col items-center justify-center py-24 px-2  text-white drop-shadow-[0_5px_3px_rgba(0,0,0,0.4)]   ">
+      <div className="z-10 mt-16 flex flex-col items-center justify-between py-24 px-4 md:flex-row md:items-start">
         {/* Title && Subtitle */}
-        <h1
-          className={` ${poppins.className} text-3xl font-normal leading-tight  lg:text-4xl xl:text-5xl`}
-        >
-          Revolutionize Your Email Marketing with{' '}
-          <span
-            className={` ${comfortaa.className} text-3xl font-bold lg:text-4xl xl:text-6xl `}
+        <div className="flex  flex-col items-center justify-center text-white drop-shadow-[0_5px_3px_rgba(0,0,0,0.4)]  md:items-start">
+          <h1
+            className={` ${poppins.className}   text-3xl font-normal leading-tight  lg:text-4xl xl:text-5xl`}
           >
+            Revolutionize Your Email Marketing with{' '}
+            <span
+              className={` ${comfortaa.className}  text-3xl font-bold lg:text-4xl xl:text-6xl `}
+            >
+              {' '}
+              leadistro{' '}
+            </span>{' '}
+          </h1>
+          <h6 className="my-10  text-base font-normal lg:text-xl xl:text-2xl ">
             {' '}
-            leadistro{' '}
-          </span>{' '}
-        </h1>
-        <h6 className="my-10  text-base font-normal lg:text-xl xl:text-2xl ">
-          {' '}
-          Unlock the full potential of your campaigns with our powerful market
-          researcher app
-        </h6>
-        {/* Button */}
+            Unlock the full potential of your campaigns with our powerful market
+            researcher app
+          </h6>
+        </div>
+        {/* !!!!//!The Second Item Of the Row */}
+        <video
+          autoPlay
+          muted
+          playsInline
+          loop
+          className="h-full max-w-xl border-2  object-cover"
+        >
+          <source
+            // eslint-disable-next-line global-require
+            src={'/main.mp4'}
+            type="video/mp4"
+          />
+        </video>
       </div>
       {/* <a href="#">
         <img
