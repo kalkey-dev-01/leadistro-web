@@ -1,36 +1,45 @@
 /* eslint-disable no-plusplus */
 // import { gsap } from 'gsap';
-import React, { useContext } from 'react';
+import { gsap } from 'gsap';
+import ScrollTrigger from 'gsap/dist/ScrollTrigger';
+import React, { useContext, useEffect, useRef } from 'react';
 
 // import ImageSequence from '@/components/ImageSequence';
 import { Meta } from '@/layouts/Meta';
 import { comfortaa, poppins } from '@/templates/Main';
 // import { Main } from '@/templates/Main';
 import MainWithThree from '@/templates/r3fMain';
+import { ScrollContext } from '@/utils/scroll-observer';
 import { SizeContext } from '@/utils/size-observer';
-
 // eslint-disable-next-line unused-imports/no-unused-imports
-
+gsap.registerPlugin(ScrollTrigger);
 // HOME PAGE
 
 const Index = () => {
   const { innerWidth } = useContext(SizeContext);
-  // const Images: string[] = [];
-  // for (let i = 10; i <= 171; i++) {
-  //   const imageName = `/assets/images/seq${i}.png`;
-  //   Images.push(imageName);
-  // }
-  // console.log(Images);
-  // const timeline = gsap.timeline({
-  //   repeat: -1,
-  //   repeatDelay: 0.5,
-  //   paused: true,
-  // });
-  // const ref = React.useRef<HTMLDivElement>(null);
-  // const { current: divRef } = ref;
-  // timeline.to(divRef, {
-  //   opacity: 1,
-  // });
+  const { scrollY } = useContext(ScrollContext);
+  const ref = useRef<HTMLVideoElement>(null);
+  useEffect(() => {
+    const { current: video } = ref;
+    // if (scrollY >= 10) {
+    //   video?.play();
+    // }
+    // if (scrollY > 350) {
+    //   video?.pause();
+    // }
+    gsap.fromTo(
+      video,
+      { opacity: 0.5 },
+      {
+        opacity: 1,
+        duration: 1.5,
+        scrollTrigger: {
+          trigger: video,
+        },
+      }
+    );
+  });
+  console.log(scrollY);
   return (
     <MainWithThree
       meta={
@@ -40,7 +49,7 @@ const Index = () => {
         />
       }
     >
-      <div className="z-10 mt-16 flex flex-col items-center justify-between py-24 px-4 md:flex-row ">
+      <div className="z-10 mt-16 flex flex-col items-center justify-between py-24  md:flex-row ">
         {/* Title && Subtitle */}
         <div className="flex  flex-col items-center justify-center text-white drop-shadow-[0_5px_3px_rgba(0,0,0,0.4)]  md:items-start">
           <h1
@@ -62,7 +71,8 @@ const Index = () => {
         </div>
         <video
           controls={false}
-          autoPlay
+          ref={ref}
+          autoPlay={true}
           muted
           playsInline
           className={`h-full ${

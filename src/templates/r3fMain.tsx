@@ -48,7 +48,7 @@ const MainWithThree: React.FC<Props> = ({ children, meta }) => {
               <Sphere
                 visible
                 args={[1.0, 500, 500]}
-                scale={innerWidth < 640 ? 0.5 : 1}
+                scale={innerWidth < 640 ? 0.75 : 1}
                 position={
                   innerWidth > 640
                     ? [-1, 1.5 + numY, 2.25]
