@@ -49,7 +49,7 @@ const MainWithThree: React.FC<Props> = ({ children, meta }) => {
                 visible
                 args={[1.0, 500, 500]}
                 scale={innerWidth < 640 ? 0.5 : 1}
-                position={[1, 0.75 + numY, 2.5]}
+                position={[-1, 0.75 + numY, 2.5]}
               >
                 <MeshDistortMaterial
                   color="#212529"

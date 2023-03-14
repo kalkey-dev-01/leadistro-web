@@ -38,7 +38,7 @@ const Index = () => {
         />
       }
     >
-      <div className="z-10 mt-16 flex flex-col items-center justify-between py-24 px-4 md:flex-row md:items-start">
+      <div className="z-10 mt-16 flex flex-col items-center justify-between py-24 px-4 md:flex-row ">
         {/* Title && Subtitle */}
         <div className="flex  flex-col items-center justify-center text-white drop-shadow-[0_5px_3px_rgba(0,0,0,0.4)]  md:items-start">
           <h1
@@ -64,11 +64,11 @@ const Index = () => {
           muted
           playsInline
           loop
-          className="h-full max-w-xl border-2  object-cover"
+          className="-z-20 h-full max-w-xl bg-transparent object-cover"
         >
           <source
             // eslint-disable-next-line global-require
-            src={'/main.mp4'}
+            src={'/mainSeq.mp4'}
             type="video/mp4"
           />
         </video>
