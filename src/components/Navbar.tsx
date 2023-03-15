@@ -19,7 +19,7 @@ const Navbar: FC<{ fontName: { className: string } }> = ({ fontName }) => {
   }, [scrollY]);
   return (
     <nav
-      className={` fixed z-50  w-full  transition-all duration-300 ${
+      className={` fixed z-50  w-full px-4  transition-all duration-300 ${
         showNav ? 'top-2' : '-top-16'
       }`}
     >
@@ -71,25 +71,11 @@ const Navbar: FC<{ fontName: { className: string } }> = ({ fontName }) => {
           </li>
           <li className="">
             <Atropos className="atropos">
-              <button data-atropos-offset={5}>
+              <button data-atropos-offset={10}>
                 <div
-                  data-atropos-offset={12}
+                  data-atropos-offset={7}
                   className="flex flex-row items-center justify-between space-x-2 rounded-full border-[1.75px] border-white bg-black px-4 py-2 text-white"
                 >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    strokeWidth={1.5}
-                    stroke="currentColor"
-                    className="h-4 w-4"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3"
-                    />
-                  </svg>
                   <Link
                     href="/download/"
                     className="border-none text-white hover:text-leadistroWhite"

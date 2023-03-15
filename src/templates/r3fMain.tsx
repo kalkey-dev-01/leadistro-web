@@ -22,7 +22,9 @@ const MainWithThree: React.FC<Props> = ({ children, meta }) => {
   const { scrollY } = useContext(ScrollContext);
   const { x, y } = useContext(MouseContext);
   const numY = -scrollY * 0.00425;
-  const distort = numY * (-scrollY * 0.001);
+  const distort = 0.4;
+  // const ref = useRef<MeshProps | null>(null);
+
   return (
     <>
       <div
@@ -50,10 +52,13 @@ const MainWithThree: React.FC<Props> = ({ children, meta }) => {
                 args={[1.0, 500, 500]}
                 scale={innerWidth < 640 ? 1 : 1.25}
                 position={
-                  innerWidth > 640 ? [1, 1 + numY, 2.5] : [0, numY - 0.59, 2]
+                  innerWidth > 640
+                    ? [1 + x * -0.5, 1 + numY, 2.75]
+                    : [0, numY - 0.59, 2]
                 }
               >
                 <MeshDistortMaterial
+                  // ref={ref}
                   color="#212529"
                   attach="material"
                   speed={1.25}

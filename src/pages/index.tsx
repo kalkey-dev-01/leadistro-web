@@ -30,7 +30,7 @@ const Index = () => {
         />
       }
     >
-      <div className="z-10 mt-16 flex flex-col items-center justify-between py-24 md:flex-row  md:px-4 ">
+      <div className="z-10 mt-16 flex flex-col items-center justify-between py-20 md:flex-row  md:px-4 ">
         {/* Title && Subtitle */}
         <div className="flex  flex-col items-center justify-center text-white drop-shadow-[0_5px_3px_rgba(0,0,0,0.4)]  md:items-start">
           <h1
