@@ -1,8 +1,8 @@
 /* eslint-disable no-plusplus */
 // import { gsap } from 'gsap';
-import { gsap } from 'gsap';
-import ScrollTrigger from 'gsap/dist/ScrollTrigger';
-import React, { useContext, useEffect, useRef } from 'react';
+// import { gsap } from 'gsap';
+// import ScrollTrigger from 'gsap/dist/ScrollTrigger';
+import React, { useContext, useRef } from 'react';
 
 // import ImageSequence from '@/components/ImageSequence';
 import { Meta } from '@/layouts/Meta';
@@ -12,33 +12,14 @@ import MainWithThree from '@/templates/r3fMain';
 import { ScrollContext } from '@/utils/scroll-observer';
 import { SizeContext } from '@/utils/size-observer';
 // eslint-disable-next-line unused-imports/no-unused-imports
-gsap.registerPlugin(ScrollTrigger);
+
 // HOME PAGE
 
 const Index = () => {
   const { innerWidth } = useContext(SizeContext);
   const { scrollY } = useContext(ScrollContext);
   const ref = useRef<HTMLVideoElement>(null);
-  useEffect(() => {
-    const { current: video } = ref;
-    // if (scrollY >= 10) {
-    //   video?.play();
-    // }
-    // if (scrollY > 350) {
-    //   video?.pause();
-    // }
-    gsap.fromTo(
-      video,
-      { opacity: 0.5 },
-      {
-        opacity: 1,
-        duration: 1.5,
-        scrollTrigger: {
-          trigger: video,
-        },
-      }
-    );
-  });
+
   console.log(scrollY);
   return (
     <MainWithThree
@@ -49,15 +30,15 @@ const Index = () => {
         />
       }
     >
-      <div className="z-10 mt-16 flex flex-col items-center justify-between py-24  md:flex-row ">
+      <div className="z-10 mt-16 flex flex-col items-center justify-between py-24 md:flex-row  md:px-4 ">
         {/* Title && Subtitle */}
         <div className="flex  flex-col items-center justify-center text-white drop-shadow-[0_5px_3px_rgba(0,0,0,0.4)]  md:items-start">
           <h1
-            className={` ${poppins.className}   text-3xl font-normal leading-tight  lg:text-4xl xl:text-5xl`}
+            className={` ${poppins.className} text-3xl font-normal leading-tight  lg:text-4xl xl:text-5xl`}
           >
             Revolutionize Your Email Marketing with{' '}
             <span
-              className={` ${comfortaa.className}  text-3xl font-bold lg:text-4xl xl:text-6xl `}
+              className={` ${comfortaa.className} text-3xl font-bold lg:text-4xl xl:text-6xl `}
             >
               {' '}
               leadistro{' '}
@@ -77,12 +58,12 @@ const Index = () => {
           playsInline
           className={`h-full ${
             innerWidth < 640 ? 'max-w-sm' : 'max-w-xl'
-          }  bg-transparent object-cover`}
+          }  pointer-events-none bg-transparent object-cover`}
         >
           <source
             // eslint-disable-next-line global-require
-            src={'/mainSeq.mp4'}
-            type="video/mp4"
+            src={'/out.webm'}
+            type="video/webm"
           />
         </video>
       </div>

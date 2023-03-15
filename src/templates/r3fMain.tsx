@@ -22,12 +22,12 @@ const MainWithThree: React.FC<Props> = ({ children, meta }) => {
   const { scrollY } = useContext(ScrollContext);
   const { x, y } = useContext(MouseContext);
   const numY = -scrollY * 0.00425;
-  const distort = 0.1 + scrollY * 0.0006;
+  const distort = numY * (-scrollY * 0.001);
   return (
     <>
       <div
         className={`${
-          innerWidth < 450 ? 'min-h-[201.5vh]' : 'min-h-[311.5vh]'
+          innerWidth < 450 ? 'min-h-[101.5vh]' : 'min-h-[211.5vh]'
         } flex min-w-full flex-col items-center justify-between bg-black text-center md:text-start `}
       >
         {meta}
@@ -35,7 +35,7 @@ const MainWithThree: React.FC<Props> = ({ children, meta }) => {
         {/* Background Animation */}
         <div
           className={`absolute w-full object-cover ${
-            innerWidth < 450 ? 'h-[200vh]' : 'h-[310vh]'
+            innerWidth < 450 ? 'h-[100vh]' : 'h-[210vh]'
           }  `}
         >
           <Canvas>
@@ -44,15 +44,13 @@ const MainWithThree: React.FC<Props> = ({ children, meta }) => {
               position={[-3 + x * 3, -numY * 0.001 + 2 - y * 3, 4 + x + y]}
               intensity={2.5}
             />
-            <React.Suspense>
+            <React.Suspense fallback={null}>
               <Sphere
                 visible
                 args={[1.0, 500, 500]}
-                scale={innerWidth < 640 ? 0.75 : 1}
+                scale={innerWidth < 640 ? 1 : 1.25}
                 position={
-                  innerWidth > 640
-                    ? [-1, 1.5 + numY, 2.25]
-                    : [0, 2.5 + numY, 0.5]
+                  innerWidth > 640 ? [1, 1 + numY, 2.5] : [0, numY - 0.59, 2]
                 }
               >
                 <MeshDistortMaterial
