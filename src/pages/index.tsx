@@ -4,6 +4,7 @@
 // import ScrollTrigger from 'gsap/dist/ScrollTrigger';
 import React, { useContext, useRef } from 'react';
 
+import { Features } from '@/components/Features';
 // import ImageSequence from '@/components/ImageSequence';
 import { Meta } from '@/layouts/Meta';
 import { comfortaa, poppins } from '@/templates/Main';
@@ -67,9 +68,10 @@ const Index = () => {
           />
         </video>
       </div>
-
       {/* !!!!//! START SECOND SECTION */}
-      <section className="min-h-screen min-w-full bg-white"></section>
+      <div className="my-14 min-h-screen min-w-full">
+        <Features />
+      </div>
     </MainWithThree>
   );
 };
