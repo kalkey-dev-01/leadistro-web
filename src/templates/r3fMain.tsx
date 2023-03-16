@@ -50,11 +50,11 @@ const MainWithThree: React.FC<Props> = ({ children, meta }) => {
               <Sphere
                 visible
                 args={[1.0, 500, 500]}
-                scale={innerWidth < 640 ? 1 : 1.25}
+                scale={innerWidth < 640 ? 0.75 : 1.25}
                 position={
                   innerWidth > 640
                     ? [1 + x * -0.5, 1 + numY, 2.75]
-                    : [0, numY - 0.59, 2]
+                    : [0, 1 + numY, 1.75]
                 }
               >
                 <MeshDistortMaterial

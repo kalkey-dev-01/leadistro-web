@@ -30,7 +30,7 @@ const Index = () => {
         />
       }
     >
-      <div className="z-10 mt-16 flex flex-col items-center justify-between py-20 md:flex-row  md:px-4 ">
+      <div className="z-10 mt-16 flex flex-col items-center justify-between py-24 md:flex-row  md:px-4 ">
         {/* Title && Subtitle */}
         <div className="flex  flex-col items-center justify-center text-white drop-shadow-[0_5px_3px_rgba(0,0,0,0.4)]  md:items-start">
           <h1
@@ -58,11 +58,11 @@ const Index = () => {
           playsInline
           className={`h-full ${
             innerWidth < 640 ? 'max-w-sm' : 'max-w-xl'
-          }  pointer-events-none bg-transparent object-cover`}
+          }  pointer-events-none scale-150 bg-transparent object-cover py-4 md:scale-[1.75] md:py-2`}
         >
           <source
             // eslint-disable-next-line global-require
-            src={'/out.webm'}
+            src={'/outtro.webm'}
             type="video/webm"
           />
         </video>
