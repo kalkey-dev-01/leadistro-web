@@ -6,8 +6,10 @@ import type { FC } from 'react';
 import { useContext, useEffect, useState } from 'react';
 
 import { ScrollContext } from '@/utils/scroll-observer';
+import { SizeContext } from '@/utils/size-observer';
 
 const Navbar: FC<{ fontName: { className: string } }> = ({ fontName }) => {
+  const { innerWidth } = useContext(SizeContext);
   const { scrollY } = useContext(ScrollContext);
   const [showNav, setShowNav] = useState(true);
   const handleScroll = () => {
@@ -33,7 +35,7 @@ const Navbar: FC<{ fontName: { className: string } }> = ({ fontName }) => {
           </Link>
         </li>
         <ul className="flex flex-1 flex-row items-center justify-end space-x-8">
-          <li className="">
+          <li className="hidden md:inline-block">
             <Atropos className="atropos">
               <button data-atropos-offset={10}>
                 <Link
@@ -45,7 +47,7 @@ const Navbar: FC<{ fontName: { className: string } }> = ({ fontName }) => {
               </button>
             </Atropos>
           </li>
-          <li className="">
+          <li className="hidden md:inline-block">
             <Atropos className="atropos">
               <button data-atropos-offset={10}>
                 <Link
@@ -57,7 +59,7 @@ const Navbar: FC<{ fontName: { className: string } }> = ({ fontName }) => {
               </button>
             </Atropos>
           </li>
-          <li className="">
+          <li className="hidden md:inline-block">
             <Atropos className="atropos">
               <button data-atropos-offset={10}>
                 <Link
@@ -69,7 +71,7 @@ const Navbar: FC<{ fontName: { className: string } }> = ({ fontName }) => {
               </button>
             </Atropos>
           </li>
-          <li className="">
+          <li className="hidden md:inline-block">
             <Atropos className="atropos">
               <button data-atropos-offset={10}>
                 <div
@@ -97,6 +99,24 @@ const Navbar: FC<{ fontName: { className: string } }> = ({ fontName }) => {
                 </div>
               </button>
             </Atropos>
+          </li>
+          <li className="md:hidden">
+            <button className="rounded-md border-[0.75px] border-white text-white">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth={1.5}
+                stroke="currentColor"
+                className="m-1 h-6 w-6"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+                />
+              </svg>
+            </button>
           </li>
         </ul>
       </ul>

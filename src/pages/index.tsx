@@ -69,7 +69,7 @@ const Index = () => {
         </video>
       </div>
       {/* !!!!//! START SECOND SECTION */}
-      <div className="my-14 min-h-screen min-w-full">
+      <div className="min-h-screen min-w-full">
         <Features />
       </div>
     </MainWithThree>
