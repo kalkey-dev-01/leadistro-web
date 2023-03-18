@@ -21,9 +21,3 @@ a:hover {
 .content ul {
   @apply my-6;
 }
-*{
-    -ms-overflow-style: none;
-}
-::-webkit-scrollbar {
-    display: none;
-}
