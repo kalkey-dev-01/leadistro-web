@@ -6,12 +6,13 @@ import type { FC } from 'react';
 import { useContext, useEffect, useState } from 'react';
 
 import { ScrollContext } from '@/utils/scroll-observer';
-import { SizeContext } from '@/utils/size-observer';
+// import { SizeContext } from '@/utils/size-observer';
 
 const Navbar: FC<{ fontName: { className: string } }> = ({ fontName }) => {
-  const { innerWidth } = useContext(SizeContext);
+  // const { innerWidth } = useContext(SizeContext);
   const { scrollY } = useContext(ScrollContext);
   const [showNav, setShowNav] = useState(true);
+
   const handleScroll = () => {
     setShowNav(window.scrollY < scrollY);
   };
@@ -21,7 +22,7 @@ const Navbar: FC<{ fontName: { className: string } }> = ({ fontName }) => {
   }, [scrollY]);
   return (
     <nav
-      className={` fixed z-50  w-full px-4  transition-all duration-300 ${
+      className={`fixed z-50  w-full px-4  transition-all duration-300 ${
         showNav ? 'top-2' : '-top-16'
       }`}
     >

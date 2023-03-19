@@ -29,18 +29,18 @@ const MainWithThree: React.FC<Props> = ({ children, meta }) => {
     <>
       <div
         className={`${
-          innerWidth < 450 ? 'min-h-[101.5vh]' : 'min-h-[211.5vh]'
-        } flex min-w-full flex-col items-center justify-between bg-black text-center md:text-start `}
+          innerWidth < 450 ? 'min-h-screen' : 'min-h-[200vh]'
+        }  flex min-w-full flex-col items-center justify-between bg-black text-center md:text-start `}
       >
         {meta}
         <Navbar fontName={comfortaa} />
         {/* Background Animation */}
         <div
-          className={`absolute w-full object-cover ${
-            innerWidth < 450 ? 'h-[100vh]' : 'h-[210vh]'
+          className={`absolute  w-full object-cover ${
+            innerWidth < 450 ? 'h-[120vh]' : 'h-[210vh]'
           }  `}
         >
-          <Canvas>
+          <Canvas className="h-full w-full">
             <ambientLight intensity={1.75} />
             <directionalLight
               position={[-3 + x * 3, -numY * 0.001 + 2 - y * 3, 4 + x + y]}
