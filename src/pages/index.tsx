@@ -6,6 +6,7 @@ import Link from 'next/link';
 import React, { useCallback, useContext, useRef, useState } from 'react';
 
 import { Features } from '@/components/Features';
+import HowItWorks from '@/components/HowItWorks';
 // import ImageSequence from '@/components/ImageSequence';
 import { Meta } from '@/layouts/Meta';
 import { comfortaa, poppins } from '@/templates/Main';
@@ -125,7 +126,9 @@ const Index = () => {
         </div>
       </div>
       {/* !!!!//! START SECOND SECTION */}
-      <div className="z-10 min-h-screen min-w-full bg-white"></div>
+      <div className="z-10 min-h-screen min-w-full bg-white">
+        <HowItWorks />
+      </div>
       <div className="min-h-screen min-w-full">
         <Features />
       </div>
