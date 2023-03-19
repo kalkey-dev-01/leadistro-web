@@ -15,7 +15,7 @@ const HowItWorks: React.FC = () => {
   const { scrollY } = useContext(ScrollContext);
   const blockRefContainer = useRef<HTMLDivElement>(null);
   // numofpages = current block no + 2
-  const numOfPages = 3;
+  const numOfPages = 4;
   let progress = 0;
   const { current: elContainer } = blockRefContainer;
   if (elContainer) {
@@ -42,7 +42,12 @@ const HowItWorks: React.FC = () => {
               opacity: opacityForBlock(progress, 0),
             }}
           >
-            We know our tools and technologies inside out.
+            <div className="flex flex-col items-center justify-between md:flex-row">
+              <h1>
+                Firstly you should import your contacts using the following
+                methods or use Enrichment to get some contacts.
+              </h1>
+            </div>
           </div>
           <span
             className={`${s.hiworkText} inline-block after:content-['_'] `}
@@ -57,6 +62,15 @@ const HowItWorks: React.FC = () => {
             className={`${s.hiworkText} inline-block`}
             style={{
               opacity: opacityForBlock(progress, 2),
+            }}
+          >
+            We are still continuously refine our skills and knowledge and no
+            work is less than a dream.
+          </div>
+          <div
+            className={`${s.hiworkText} inline-block`}
+            style={{
+              opacity: opacityForBlock(progress, 3),
             }}
           >
             We are still continuously refine our skills and knowledge and no

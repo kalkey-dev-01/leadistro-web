@@ -12,6 +12,7 @@ const Navbar: FC<{ fontName: { className: string } }> = ({ fontName }) => {
   // const { innerWidth } = useContext(SizeContext);
   const { scrollY } = useContext(ScrollContext);
   const [showNav, setShowNav] = useState(true);
+  const [open, setOpen] = useState(true);
 
   const handleScroll = () => {
     setShowNav(window.scrollY < scrollY);
@@ -102,22 +103,33 @@ const Navbar: FC<{ fontName: { className: string } }> = ({ fontName }) => {
             </Atropos>
           </li>
           <li className="md:hidden">
-            <button className="rounded-md border-[0.75px] border-white text-white">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth={1.5}
-                stroke="currentColor"
-                className="m-1 h-6 w-6"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
-                />
-              </svg>
-            </button>
+            {open ? (
+              <>
+                <button className="rounded-md border-[0.75px] border-white text-white">
+                  <svg
+                    onClick={() => setOpen(!open)}
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    strokeWidth={1.5}
+                    stroke="currentColor"
+                    className="m-1 h-6 w-6"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+                    />
+                  </svg>
+                </button>
+              </>
+            ) : (
+              <>
+                <div className="fixed  right-0 w-[55vw] bg-red-500">
+                  <h1>Drawer</h1>
+                </div>
+              </>
+            )}
           </li>
         </ul>
       </ul>
