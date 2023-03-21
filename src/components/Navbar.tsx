@@ -3,7 +3,7 @@
 import Atropos from 'atropos/react';
 import Link from 'next/link';
 import type { FC } from 'react';
-import { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 
 import { ScrollContext } from '@/utils/scroll-observer';
 // import { SizeContext } from '@/utils/size-observer';
@@ -103,33 +103,23 @@ const Navbar: FC<{ fontName: { className: string } }> = ({ fontName }) => {
             </Atropos>
           </li>
           <li className="md:hidden">
-            {open ? (
-              <>
-                <button className="rounded-md border-[0.75px] border-white text-white">
-                  <svg
-                    onClick={() => setOpen(!open)}
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    strokeWidth={1.5}
-                    stroke="currentColor"
-                    className="m-1 h-6 w-6"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
-                    />
-                  </svg>
-                </button>
-              </>
-            ) : (
-              <>
-                <div className="fixed  right-0 w-[55vw] bg-red-500">
-                  <h1>Drawer</h1>
-                </div>
-              </>
-            )}
+            <button className="rounded-md border-[0.75px] border-white text-white">
+              <svg
+                onClick={() => setOpen(!open)}
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth={1.5}
+                stroke="currentColor"
+                className="m-1 h-6 w-6"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+                />
+              </svg>
+            </button>
           </li>
         </ul>
       </ul>

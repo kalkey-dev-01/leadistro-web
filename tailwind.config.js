@@ -1,3 +1,5 @@
+/* eslint-disable global-require */
+/* eslint-disable import/no-extraneous-dependencies */
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: ['./src/**/*.{js,ts,jsx,tsx}'],
@@ -15,6 +17,15 @@ module.exports = {
       '6xl': '4rem',
     },
     extend: {
+      animation: {
+        'drawer-right': 'drawer-right 0.3s',
+      },
+      keyframes: {
+        'drawer-right': {
+          '0%, 100%': { right: '-500px' },
+          '100%': { right: '0' },
+        },
+      },
       fontFamily: {
         poppins: 'var(--font-poppins)',
         comfortaa: 'var(--font-comfortaa)',
@@ -56,5 +67,15 @@ module.exports = {
       },
     },
   },
-  plugins: [],
+  plugins: [require('daisyui')],
+  daisyui: {
+    styled: false,
+    themes: false,
+    base: true,
+    utils: true,
+    logs: true,
+    rtl: false,
+    prefix: '',
+    darkTheme: 'dark',
+  },
 };

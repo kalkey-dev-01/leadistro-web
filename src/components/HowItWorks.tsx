@@ -1,6 +1,5 @@
 import React, { useContext, useRef } from 'react';
 
-import { comfortaa } from '@/templates/Main';
 import { ScrollContext } from '@/utils/scroll-observer';
 
 import s from '../styles/hiw.module.css';
@@ -30,12 +29,10 @@ const HowItWorks: React.FC = () => {
     progress = Math.min(numOfPages - 0.5, Math.max(0.5, percentY * numOfPages));
   }
   return (
-    <div ref={blockRefContainer} className="bg-white text-black ">
-      <div className="mx-auto flex min-h-screen max-w-screen-lg flex-col items-center justify-center px-10 py-24 text-4xl font-semibold md:py-28   md:text-5xl lg:px-20 lg:py-36  lg:text-6xl">
+    <div ref={blockRefContainer} className="bg-transparent text-white ">
+      <div className="mx-2 flex min-h-screen max-w-screen-xl flex-col items-center justify-center px-10 py-24 text-4xl font-semibold drop-shadow-[0_5px_3px_rgba(0,0,0,0.4)] md:py-28   md:text-5xl lg:px-20 lg:py-36  lg:text-6xl">
         <div className="leading-[1.15]">
-          <h1 className={`my-2 font-black ${comfortaa.className}`}>
-            How it Works
-          </h1>
+          <h1 className={`my-2 font-black   `}>How it Works</h1>
           <div
             className={s.hiworkText}
             style={{
