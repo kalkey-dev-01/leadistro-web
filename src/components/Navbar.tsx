@@ -1,5 +1,6 @@
 /* eslint-disable tailwindcss/no-custom-classname */
 // eslint-disable-next-line import/no-extraneous-dependencies
+import { Comfortaa } from '@next/font/google';
 import Atropos from 'atropos/react';
 import Link from 'next/link';
 import type { FC } from 'react';
@@ -8,7 +9,12 @@ import React, { useContext, useEffect, useState } from 'react';
 import { ScrollContext } from '@/utils/scroll-observer';
 // import { SizeContext } from '@/utils/size-observer';
 
-const Navbar: FC<{ fontName: { className: string } }> = ({ fontName }) => {
+const comfortaa = Comfortaa({
+  subsets: ['latin'],
+  variable: '--font-comfortaa',
+});
+
+const Navbar: FC<{}> = () => {
   // const { innerWidth } = useContext(SizeContext);
   const { scrollY } = useContext(ScrollContext);
   const [showNav, setShowNav] = useState(true);
@@ -23,15 +29,15 @@ const Navbar: FC<{ fontName: { className: string } }> = ({ fontName }) => {
   }, [scrollY]);
   return (
     <nav
-      className={`fixed z-50  w-full px-4  transition-all duration-300 ${
+      className={`fixed z-50  w-full border-b-[0.75px] border-b-leadistroWhite/25 px-4  transition-all duration-300 ${
         showNav ? 'top-2' : '-top-16'
       }`}
     >
       <ul className="flex flex-row items-center justify-between p-2 text-xl">
-        <li className="">
+        <li className="glass bg-leadistroGray/10 px-2 py-1.5">
           <Link
             href="/"
-            className={`${fontName.className} border-none text-white hover:text-leadistroWhite`}
+            className={`${comfortaa.className} border-none text-white hover:text-leadistroWhite`}
           >
             leadistro
           </Link>
@@ -102,23 +108,55 @@ const Navbar: FC<{ fontName: { className: string } }> = ({ fontName }) => {
               </button>
             </Atropos>
           </li>
+          {/* Drawer DropDown */}
           <li className="md:hidden">
-            <button className="rounded-md border-[0.75px] border-white text-white">
-              <svg
-                onClick={() => setOpen(!open)}
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth={1.5}
-                stroke="currentColor"
-                className="m-1 h-6 w-6"
+            <button className="dropdown-end dropdown rounded-md border-[0.75px] border-white text-white">
+              <label tabIndex={0} className="">
+                <svg
+                  onClick={() => setOpen(!open)}
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth={1.5}
+                  stroke="currentColor"
+                  className="m-1 h-6 w-6"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+                  />
+                </svg>
+              </label>
+              <ul
+                tabIndex={0}
+                className="dropdown-content rounded-box glass my-4 flex h-halfScreen w-[80vw] flex-col items-center justify-start gap-2 bg-leadistroDark/50 p-2  shadow transition-all"
               >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
-                />
-              </svg>
+                <li className={` border-2 border-white`}>
+                  <Link
+                    href="/about/"
+                    className="btn-block btn border-none text-white hover:text-leadistroWhite"
+                  >
+                    About Us
+                  </Link>
+                </li>
+                <li className={` border-2 border-white`}>
+                  <Link
+                    href="/about/"
+                    className="btn-block btn border-none text-white hover:text-leadistroWhite"
+                  >
+                    Downloads
+                  </Link>
+                </li>
+                <li className={` border-2 border-white`}>
+                  <Link
+                    href="/about/"
+                    className="btn-block btn border-none text-white hover:text-leadistroWhite"
+                  >
+                    Tell us What You Want
+                  </Link>
+                </li>
+              </ul>
             </button>
           </li>
         </ul>
@@ -128,3 +166,75 @@ const Navbar: FC<{ fontName: { className: string } }> = ({ fontName }) => {
 };
 
 export default Navbar;
+
+// export const NewNavbar: FC<{ children: ReactNode }> = ({ children }) => {
+//   const { scrollY } = useContext(ScrollContext);
+//   const [showNav, setShowNav] = useState(true);
+//   // const [open, setOpen] = useState(true);
+
+//   const handleScroll = () => {
+//     setShowNav(window.scrollY < scrollY);
+//   };
+//   useEffect(() => {
+//     document.addEventListener('scroll', handleScroll, { passive: true });
+//     return () => document.removeEventListener('scroll', handleScroll);
+//   }, [scrollY]);
+//   return (
+//     <>
+//       <div className="drawer">
+//         <input id="my-drawer-3" type="checkbox" className="drawer-toggle" />
+//         <div className="drawer-content flex flex-col">
+//           {/* <!-- Navbar --> */}
+//           <div
+//             className={`sticky  w-full px-4  transition-all duration-300 ${
+//               showNav ? 'top-2' : '-top-16'
+//             }`}
+//           >
+//             <div className="flex-none lg:hidden">
+//               <label htmlFor="my-drawer-3" className="btn-ghost btn-square btn">
+//                 <svg
+//                   xmlns="http://www.w3.org/2000/svg"
+//                   fill="none"
+//                   viewBox="0 0 24 24"
+//                   className="inline-block h-6 w-6 stroke-current"
+//                 >
+//                   <path
+//                     strokeLinecap="round"
+//                     strokeLinejoin="round"
+//                     strokeWidth="2"
+//                     d="M4 6h16M4 12h16M4 18h16"
+//                   ></path>
+//                 </svg>
+//               </label>
+//             </div>
+//             <div className="mx-2 flex-1 px-2">Navbar Title</div>
+//             <div className="hidden flex-none lg:block">
+//               <ul className="menu menu-horizontal">
+//                 {/* <!-- Navbar menu content here --> */}
+//                 <li>
+//                   <a>Navbar Item 1</a>
+//                 </li>
+//                 <li>
+//                   <a>Navbar Item 2</a>
+//                 </li>
+//               </ul>
+//             </div>
+//           </div>
+//           {/* <!-- Page content here --> */}
+//           {children}
+//         </div>
+//         <div className="drawer-side">
+//           <label htmlFor="my-drawer-3" className="drawer-overlay"></label>
+//           <ul className="menu w-80 bg-base-100 p-4">
+//             <li>
+//               <a>Sidebar Item 1</a>
+//             </li>
+//             <li>
+//               <a>Sidebar Item 2</a>
+//             </li>
+//           </ul>
+//         </div>
+//       </div>
+//     </>
+//   );
+// };

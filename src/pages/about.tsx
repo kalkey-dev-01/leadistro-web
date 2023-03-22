@@ -1,8 +1,9 @@
 import { Meta } from '@/layouts/Meta';
-import { Main } from '@/templates/Main';
+// import { Main } from '@/templates/Main';
+import MainWithThree from '@/templates/r3fMain';
 
 const About = () => (
-  <Main meta={<Meta title="Lorem ipsum" description="Lorem ipsum" />}>
+  <MainWithThree meta={<Meta title="About" description="About This App" />}>
     <p>
       Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ratione fuga
       recusandae quidem. Quaerat molestiae blanditiis doloremque possimus labore
@@ -15,7 +16,7 @@ const About = () => (
       voluptatibus distinctio recusandae autem esse explicabo molestias officia
       placeat, accusamus aut saepe.
     </p>
-  </Main>
+  </MainWithThree>
 );
 
 export default About;
