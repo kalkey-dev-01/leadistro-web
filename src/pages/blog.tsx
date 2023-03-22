@@ -1,10 +1,10 @@
 import Link from 'next/link';
 
 import { Meta } from '@/layouts/Meta';
-import { Main } from '@/templates/Main';
+import MainWithThree from '@/templates/r3fMain';
 
 const Blog = () => (
-  <Main meta={<Meta title="Lorem ipsum" description="Lorem ipsum" />}>
+  <MainWithThree meta={<Meta title="Lorem ipsum" description="Lorem ipsum" />}>
     <p>
       Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ratione fuga
       recusandae quidem. Quaerat molestiae blanditiis doloremque possimus labore
@@ -20,7 +20,7 @@ const Blog = () => (
         <Link href={`/blog/blog-${index}`}>{`Blog - ${index}`}</Link>
       </div>
     ))}
-  </Main>
+  </MainWithThree>
 );
 
 export default Blog;
