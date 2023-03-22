@@ -1,10 +1,12 @@
-// import { MeshDistortMaterial, Sphere } from '@react-three/drei';
+import { MeshDistortMaterial } from '@react-three/drei';
 import { Canvas, useFrame } from '@react-three/fiber';
-import React, { useRef } from 'react';
+import React, { useContext, useRef } from 'react';
 import type { Mesh } from 'three';
 
 import Footer from '@/components/Footer';
 import Navbar from '@/components/Navbar';
+// import { MouseContext } from '@/utils/mouse-observer';
+import { ScrollContext } from '@/utils/scroll-observer';
 
 // import { MouseContext } from '@/utils/mouse-observer';
 // import { ScrollContext } from '@/utils/scroll-observer';
@@ -15,14 +17,23 @@ type Props = {
 };
 
 function Box() {
+  const { scrollY } = useContext(ScrollContext);
+  // const { x, y } = useContext(MouseContext);
   const ref = useRef<Mesh>(null!);
   useFrame(() => {
     ref.current.rotation.y += 0.0005;
+    ref.current.rotation.x += 0.0002;
+    ref.current.position.y = -scrollY * 0.0001;
   });
   return (
     <mesh ref={ref}>
-      <sphereGeometry args={[1, 100, 100, 0]} />
-      <meshStandardMaterial color={'#e0e0e0'} />
+      <sphereGeometry args={[1, 500, 500, 0]} />
+      <MeshDistortMaterial
+        color="#fff"
+        attach="material"
+        speed={1}
+        distort={0.5}
+      />
     </mesh>
   );
 }
@@ -43,7 +54,7 @@ function Scene() {
       {/* <Canvas camera={{ position: [0, 0, 2], fov: 60, near: 1, far: 3 }}> */}
       <ambientLight intensity={0.2} />
 
-      <axesHelper args={[10]} />
+      {/* <axesHelper args={[10]} /> */}
       <Box />
       <Box />
     </Canvas>
@@ -105,9 +116,7 @@ const MainWithThree: React.FC<Props> = ({ children, meta }) => {
         </div>
         <Navbar />
         {/* Background Animation */}
-
         {children}
-
         <Footer />
       </div>
     </>

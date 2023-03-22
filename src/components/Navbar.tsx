@@ -1,7 +1,8 @@
 /* eslint-disable tailwindcss/no-custom-classname */
 // eslint-disable-next-line import/no-extraneous-dependencies
-import { Comfortaa } from '@next/font/google';
+import { Comfortaa, Poppins } from '@next/font/google';
 import Atropos from 'atropos/react';
+import Image from 'next/image';
 import Link from 'next/link';
 import type { FC } from 'react';
 import React, { useContext, useEffect, useState } from 'react';
@@ -12,6 +13,10 @@ import { ScrollContext } from '@/utils/scroll-observer';
 const comfortaa = Comfortaa({
   subsets: ['latin'],
   variable: '--font-comfortaa',
+});
+const poppins = Poppins({
+  subsets: ['latin'],
+  weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
 });
 
 const Navbar: FC<{}> = () => {
@@ -110,7 +115,9 @@ const Navbar: FC<{}> = () => {
           </li>
           {/* Drawer DropDown */}
           <li className="md:hidden">
-            <button className="dropdown-end dropdown rounded-md border-[0.75px] border-white text-white">
+            <button
+              className={` dropdown-end dropdown rounded-md border-[0.75px] border-white text-white`}
+            >
               <label tabIndex={0} className="">
                 <svg
                   onClick={() => setOpen(!open)}
@@ -130,12 +137,23 @@ const Navbar: FC<{}> = () => {
               </label>
               <ul
                 tabIndex={0}
-                className="dropdown-content rounded-box glass my-4 flex h-halfScreen w-[80vw] flex-col items-center justify-start gap-2 bg-leadistroDark/50 p-2  shadow transition-all"
+                className="dropdown-content rounded-box glass my-4 flex h-[75vh] w-[87.5vw] flex-col items-center justify-start gap-2 bg-leadistroDark/50 p-2  shadow transition-all"
               >
+                {/* <Image /> */}
+
+                <Image
+                  // eslint-disable-next-line global-require
+                  src={require('../../public/assets/images/CircLogoBlack.png')}
+                  alt="Leadistro Logo"
+                  className={`my-10`}
+                  width={150}
+                  height={150}
+                />
+
                 <li className={` border-2 border-white`}>
                   <Link
                     href="/about/"
-                    className="btn-block btn border-none text-white hover:text-leadistroWhite"
+                    className={`${poppins.className} btn-block btn border-none bg-leadistroDark font-extrabold text-white hover:text-leadistroWhite`}
                   >
                     About Us
                   </Link>
@@ -143,7 +161,7 @@ const Navbar: FC<{}> = () => {
                 <li className={` border-2 border-white`}>
                   <Link
                     href="/about/"
-                    className="btn-block btn border-none text-white hover:text-leadistroWhite"
+                    className={`${poppins.className} btn-block btn border-none bg-leadistroDark font-extrabold text-white hover:text-leadistroWhite`}
                   >
                     Downloads
                   </Link>
@@ -151,7 +169,7 @@ const Navbar: FC<{}> = () => {
                 <li className={` border-2 border-white`}>
                   <Link
                     href="/about/"
-                    className="btn-block btn border-none text-white hover:text-leadistroWhite"
+                    className={`${poppins.className} btn-block btn border-none bg-leadistroDark font-extrabold text-white hover:text-leadistroWhite`}
                   >
                     Tell us What You Want
                   </Link>
