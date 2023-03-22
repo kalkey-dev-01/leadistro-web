@@ -1,6 +1,7 @@
 /* eslint-disable tailwindcss/no-custom-classname */
 /* eslint-disable unused-imports/no-unused-vars */
 /* eslint-disable no-plusplus */
+import { Comfortaa, Poppins } from '@next/font/google';
 import Atropos from 'atropos/react';
 import Link from 'next/link';
 import React, { useCallback, useContext, useRef, useState } from 'react';
@@ -9,12 +10,20 @@ import { Features } from '@/components/Features';
 import HowItWorks from '@/components/HowItWorks';
 // import ImageSequence from '@/components/ImageSequence';
 import { Meta } from '@/layouts/Meta';
-import { comfortaa, poppins } from '@/templates/Main';
 // import { Main } from '@/templates/Main';
 import MainWithThree from '@/templates/r3fMain';
 import { ScrollContext } from '@/utils/scroll-observer';
 import { SizeContext } from '@/utils/size-observer';
 // eslint-disable-next-line unused-imports/no-unused-imports
+
+const comfortaa = Comfortaa({
+  subsets: ['latin'],
+  variable: '--font-comfortaa',
+});
+const poppins = Poppins({
+  subsets: ['latin'],
+  weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
+});
 
 // HOME PAGE
 
