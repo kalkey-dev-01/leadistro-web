@@ -8,7 +8,9 @@ import type { FC } from 'react';
 import React, { useContext, useEffect, useState } from 'react';
 
 import { ScrollContext } from '@/utils/scroll-observer';
+
 // import { SizeContext } from '@/utils/size-observer';
+import Logo from '../../public/assets/images/CircLogoBlack.png';
 
 const comfortaa = Comfortaa({
   subsets: ['latin'],
@@ -39,12 +41,19 @@ const Navbar: FC<{}> = () => {
       }`}
     >
       <ul className="flex flex-row items-center justify-between p-2 text-xl">
-        <li className="glass bg-leadistroGray/10 px-2 py-1.5">
+        <li className="px-2 py-1.5">
           <Link
             href="/"
             className={`${comfortaa.className} border-none text-white hover:text-leadistroWhite`}
           >
-            leadistro
+            <div className=" glass flex flex-row items-center justify-center gap-2 rounded-3xl border-2 border-leadistroGray pr-4">
+              <Image src={Logo} alt="Logo" width={35} height={35} />
+              <Atropos className="atropos">
+                <button data-atropos-offset={5}>
+                  <h3 className="pt-1 font-bold">leadistro</h3>
+                </button>
+              </Atropos>
+            </div>
           </Link>
         </li>
         <ul className="flex flex-1 flex-row items-center justify-end space-x-8">
@@ -143,7 +152,7 @@ const Navbar: FC<{}> = () => {
 
                 <Image
                   // eslint-disable-next-line global-require
-                  src={require('../../public/assets/images/CircLogoBlack.png')}
+                  src={Logo}
                   alt="Leadistro Logo"
                   className={`my-10`}
                   width={150}

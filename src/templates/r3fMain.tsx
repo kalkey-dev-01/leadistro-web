@@ -1,7 +1,7 @@
 import { MeshDistortMaterial } from '@react-three/drei';
 import { Canvas, useFrame } from '@react-three/fiber';
 import React, { useContext, useRef } from 'react';
-import type { Mesh } from 'three';
+import type { Mesh, SphereGeometry } from 'three';
 
 import Footer from '@/components/Footer';
 import Navbar from '@/components/Navbar';
@@ -20,6 +20,7 @@ function Box() {
   const { scrollY } = useContext(ScrollContext);
   // const { x, y } = useContext(MouseContext);
   const ref = useRef<Mesh>(null!);
+  const sphereRef = useRef<SphereGeometry>(null!);
   useFrame(() => {
     ref.current.rotation.y += 0.0005;
     ref.current.rotation.x += 0.0002;
@@ -27,7 +28,7 @@ function Box() {
   });
   return (
     <mesh ref={ref}>
-      <sphereGeometry args={[1, 500, 500, 0]} />
+      <sphereGeometry args={[1.25, 500, 500, 0]} ref={sphereRef} />
       <MeshDistortMaterial
         color="#fff"
         attach="material"
@@ -43,7 +44,7 @@ function Scene() {
     <Canvas
       orthographic
       camera={{
-        position: [0, 0, 2],
+        position: [0, 0, 3],
         left: -2,
         right: -2,
         bottom: -2,
@@ -52,11 +53,11 @@ function Scene() {
       }}
     >
       {/* <Canvas camera={{ position: [0, 0, 2], fov: 60, near: 1, far: 3 }}> */}
-      <ambientLight intensity={0.2} />
+      <ambientLight intensity={0.05} />
 
       {/* <axesHelper args={[10]} /> */}
       <Box />
-      <Box />
+      {/* <Box /> */}
     </Canvas>
   );
 }
