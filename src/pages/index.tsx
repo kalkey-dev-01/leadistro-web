@@ -54,14 +54,14 @@ const Index = () => {
       <div
         ref={refContainer}
         style={{ transform: `translateY(-${progress * 20}vh)` }}
-        className="  mt-16 flex min-h-screen min-w-full flex-col items-center justify-between overflow-x-hidden bg-transparent py-24 md:flex-row  md:px-4 "
+        className=" hero mt-9 flex min-h-screen min-w-full flex-col items-center justify-between overflow-x-hidden bg-transparent py-24 px-4 md:flex-row md:px-6 "
       >
         {/* Title && Subtitle */}
-        <div className="flex  flex-col items-center justify-center text-white drop-shadow-[0_5px_3px_rgba(0,0,0,0.4)]  md:items-start">
+        <div className="hero-content flex flex-col items-center justify-center text-white drop-shadow-[0_5px_3px_rgba(0,0,0,0.4)]  md:items-start">
           <h1
-            className={` ${poppins.className} text-3xl font-normal leading-tight  lg:text-4xl xl:text-5xl`}
+            className={` ${poppins.className} text-3xl font-normal leading-snug   lg:text-4xl xl:text-5xl`}
           >
-            Revolutionize Your Email Marketing with{' '}
+            Generate More Leads and Close More Deals with{' '}
             <span
               className={` ${comfortaa.className} text-3xl font-bold lg:text-4xl xl:text-6xl `}
             >
@@ -69,14 +69,17 @@ const Index = () => {
               leadistro{' '}
             </span>{' '}
           </h1>
-          <h6 className="my-10  text-base font-normal lg:text-xl xl:text-2xl ">
+          <h6
+            className={`my-5 ${poppins.className} text-base font-light leading-normal lg:text-lg xl:text-xl `}
+          >
             {' '}
-            Unlock the full potential of your campaigns with our powerful market
-            researcher app
+            Say goodbye to manual lead generation and create effective email
+            campaigns with the app that helps you reach your target audience and
+            increase your sales.
           </h6>
-          <div className="inline-block md:hidden">
+          <div className="my-5">
             <Atropos className="atropos">
-              <button data-atropos-offset={10}>
+              <button data-atropos-offset={2}>
                 <div
                   data-atropos-offset={7}
                   className="flex flex-row items-center justify-between space-x-2 rounded-full border-[1.75px] border-white bg-black px-4 py-2 text-white"
@@ -85,18 +88,20 @@ const Index = () => {
                     href="/download/"
                     className="border-none text-white hover:text-leadistroWhite"
                   >
-                    Download
+                    Learn More
                   </Link>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
                     viewBox="0 0 24 24"
-                    fill="currentColor"
-                    className="h-4 w-4"
+                    strokeWidth={1.5}
+                    stroke="currentColor"
+                    className="h-6 w-6"
                   >
                     <path
-                      fillRule="evenodd"
-                      d="M12.516 2.17a.75.75 0 00-1.032 0 11.209 11.209 0 01-7.877 3.08.75.75 0 00-.722.515A12.74 12.74 0 002.25 9.75c0 5.942 4.064 10.933 9.563 12.348a.749.749 0 00.374 0c5.499-1.415 9.563-6.406 9.563-12.348 0-1.39-.223-2.73-.635-3.985a.75.75 0 00-.722-.516l-.143.001c-2.996 0-5.717-1.17-7.734-3.08zm3.094 8.016a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z"
-                      clipRule="evenodd"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M8.25 4.5l7.5 7.5-7.5 7.5"
                     />
                   </svg>
                 </div>
@@ -111,16 +116,16 @@ const Index = () => {
           autoPlay={true}
           muted
           playsInline
-          className={`h-full ${
-            innerWidth < 640 ? 'max-w-sm' : 'max-w-2xl'
+          className={` h-full ${
+            innerWidth < 640 ? 'max-w-md' : 'max-w-xl'
           }   pointer-events-none scale-100 bg-transparent object-cover md:scale-150 ${
             imageLoaded
               ? 'opacity-0'
               : '-translate-y-10 opacity-100 md:-translate-y-5'
           } ${
             scrollY > 300
-              ? 'scale-[1.75] transition-opacity md:scale-150'
-              : 'scale-150'
+              ? 'scale-[1.75] opacity-10 transition-opacity md:scale-150'
+              : 'scale-150 opacity-100'
           }   
             `}
           onLoad={handleImageLoaded}

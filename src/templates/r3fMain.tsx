@@ -28,7 +28,7 @@ function Box() {
   });
   return (
     <mesh ref={ref}>
-      <sphereGeometry args={[1.25, 500, 500, 0]} ref={sphereRef} />
+      <sphereGeometry args={[1, 500, 500, 0]} ref={sphereRef} />
       <MeshDistortMaterial
         color="#fff"
         attach="material"

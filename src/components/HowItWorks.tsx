@@ -1,7 +1,10 @@
+import Image from 'next/image';
 import React, { useContext, useRef } from 'react';
 
 import { ScrollContext } from '@/utils/scroll-observer';
+import { SizeContext } from '@/utils/size-observer';
 
+import btmsheet from '../../public/assets/images/btmsheet.png';
 import s from '../styles/hiw.module.css';
 
 const opacityForBlock = (sectionProgress: number, blockNo: number) => {
@@ -11,6 +14,7 @@ const opacityForBlock = (sectionProgress: number, blockNo: number) => {
 };
 
 const HowItWorks: React.FC = () => {
+  const { innerWidth } = useContext(SizeContext);
   const { scrollY } = useContext(ScrollContext);
   const blockRefContainer = useRef<HTMLDivElement>(null);
   // numofpages = current block no + 2
@@ -27,23 +31,36 @@ const HowItWorks: React.FC = () => {
         Math.max(-screenHeight, scrollY - offsetTop) + halfHeight
       ) / clientHeight;
     progress = Math.min(numOfPages - 0.5, Math.max(0.5, percentY * numOfPages));
+    console.log(percentY, 'Percent Y');
+    console.log(progress, 'Progress');
+    console.log(offsetTop, 'offest TOP');
   }
+
   return (
-    <div ref={blockRefContainer} className="bg-transparent text-white ">
-      <div className="mx-2 flex min-h-screen max-w-screen-xl flex-col items-center justify-center px-10 py-24 text-4xl font-semibold drop-shadow-[0_5px_3px_rgba(0,0,0,0.4)] md:py-28   md:text-5xl lg:px-20 lg:py-36  lg:text-6xl">
+    <div
+      ref={blockRefContainer}
+      className="bg-transparent text-start text-white "
+    >
+      <div className="mx-1 flex min-h-screen max-w-screen-xl flex-col items-center justify-center px-10 py-24 text-4xl font-semibold drop-shadow-[0_5px_3px_rgba(0,0,0,0.4)] md:py-28   md:text-5xl lg:px-20 lg:py-36  lg:text-6xl">
         <div className="leading-[1.15]">
-          <h1 className={`my-2 font-black   `}>How it Works</h1>
+          <h1 className={`my-2 font-black`}>How it Works</h1>
           <div
             className={s.hiworkText}
             style={{
               opacity: opacityForBlock(progress, 0),
             }}
           >
-            <div className="flex flex-col items-center justify-between md:flex-row">
+            <div className="flex flex-col items-center justify-between gap-2 md:flex-row md:px-2">
               <h1>
                 Firstly you should import your contacts using the following
                 methods or use Enrichment to get some contacts.
               </h1>
+              <Image
+                src={btmsheet}
+                alt={'Welome To leadistro'}
+                height={innerWidth > 480 ? 16 * 25 : 16 * 18}
+                width={innerWidth > 480 ? 9 * 25 : 9 * 18}
+              />
             </div>
           </div>
           <span
