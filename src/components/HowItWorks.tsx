@@ -1,3 +1,4 @@
+import { Comfortaa, Poppins } from '@next/font/google';
 import Image from 'next/image';
 import React, { useContext, useRef } from 'react';
 
@@ -13,6 +14,15 @@ const opacityForBlock = (sectionProgress: number, blockNo: number) => {
   return 0.2;
 };
 
+const comfortaa = Comfortaa({
+  subsets: ['latin'],
+  variable: '--font-comfortaa',
+});
+const poppins = Poppins({
+  subsets: ['latin'],
+  weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
+});
+
 const HowItWorks: React.FC = () => {
   const { innerWidth } = useContext(SizeContext);
   const { scrollY } = useContext(ScrollContext);
@@ -24,13 +34,16 @@ const HowItWorks: React.FC = () => {
   if (elContainer) {
     const { clientHeight, offsetTop } = elContainer;
     const screenHeight = window.innerHeight;
-    const halfHeight = screenHeight / 2;
+    const halfHeight = screenHeight / 3.33;
     const percentY =
       Math.min(
         clientHeight + halfHeight,
         Math.max(-screenHeight, scrollY - offsetTop) + halfHeight
       ) / clientHeight;
-    progress = Math.min(numOfPages - 0.5, Math.max(0.5, percentY * numOfPages));
+    progress = Math.min(
+      numOfPages - 0.75,
+      Math.max(0.75, percentY * numOfPages)
+    );
     console.log(percentY, 'Percent Y');
     console.log(progress, 'Progress');
     console.log(offsetTop, 'offest TOP');
@@ -42,15 +55,14 @@ const HowItWorks: React.FC = () => {
       className="bg-transparent text-start text-white "
     >
       <div className="mx-1 flex min-h-screen max-w-screen-xl flex-col items-center justify-center px-10 py-24 text-4xl font-semibold drop-shadow-[0_5px_3px_rgba(0,0,0,0.4)] md:py-28   md:text-5xl lg:px-20 lg:py-36  lg:text-6xl">
-        <div className="leading-[1.15]">
-          <h1 className={`my-2 font-black`}>How it Works</h1>
+        <div className={`leading-[1.15] ${poppins.className}`}>
           <div
             className={s.hiworkText}
             style={{
               opacity: opacityForBlock(progress, 0),
             }}
           >
-            <div className="flex flex-col items-center justify-between gap-2 md:flex-row md:px-2">
+            <div className="flex flex-col-reverse items-center justify-between gap-2 md:flex-row ">
               <h1>
                 Firstly you should import your contacts using the following
                 methods or use Enrichment to get some contacts.
@@ -58,8 +70,8 @@ const HowItWorks: React.FC = () => {
               <Image
                 src={btmsheet}
                 alt={'Welome To leadistro'}
-                height={innerWidth > 480 ? 16 * 25 : 16 * 18}
-                width={innerWidth > 480 ? 9 * 25 : 9 * 18}
+                height={innerWidth > 480 ? 16 * 27 : 16 * 18}
+                width={innerWidth > 480 ? 9 * 27 : ((innerWidth * 9) / 16) * 18}
               />
             </div>
           </div>
