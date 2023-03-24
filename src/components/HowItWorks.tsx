@@ -1,6 +1,8 @@
 import { Poppins } from '@next/font/google';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import Image from 'next/image';
-import React, { useContext, useRef } from 'react';
+import React, { useContext, useEffect, useRef } from 'react';
 
 import { ScrollContext } from '@/utils/scroll-observer';
 import { SizeContext } from '@/utils/size-observer';
@@ -8,6 +10,7 @@ import { SizeContext } from '@/utils/size-observer';
 import btmsheet from '../../public/assets/images/btmsheet.png';
 import s from '../styles/hiw.module.css';
 
+gsap.registerPlugin(ScrollTrigger);
 const opacityForBlock = (sectionProgress: number, blockNo: number) => {
   const blockProgress = sectionProgress - blockNo;
   if (blockProgress >= 0 && blockProgress < 1) return 1;
@@ -27,6 +30,22 @@ const HowItWorks: React.FC = () => {
   const { innerWidth } = useContext(SizeContext);
   const { scrollY } = useContext(ScrollContext);
   const blockRefContainer = useRef<HTMLDivElement>(null);
+  const refImageContainer = useRef<HTMLImageElement>(null);
+  useEffect(() => {
+    const ImageContainer = refImageContainer.current;
+    gsap.fromTo(
+      ImageContainer,
+      { x: -250, opacity: 0.5 },
+      {
+        x: 0,
+        opacity: 1,
+        duration: 1.5,
+        scrollTrigger: {
+          trigger: ImageContainer,
+        },
+      }
+    );
+  }, [refImageContainer]);
   // numofpages = current block no + 2
   const numOfPages = 4;
   let progress = 0;
@@ -53,7 +72,7 @@ const HowItWorks: React.FC = () => {
     <div ref={blockRefContainer} className="bg-transparent  text-white ">
       <div className=" flex min-h-screen max-w-screen-xl flex-col items-center justify-center px-2 py-24 text-4xl font-medium drop-shadow-[0_5px_3px_rgba(0,0,0,0.4)] md:py-28 md:text-5xl   md:font-semibold lg:px-20 lg:py-36  lg:text-6xl">
         <div
-          className={`tracking-none leading-[1.15] md:tracking-wide ${poppins.className}`}
+          className={`leading-[1.15] tracking-normal md:tracking-wide ${poppins.className}`}
         >
           <div
             className={s.hiworkText}
@@ -67,6 +86,7 @@ const HowItWorks: React.FC = () => {
                 methods or use Enrichment to get some contacts.
               </h1>
               <Image
+                ref={refImageContainer}
                 className={`p-1`}
                 src={btmsheet}
                 alt={'Welome To leadistro'}
@@ -89,6 +109,7 @@ const HowItWorks: React.FC = () => {
                 methods or use Enrichment to get some contacts.
               </h1>
               <Image
+                ref={refImageContainer}
                 className={`p-1`}
                 src={btmsheet}
                 alt={'Welome To leadistro'}
