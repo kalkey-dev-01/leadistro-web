@@ -1,4 +1,4 @@
-import { Comfortaa, Poppins } from '@next/font/google';
+import { Poppins } from '@next/font/google';
 import Image from 'next/image';
 import React, { useContext, useRef } from 'react';
 
@@ -14,10 +14,10 @@ const opacityForBlock = (sectionProgress: number, blockNo: number) => {
   return 0.2;
 };
 
-const comfortaa = Comfortaa({
-  subsets: ['latin'],
-  variable: '--font-comfortaa',
-});
+// const comfortaa = Comfortaa({
+//   subsets: ['latin'],
+//   variable: '--font-comfortaa',
+// });
 const poppins = Poppins({
   subsets: ['latin'],
   weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
@@ -50,12 +50,11 @@ const HowItWorks: React.FC = () => {
   }
 
   return (
-    <div
-      ref={blockRefContainer}
-      className="bg-transparent text-start text-white "
-    >
-      <div className="mx-1 flex min-h-screen max-w-screen-xl flex-col items-center justify-center px-10 py-24 text-4xl font-semibold drop-shadow-[0_5px_3px_rgba(0,0,0,0.4)] md:py-28   md:text-5xl lg:px-20 lg:py-36  lg:text-6xl">
-        <div className={`leading-[1.15] ${poppins.className}`}>
+    <div ref={blockRefContainer} className="bg-transparent  text-white ">
+      <div className=" flex min-h-screen max-w-screen-xl flex-col items-center justify-center px-2 py-24 text-4xl font-medium drop-shadow-[0_5px_3px_rgba(0,0,0,0.4)] md:py-28 md:text-5xl   md:font-semibold lg:px-20 lg:py-36  lg:text-6xl">
+        <div
+          className={`tracking-none leading-[1.15] md:tracking-wide ${poppins.className}`}
+        >
           <div
             className={s.hiworkText}
             style={{
@@ -68,10 +67,13 @@ const HowItWorks: React.FC = () => {
                 methods or use Enrichment to get some contacts.
               </h1>
               <Image
+                className={`p-1`}
                 src={btmsheet}
                 alt={'Welome To leadistro'}
                 height={innerWidth > 480 ? 16 * 27 : 16 * 18}
-                width={innerWidth > 480 ? 9 * 27 : ((innerWidth * 9) / 16) * 18}
+                width={
+                  innerWidth > 480 ? 9 * 27 : ((innerWidth * 9) / 16) * 1.55
+                }
               />
             </div>
           </div>
@@ -81,8 +83,21 @@ const HowItWorks: React.FC = () => {
               opacity: opacityForBlock(progress, 1),
             }}
           >
-            Our app has contributed to many projects, from small to large. We
-            have worked on both Android and Websites to Decentralized-Web-Apps.
+            <div className="flex flex-col-reverse items-center justify-between gap-2 md:flex-row-reverse ">
+              <h1>
+                Firstly you should import your contacts using the following
+                methods or use Enrichment to get some contacts.
+              </h1>
+              <Image
+                className={`p-1`}
+                src={btmsheet}
+                alt={'Welome To leadistro'}
+                height={innerWidth > 480 ? 16 * 27 : 16 * 18}
+                width={
+                  innerWidth > 480 ? 9 * 27 : ((innerWidth * 9) / 16) * 1.55
+                }
+              />
+            </div>
           </span>
           <div
             className={`${s.hiworkText} inline-block`}
@@ -90,8 +105,21 @@ const HowItWorks: React.FC = () => {
               opacity: opacityForBlock(progress, 2),
             }}
           >
-            We are still continuously refine our skills and knowledge and no
-            work is less than a dream.
+            <div className="flex flex-col items-center justify-between gap-2 md:flex-row ">
+              <h1>
+                Firstly you should import your contacts using the following
+                methods or use Enrichment to get some contacts.
+              </h1>
+              <Image
+                className={`p-1`}
+                src={btmsheet}
+                alt={'Welome To leadistro'}
+                height={innerWidth > 480 ? 16 * 27 : 16 * 18}
+                width={
+                  innerWidth > 480 ? 9 * 27 : ((innerWidth * 9) / 16) * 1.55
+                }
+              />
+            </div>
           </div>
           <div
             className={`${s.hiworkText} inline-block`}
@@ -99,8 +127,21 @@ const HowItWorks: React.FC = () => {
               opacity: opacityForBlock(progress, 3),
             }}
           >
-            We are still continuously refine our skills and knowledge and no
-            work is less than a dream.
+            <div className="flex flex-col-reverse items-center justify-between gap-2 md:flex-row ">
+              <h1>
+                Firstly you should import your contacts using the following
+                methods or use Enrichment to get some contacts.
+              </h1>
+              <Image
+                className={`p-1`}
+                src={btmsheet}
+                alt={'Welome To leadistro'}
+                height={innerWidth > 480 ? 16 * 27 : 16 * 18}
+                width={
+                  innerWidth > 480 ? 9 * 27 : ((innerWidth * 9) / 16) * 1.55
+                }
+              />
+            </div>
           </div>
         </div>
       </div>
