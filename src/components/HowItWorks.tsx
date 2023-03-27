@@ -29,31 +29,21 @@ const poppins = Poppins({
 const HowItWorks: React.FC = () => {
   const { innerWidth } = useContext(SizeContext);
   const { scrollY } = useContext(ScrollContext);
+  const VideoRef = useRef<HTMLVideoElement>(null);
   const blockRefContainer = useRef<HTMLDivElement>(null);
   const refImageContainer = useRef<HTMLImageElement>(null);
-  useEffect(() => {
-    const ImageContainer = refImageContainer.current;
-    gsap.fromTo(
-      ImageContainer,
-      { x: -250, opacity: 0.5 },
-      {
-        x: 0,
-        opacity: 1,
-        duration: 1.5,
-        scrollTrigger: {
-          trigger: ImageContainer,
-        },
-      }
-    );
-  }, [refImageContainer]);
+  const refImageContainer1 = useRef<HTMLImageElement>(null);
+  const refImageContainer2 = useRef<HTMLImageElement>(null);
+  const refImageContainer3 = useRef<HTMLImageElement>(null);
+
   // numofpages = current block no + 2
-  const numOfPages = 4;
+  const numOfPages = 5;
   let progress = 0;
   const { current: elContainer } = blockRefContainer;
   if (elContainer) {
     const { clientHeight, offsetTop } = elContainer;
     const screenHeight = window.innerHeight;
-    const halfHeight = screenHeight / 3.33;
+    const halfHeight = screenHeight / 3;
     const percentY =
       Math.min(
         clientHeight + halfHeight,
@@ -63,14 +53,89 @@ const HowItWorks: React.FC = () => {
       numOfPages - 0.75,
       Math.max(0.75, percentY * numOfPages)
     );
-    console.log(percentY, 'Percent Y');
-    console.log(progress, 'Progress');
-    console.log(offsetTop, 'offest TOP');
+    // console.log(percentY, 'Percent Y');
+    // console.log(offsetTop, 'offest TOP');
+    // console.log(opacityForBlock(progress, 0));
   }
 
+  console.log(progress, 'Progress');
+  // !! Need To use progress to play the video
+  useEffect(() => {
+    const ImageContainer = refImageContainer.current;
+    const ImageContainer1 = refImageContainer1.current;
+    const ImageContainer2 = refImageContainer2.current;
+    const ImageContainer3 = refImageContainer3.current;
+    if (opacityForBlock(progress, 0)) {
+      gsap.fromTo(
+        ImageContainer,
+        { x: 250, opacity: 0.5 },
+        {
+          x: 0,
+          opacity: 1,
+          duration: 1.5,
+          scrollTrigger: {
+            trigger: ImageContainer,
+          },
+        }
+      );
+    }
+    if (opacityForBlock(progress, 1)) {
+      gsap.fromTo(
+        ImageContainer1,
+        { x: -250, opacity: 0.5 },
+        {
+          x: 0,
+          opacity: 1,
+          duration: 1.5,
+          scrollTrigger: {
+            trigger: ImageContainer1,
+          },
+        }
+      );
+    }
+    if (opacityForBlock(progress, 2)) {
+      gsap.fromTo(
+        ImageContainer2,
+        { x: 250, opacity: 0.5 },
+        {
+          x: 0,
+          opacity: 1,
+          duration: 1.5,
+          scrollTrigger: {
+            trigger: ImageContainer2,
+          },
+        }
+      );
+    }
+    if (progress >= 3.15) {
+      VideoRef.current?.play();
+    }
+    if (opacityForBlock(progress, 4)) {
+      gsap.fromTo(
+        ImageContainer3,
+        { x: -250, opacity: 0.5 },
+        {
+          x: 0,
+          opacity: 1,
+          duration: 1.5,
+          scrollTrigger: {
+            trigger: ImageContainer3,
+          },
+        }
+      );
+    }
+  }, [
+    refImageContainer,
+    refImageContainer1,
+    refImageContainer2,
+    refImageContainer3,
+  ]);
   return (
-    <div ref={blockRefContainer} className="bg-transparent  text-white ">
-      <div className=" flex min-h-screen max-w-screen-xl flex-col items-center justify-center px-2 py-24 text-4xl font-medium drop-shadow-[0_5px_3px_rgba(0,0,0,0.4)] md:py-28 md:text-5xl   md:font-semibold lg:px-20 lg:py-36  lg:text-6xl">
+    <div
+      ref={blockRefContainer}
+      className="overflow-x-hidden bg-transparent text-white "
+    >
+      <div className=" flex min-h-screen max-w-screen-xl flex-col items-center justify-center px-2 py-24 text-3xl font-medium drop-shadow-[0_5px_3px_rgba(0,0,0,0.4)] md:py-28 md:text-5xl   md:font-semibold lg:px-20 lg:py-36  lg:text-6xl">
         <div
           className={`leading-[1.15] tracking-normal md:tracking-wide ${poppins.className}`}
         >
@@ -80,7 +145,7 @@ const HowItWorks: React.FC = () => {
               opacity: opacityForBlock(progress, 0),
             }}
           >
-            <div className="flex flex-col-reverse items-center justify-between gap-2 md:flex-row ">
+            <div className="flex flex-col items-center justify-between gap-2 md:flex-row ">
               <h1>
                 Firstly you should import your contacts using the following
                 methods or use Enrichment to get some contacts.
@@ -105,11 +170,12 @@ const HowItWorks: React.FC = () => {
           >
             <div className="flex flex-col-reverse items-center justify-between gap-2 md:flex-row-reverse ">
               <h1>
-                Firstly you should import your contacts using the following
-                methods or use Enrichment to get some contacts.
+                Select a pre-designed template or create your own custom design.
+                Use our drag-and-drop editor to add elements and preview on
+                different devices.
               </h1>
               <Image
-                ref={refImageContainer}
+                ref={refImageContainer1}
                 className={`p-1`}
                 src={btmsheet}
                 alt={'Welome To leadistro'}
@@ -128,10 +194,11 @@ const HowItWorks: React.FC = () => {
           >
             <div className="flex flex-col items-center justify-between gap-2 md:flex-row ">
               <h1>
-                Firstly you should import your contacts using the following
-                methods or use Enrichment to get some contacts.
+                Send emails right away or schedule them for later, and segment
+                your collection according to specific criteria.
               </h1>
               <Image
+                ref={refImageContainer2}
                 className={`p-1`}
                 src={btmsheet}
                 alt={'Welome To leadistro'}
@@ -148,12 +215,30 @@ const HowItWorks: React.FC = () => {
               opacity: opacityForBlock(progress, 3),
             }}
           >
-            <div className="flex flex-col-reverse items-center justify-between gap-2 md:flex-row ">
+            <video
+              ref={VideoRef}
+              controls={false}
+              autoPlay={true}
+              muted
+              playsInline
+              className="pointer-events-none h-full scale-150 bg-transparent object-cover md:scale-100 "
+            >
+              <source src="/horiz.webm" type="video/webm" />
+            </video>
+          </div>
+          <div
+            className={`${s.hiworkText} inline-block`}
+            style={{
+              opacity: opacityForBlock(progress, 4),
+            }}
+          >
+            <div className="flex flex-col-reverse items-center justify-between gap-2 md:flex-row-reverse ">
               <h1>
-                Firstly you should import your contacts using the following
-                methods or use Enrichment to get some contacts.
+                To optimise future campaigns, view comprehensive analytics on
+                email performance, including open rates and click-through rates.
               </h1>
               <Image
+                ref={refImageContainer3}
                 className={`p-1`}
                 src={btmsheet}
                 alt={'Welome To leadistro'}
