@@ -58,7 +58,7 @@ const HowItWorks: React.FC = () => {
     // console.log(opacityForBlock(progress, 0));
   }
 
-  console.log(progress, 'Progress');
+  // console.log(progress, 'Progress');
   // !! Need To use progress to play the video
   useEffect(() => {
     const ImageContainer = refImageContainer.current;
@@ -220,8 +220,9 @@ const HowItWorks: React.FC = () => {
               controls={false}
               autoPlay={true}
               muted
+              loop={!!opacityForBlock(progress, 3)}
               playsInline
-              className="pointer-events-none h-full scale-150 bg-transparent object-cover md:scale-100 "
+              className="pointer-events-none h-full w-full scale-150 bg-transparent object-cover md:scale-125 "
             >
               <source src="/horiz.webm" type="video/webm" />
             </video>
