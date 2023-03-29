@@ -6,9 +6,8 @@ import type { Mesh, SphereGeometry } from 'three';
 import Footer from '@/components/Footer';
 import Navbar from '@/components/Navbar';
 // import { MouseContext } from '@/utils/mouse-observer';
-import { ScrollContext } from '@/utils/scroll-observer';
-
 // import { MouseContext } from '@/utils/mouse-observer';
+import { ScrollContext } from '@/utils/scroll-observer';
 // import { ScrollContext } from '@/utils/scroll-observer';
 
 type Props = {
@@ -18,13 +17,15 @@ type Props = {
 
 function Box() {
   const { scrollY } = useContext(ScrollContext);
-  // const { x, y } = useContext(MouseContext);
   const ref = useRef<Mesh>(null!);
   const sphereRef = useRef<SphereGeometry>(null!);
   useFrame(() => {
     ref.current.rotation.y += 0.0005;
     ref.current.rotation.x += 0.0002;
     ref.current.position.y = -scrollY * 0.0001;
+    // ref.current.position.x =
+    //   Math.sin(-scrollY * Math.PI * 0.0001) +
+    //   Math.cos(scrollY * Math.PI * 0.0001);
   });
   return (
     <mesh ref={ref}>
@@ -49,7 +50,7 @@ function Scene() {
         right: -2,
         bottom: -2,
         top: 2,
-        zoom: 300,
+        zoom: 325,
       }}
     >
       {/* <Canvas camera={{ position: [0, 0, 2], fov: 60, near: 1, far: 3 }}> */}
@@ -116,8 +117,10 @@ const MainWithThree: React.FC<Props> = ({ children, meta }) => {
           <Scene />
         </div>
         <Navbar />
+
         {/* Background Animation */}
         {children}
+
         <Footer />
       </div>
     </>

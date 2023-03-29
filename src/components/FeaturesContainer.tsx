@@ -98,7 +98,7 @@ export const FeaturesContainer: React.FC<{ children: React.ReactNode }> = ({
 export const FeaturesBackground: React.FC = () => (
   <div className="sticky top-0 grid min-h-screen w-full grid-cols-1 lg:grid-cols-2">
     <div className="h-[30vh] bg-leadistroDark lg:h-auto"></div>
-    <div className="h-[70vh] bg-transparent lg:min-h-screen"></div>
+    <div className="h-[70vh] bg-inherit lg:min-h-screen"></div>
   </div>
 );
 export const FeaturesLeft: React.FC<{

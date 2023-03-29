@@ -1,7 +1,9 @@
 // import gsap from 'gsap';
 // import ScrollTrigger from 'gsap';
+import Image from 'next/image';
 import * as React from 'react';
 
+import btmsheet from '../../public/assets/images/btmsheet.png';
 import {
   FBackground,
   FContent,
@@ -54,8 +56,7 @@ export const Features: React.FC<FeatureProps> = () => {
               </FeaturesLeft>
               <FeaturesRight progress={progress}>
                 <div className="text-center text-5xl font-semibold text-black  md:text-6xl">
-                  {' '}
-                  Image or Lottie{' '}
+                  <Image src={btmsheet} alt="Album" />
                 </div>
               </FeaturesRight>
             </FeaturesContainer>
@@ -83,8 +84,7 @@ export const Features: React.FC<FeatureProps> = () => {
               </FeaturesLeft>
               <FeaturesRight progress={progress}>
                 <div className="text-center text-5xl font-semibold text-black  md:text-6xl">
-                  {' '}
-                  Image or Lottie{' '}
+                  <Image src={btmsheet} alt="Album" />
                 </div>
               </FeaturesRight>
             </FeaturesContainer>
@@ -112,8 +112,7 @@ export const Features: React.FC<FeatureProps> = () => {
               </FeaturesLeft>
               <FeaturesRight progress={progress}>
                 <div className="text-center text-5xl font-semibold text-black  md:text-6xl">
-                  {' '}
-                  Image or Lottie{' '}
+                  <Image src={btmsheet} alt="Album" />
                 </div>
               </FeaturesRight>
             </FeaturesContainer>
@@ -141,8 +140,7 @@ export const Features: React.FC<FeatureProps> = () => {
               </FeaturesLeft>
               <FeaturesRight progress={progress}>
                 <div className="text-center text-5xl font-semibold text-black  md:text-6xl">
-                  {' '}
-                  Image or Lottie{' '}
+                  <Image src={btmsheet} alt="Album" />
                 </div>
               </FeaturesRight>
             </FeaturesContainer>
@@ -171,8 +169,7 @@ export const Features: React.FC<FeatureProps> = () => {
               </FeaturesLeft>
               <FeaturesRight progress={progress}>
                 <div className="text-center text-5xl font-semibold text-black  md:text-6xl">
-                  {' '}
-                  Image or Lottie{' '}
+                  <Image src={btmsheet} alt="Album" />
                 </div>
               </FeaturesRight>
             </FeaturesContainer>

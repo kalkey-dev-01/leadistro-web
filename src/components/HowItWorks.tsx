@@ -135,9 +135,9 @@ const HowItWorks: React.FC = () => {
       ref={blockRefContainer}
       className="overflow-x-hidden bg-transparent text-white "
     >
-      <div className=" flex min-h-screen max-w-screen-xl flex-col items-center justify-center px-2 py-24 text-3xl font-medium drop-shadow-[0_5px_3px_rgba(0,0,0,0.4)] md:py-28 md:text-5xl   md:font-semibold lg:px-20 lg:py-36  lg:text-6xl">
+      <div className=" flex min-h-screen max-w-screen-xl flex-col items-center justify-center px-2 py-24 text-[27.5px] font-medium drop-shadow-[0_5px_3px_rgba(0,0,0,0.4)] md:py-28 md:text-4xl   md:font-semibold lg:px-20 lg:py-36  lg:text-[50px]">
         <div
-          className={`leading-[1.15] tracking-normal md:tracking-wide ${poppins.className}`}
+          className={`leading-snug tracking-wider md:tracking-wide ${poppins.className}`}
         >
           <div
             className={s.hiworkText}
