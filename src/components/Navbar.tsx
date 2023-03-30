@@ -36,11 +36,11 @@ const Navbar: FC<{}> = () => {
   }, [scrollY]);
   return (
     <nav
-      className={`fixed z-50  w-full border-b-[0.75px] border-b-leadistroWhite/25 px-4  transition-all duration-300 ${
-        showNav ? 'top-2' : '-top-16'
+      className={`fixed z-50  w-full border-b-[0.75px] border-b-leadistroWhite/25 px-4 backdrop-blur-[6px]  transition-all duration-300 ${
+        showNav ? 'top-0' : '-top-16'
       }`}
     >
-      <ul className="flex flex-row items-center justify-between p-2 text-xl">
+      <ul className="flex h-full flex-row items-center justify-between p-2 text-xl ">
         <li className="px-2 py-1.5">
           <Link
             href="/"
