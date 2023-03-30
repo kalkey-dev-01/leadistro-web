@@ -42,10 +42,10 @@ export const Features: React.FC<FeatureProps> = () => {
           renderContent={({ progress }) => (
             <FeaturesContainer>
               <FeaturesLeft progress={progress}>
-                <h1 className=" mb-3 px-3  text-center text-3xl font-bold tracking-wider text-white md:text-start md:text-6xl">
+                <h1 className=" mb-3 px-3  text-center text-3xl font-bold tracking-wider text-white md:text-start md:text-6xl md:tracking-normal">
                   Lead Researcher
                 </h1>
-                <h3 className="px-3 text-center text-lg  font-light leading-snug tracking-widest  text-white md:text-start md:text-4xl">
+                <h3 className="px-3 text-center text-lg  font-light leading-snug tracking-widest  text-white md:text-start md:text-3xl md:font-medium md:tracking-wide">
                   Leadistro can identify leads for your company by utilizing
                   data from various sources like LinkedIn, Twitter, and public
                   profiles. It allows you to save leads and categorize them for
@@ -74,10 +74,10 @@ export const Features: React.FC<FeatureProps> = () => {
           renderContent={({ progress }) => (
             <FeaturesContainer>
               <FeaturesLeft progress={progress}>
-                <h1 className=" mb-3 px-3  text-center text-3xl font-bold tracking-wider text-white md:text-start md:text-6xl">
+                <h1 className=" mb-3 px-3  text-center text-3xl font-bold tracking-wider text-white md:text-start md:text-6xl md:tracking-normal">
                   Cold Mail Automation
                 </h1>
-                <h3 className="px-3 text-center text-lg  font-light leading-snug tracking-widest  text-white md:text-start md:text-4xl">
+                <h3 className="px-3 text-center text-lg  font-light leading-snug tracking-widest  text-white md:text-start md:text-3xl md:font-medium md:tracking-wide">
                   Leadistro allows you to compose and schedule automatic cold
                   emails to send to your leads, with tailored content options
                   like recipient&#39;s name or firm. This saves time and ensures
@@ -105,10 +105,10 @@ export const Features: React.FC<FeatureProps> = () => {
           renderContent={({ progress }) => (
             <FeaturesContainer>
               <FeaturesLeft progress={progress}>
-                <h1 className=" mb-3 px-3  text-center text-3xl font-bold tracking-wider text-white md:text-start md:text-6xl">
+                <h1 className=" mb-3 px-3  text-center text-3xl font-bold tracking-wider text-white md:text-start md:text-6xl md:tracking-normal">
                   AI-Written Emails
                 </h1>
-                <h3 className="px-3 text-center text-lg  font-light leading-snug tracking-widest  text-white md:text-start md:text-4xl">
+                <h3 className="px-3 text-center text-lg  font-light leading-snug tracking-widest  text-white md:text-start md:text-3xl md:font-medium md:tracking-wide">
                   Leadistro uses NLP technology to generate individual emails
                   and subject suggestions, saving time and ensuring well-written
                   and engaging emails. You can modify the content before
@@ -136,10 +136,10 @@ export const Features: React.FC<FeatureProps> = () => {
           renderContent={({ progress }) => (
             <FeaturesContainer>
               <FeaturesLeft progress={progress}>
-                <h1 className=" mb-3 px-3  text-center text-3xl font-bold tracking-wider text-white md:text-start md:text-6xl">
+                <h1 className=" mb-3 px-3  text-center text-3xl font-bold tracking-wider text-white md:text-start md:text-6xl md:tracking-normal">
                   Personalised Email Design
                 </h1>
-                <h3 className="px-3 text-center text-lg  font-light leading-snug tracking-widest  text-white md:text-start md:text-4xl">
+                <h3 className="px-3 text-center text-lg  font-light leading-snug tracking-widest  text-white md:text-start md:text-3xl md:font-medium md:tracking-wide">
                   Leadistro offers a AI based interface for designing email
                   templates, with options to choose from pre-made or customize
                   from scratch. This ensures professional, branded emails.
@@ -166,10 +166,10 @@ export const Features: React.FC<FeatureProps> = () => {
           renderContent={({ progress }) => (
             <FeaturesContainer>
               <FeaturesLeft progress={progress}>
-                <h1 className=" mb-3 px-3  text-center text-3xl font-bold tracking-wider text-white md:text-start md:text-6xl">
+                <h1 className=" mb-3 px-3  text-center text-3xl font-bold tracking-wider text-white md:text-start md:text-6xl md:tracking-normal">
                   Integration with Gmail
                 </h1>
-                <h3 className="px-3 text-center text-lg  font-light leading-snug tracking-widest  text-white md:text-start md:text-4xl">
+                <h3 className="px-3 text-center text-lg  font-light leading-snug tracking-widest  text-white md:text-start md:text-3xl md:font-medium md:tracking-wide">
                   Leadistro integrates with Gmail or any email client, enabling
                   you to export emails for sending or composing and sending
                   emails from within the app. It simplifies workflow and
