@@ -1,3 +1,4 @@
+import { Poppins } from '@next/font/google';
 import React, { useContext, useRef } from 'react';
 
 import { ScrollContext } from '../utils/scroll-observer';
@@ -64,6 +65,11 @@ interface Props {
   renderContent: (props: { progress: number }) => any;
 }
 
+const poppins = Poppins({
+  subsets: ['latin'],
+  weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
+});
+
 export const Feature: React.FC<Props> = ({ page, renderContent }) => {
   const { currentPage, numOfPages } = useContext(FContext);
   const refContainer = useRef<HTMLDivElement>(null);
@@ -90,15 +96,17 @@ export const Feature: React.FC<Props> = ({ page, renderContent }) => {
 export const FeaturesContainer: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => (
-  <div className="grid min-h-screen w-full grid-cols-1 lg:grid-cols-2">
+  <div
+    className={`${poppins.className} grid min-h-screen w-full grid-cols-1 lg:grid-cols-2`}
+  >
     {children}
   </div>
 );
 
 export const FeaturesBackground: React.FC = () => (
   <div className="sticky top-0 grid min-h-screen w-full grid-cols-1 lg:grid-cols-2">
-    <div className="h-[30vh] bg-leadistroDark lg:h-auto"></div>
-    <div className="h-[70vh] bg-inherit lg:min-h-screen"></div>
+    <div className="h-[40vh] bg-leadistroDark lg:h-auto"></div>
+    <div className="h-[60vh] bg-inherit lg:min-h-screen"></div>
   </div>
 );
 export const FeaturesLeft: React.FC<{
@@ -112,9 +120,9 @@ export const FeaturesLeft: React.FC<{
       style={{
         transform: `translateY(${translateY}px)`,
       }}
-      className="flex h-[30vh] flex-col items-center justify-center text-3xl md:items-start lg:h-auto lg:text-3xl"
+      className="flex h-[40vh] flex-col items-center justify-center text-3xl md:items-start lg:h-auto lg:text-3xl"
     >
-      <div className="leading-10"> {children}</div>
+      <div className="leading-tight"> {children}</div>
     </div>
   );
 };
