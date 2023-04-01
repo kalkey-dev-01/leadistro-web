@@ -55,12 +55,17 @@ export const Features: React.FC<FeatureProps> = () => {
               </FeaturesLeft>
               <FeaturesRight progress={progress}>
                 <div className="text-center text-5xl font-semibold text-black  md:text-6xl">
-                  <Image
-                    fill={true}
-                    className="aspect-[9/16] object-cover"
-                    src={btmsheet}
-                    alt="Album"
-                  />
+                  <video
+                    className="pointer-events-none h-full w-full object-cover"
+                    controls={false}
+                    autoPlay={true}
+                    muted
+                    playsInline
+                    height={720}
+                    width={720}
+                  >
+                    <source src="/chatbots.webm" type="video/webm" />
+                  </video>
                 </div>
               </FeaturesRight>
             </FeaturesContainer>

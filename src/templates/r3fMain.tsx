@@ -117,10 +117,8 @@ const MainWithThree: React.FC<Props> = ({ children, meta }) => {
           <Scene />
         </div>
         <Navbar />
-
         {/* Background Animation */}
         {children}
-
         <Footer />
       </div>
     </>
