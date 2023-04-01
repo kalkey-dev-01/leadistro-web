@@ -19,8 +19,8 @@ const poppins = Poppins({
 
 const Footer: React.FC = () => {
   return (
-    <footer className="footer z-10 max-w-screen-lg py-8 text-start text-sm text-white">
-      <div className="flex items-center justify-center">
+    <footer className="footer z-10 max-h-60 max-w-screen-lg items-center py-8 text-start text-sm text-white">
+      <div className="flex items-center justify-between pl-4 md:justify-center">
         <Image
           width={100}
           height={100}
@@ -40,11 +40,13 @@ const Footer: React.FC = () => {
           </span>
         </div>
       </div>
-      <div className="h-full w-full items-center rounded-3xl bg-leadistroDark/20 px-5 backdrop-blur-sm">
-        <span className={` ${poppins.className} text-lg font-light  `}>
+      <div className="my-4 mx-3 items-center justify-self-center rounded-3xl bg-leadistroDark/5 p-5 backdrop-blur-sm md:m-0 md:h-full md:w-full">
+        <span
+          className={` ${poppins.className} hidden text-lg font-light md:inline-block  `}
+        >
           Social
         </span>
-        <div className="grid grid-flow-col gap-4">
+        <div className="grid grid-flow-col gap-8">
           <a>
             <svg
               xmlns="http://www.w3.org/2000/svg"
