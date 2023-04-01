@@ -2,7 +2,7 @@
 
 export const AppConfig = {
   site_name: 'leadistro',
-  title: 'Cold mail Designer and Distributor',
+  title: 'Email Marketing Campaign Creator',
   description: 'Minimalistic Application for all your marketing needs',
   locale: 'en',
 };
