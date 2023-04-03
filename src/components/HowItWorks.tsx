@@ -8,6 +8,7 @@ import { ScrollContext } from '@/utils/scroll-observer';
 import { SizeContext } from '@/utils/size-observer';
 
 import btmsheet from '../../public/assets/images/btmsheet.png';
+import singleContact from '../../public/assets/images/singleContact.png';
 import s from '../styles/hiw.module.css';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -153,7 +154,7 @@ const HowItWorks: React.FC = () => {
               <Image
                 ref={refImageContainer}
                 className={`p-1`}
-                src={btmsheet}
+                src={singleContact}
                 alt={'Welome To leadistro'}
                 height={innerWidth > 480 ? 16 * 27 : 16 * 18}
                 width={
@@ -200,7 +201,7 @@ const HowItWorks: React.FC = () => {
               <Image
                 ref={refImageContainer2}
                 className={`p-1`}
-                src={btmsheet}
+                src={singleContact}
                 alt={'Welome To leadistro'}
                 height={innerWidth > 480 ? 16 * 27 : 16 * 18}
                 width={

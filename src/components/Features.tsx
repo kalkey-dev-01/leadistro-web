@@ -3,7 +3,10 @@
 import Image from 'next/image';
 import * as React from 'react';
 
+import { SizeContext } from '@/utils/size-observer';
+
 import btmsheet from '../../public/assets/images/btmsheet.png';
+import distroGpt from '../../public/assets/images/distroGptMockup.png';
 import {
   FBackground,
   FContent,
@@ -29,7 +32,7 @@ export const Features: React.FC<FeatureProps> = () => {
   //         }
   //     })
   // }, [])
-
+  const { innerWidth } = React.useContext(SizeContext);
   return (
     <TitleWrapper numOfPages={5}>
       <FBackground>
@@ -54,19 +57,17 @@ export const Features: React.FC<FeatureProps> = () => {
                 </h3>
               </FeaturesLeft>
               <FeaturesRight progress={progress}>
-                <div className="text-center text-5xl font-semibold text-black  md:text-6xl">
-                  <video
-                    className="pointer-events-none h-full w-full object-cover"
-                    controls={false}
-                    autoPlay={true}
-                    muted
-                    playsInline
-                    height={720}
-                    width={720}
-                  >
-                    <source src="/chatbots.webm" type="video/webm" />
-                  </video>
-                </div>
+                <Image
+                  priority={true}
+                  fill={true}
+                  className={`${
+                    innerWidth > 410
+                      ? 'relative object-contain'
+                      : 'relative object-cover'
+                  } `}
+                  src={distroGpt}
+                  alt="Album"
+                />
               </FeaturesRight>
             </FeaturesContainer>
           )}
@@ -90,14 +91,17 @@ export const Features: React.FC<FeatureProps> = () => {
                 </h3>
               </FeaturesLeft>
               <FeaturesRight progress={progress}>
-                <div className="text-center text-5xl font-semibold text-black  md:text-6xl">
-                  <Image
-                    fill={true}
-                    className="aspect-[9/16] object-cover"
-                    src={btmsheet}
-                    alt="Album"
-                  />
-                </div>
+                <Image
+                  priority={true}
+                  fill={true}
+                  className={`${
+                    innerWidth > 410
+                      ? 'relative object-contain'
+                      : 'relative object-cover'
+                  } `}
+                  src={btmsheet}
+                  alt="Album"
+                />
               </FeaturesRight>
             </FeaturesContainer>
           )}
@@ -121,14 +125,17 @@ export const Features: React.FC<FeatureProps> = () => {
                 </h3>
               </FeaturesLeft>
               <FeaturesRight progress={progress}>
-                <div className="text-center text-5xl font-semibold text-black  md:text-6xl">
-                  <Image
-                    fill={true}
-                    className="aspect-[9/16] object-cover"
-                    src={btmsheet}
-                    alt="Album"
-                  />
-                </div>
+                <Image
+                  priority={true}
+                  fill={true}
+                  className={`${
+                    innerWidth > 410
+                      ? 'relative object-contain'
+                      : 'relative object-cover'
+                  } `}
+                  src={distroGpt}
+                  alt="Album"
+                />
               </FeaturesRight>
             </FeaturesContainer>
           )}
@@ -151,14 +158,17 @@ export const Features: React.FC<FeatureProps> = () => {
                 </h3>
               </FeaturesLeft>
               <FeaturesRight progress={progress}>
-                <div className="text-center text-5xl font-semibold text-black  md:text-6xl">
-                  <Image
-                    fill={true}
-                    className="aspect-[9/16] max-h-[720px] max-w-[405px] object-cover"
-                    src={btmsheet}
-                    alt="Album"
-                  />
-                </div>
+                <Image
+                  priority={true}
+                  fill={true}
+                  className={`${
+                    innerWidth > 410
+                      ? 'relative object-contain'
+                      : 'relative object-cover'
+                  } `}
+                  src={distroGpt}
+                  alt="Album"
+                />
               </FeaturesRight>
             </FeaturesContainer>
           )}
@@ -182,14 +192,17 @@ export const Features: React.FC<FeatureProps> = () => {
                 </h3>
               </FeaturesLeft>
               <FeaturesRight progress={progress}>
-                <div className="text-center text-5xl font-semibold text-black  md:text-6xl">
-                  <Image
-                    fill={true}
-                    className="aspect-[9/16] object-cover"
-                    src={btmsheet}
-                    alt="Album"
-                  />
-                </div>
+                <Image
+                  priority={true}
+                  fill={true}
+                  className={`${
+                    innerWidth > 410
+                      ? 'relative object-contain'
+                      : 'relative object-cover'
+                  } `}
+                  src={distroGpt}
+                  alt="Album"
+                />
               </FeaturesRight>
             </FeaturesContainer>
           )}
