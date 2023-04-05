@@ -120,6 +120,24 @@ const MainWithThree: React.FC<Props> = ({ children, meta }) => {
         {/* Background Animation */}
         {children}
         <Footer />
+        {/* Put this part before </body> tag */}
+        {/* <input type="checkbox" id="my-modal-6" className="modal-toggle" />
+        <div className="modal modal-bottom max-w-screen-lg sm:modal-middle">
+          <div className="modal-box h-[40vh] bg-leadistroDark px-10 text-leadistroWhite md:h-full">
+            <h3 className="text-2xl font-bold md:text-3xl lg:text-4xl">
+              Sign In
+            </h3>
+            <p className="py-4">
+              Youve been selected for a chance to get one year of subscription
+              to use Wikipedia for free!
+            </p>
+            <div className="modal-action">
+              <label htmlFor="my-modal-6" className="bg-white">
+                Yay!
+              </label>
+            </div>
+          </div>
+        </div> */}
       </div>
     </>
   );
