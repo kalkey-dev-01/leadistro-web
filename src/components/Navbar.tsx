@@ -1,5 +1,6 @@
 /* eslint-disable tailwindcss/no-custom-classname */
 // eslint-disable-next-line import/no-extraneous-dependencies
+// import { Dialog, Transition } from '@headlessui/react';
 import { Dialog, Transition } from '@headlessui/react';
 import { Comfortaa, Poppins } from '@next/font/google';
 import Atropos from 'atropos/react';
@@ -22,12 +23,110 @@ const poppins = Poppins({
   weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
 });
 
+function TransitionModal(isOpen: boolean, closeModal: VoidFunction) {
+  return (
+    <Transition appear show={isOpen} as={Fragment}>
+      <Dialog as="div" className="relative z-10" onClose={closeModal}>
+        <Transition.Child
+          as={Fragment}
+          enter="ease-out duration-300"
+          enterFrom="opacity-0"
+          enterTo="opacity-100"
+          leave="ease-in duration-200"
+          leaveFrom="opacity-100"
+          leaveTo="opacity-0"
+        >
+          <div className="fixed inset-0 bg-leadistroDark/25 " />
+        </Transition.Child>
+        <div className="fixed inset-0 overflow-y-auto">
+          <div className="flex min-h-full items-center justify-center p-4 text-center">
+            <Transition.Child
+              as={Fragment}
+              enter="ease-out duration-300"
+              enterFrom="opacity-0 scale-95"
+              enterTo="opacity-100 scale-100"
+              leave="ease-in duration-200"
+              leaveFrom="opacity-100 scale-100"
+              leaveTo="opacity-0 scale-95"
+            >
+              <Dialog.Panel className="w-full max-w-screen-lg overflow-hidden rounded-2xl bg-leadistroDark/70 p-6 text-left align-middle shadow-xl backdrop-blur-[6px] transition-all">
+                <Dialog.Title
+                  as="h2"
+                  className="text-2xl font-medium leading-6 text-leadistroWhite"
+                >
+                  Sign In
+                </Dialog.Title>
+                <div className="mt-2">
+                  <div className="form-control gap-5">
+                    <label className="label">
+                      <span className="label-text text-xs text-white">
+                        Your Email
+                      </span>
+                    </label>
+                    <label className="input-group-md input-group">
+                      <span className="text-base font-bold">Email</span>
+                      <input
+                        value={''}
+                        type="email"
+                        placeholder="example@mail.com"
+                        className="input-bordered input bg-leadistroDark text-leadistroWhite"
+                      />
+                    </label>
+                    <label className="label">
+                      <span className="label-text text-xs text-white">
+                        Your Password
+                      </span>
+                    </label>
+                    <label className="input-group-md input-group">
+                      <span className="text-base font-bold">Password</span>
+                      <input
+                        value={''}
+                        type="password"
+                        placeholder="Password"
+                        className="input-bordered input bg-leadistroDark text-leadistroWhite"
+                      />
+                    </label>
+                  </div>
+                </div>
+                <div className="mt-4">
+                  <button
+                    type="button"
+                    className="absolute top-5 right-5 text-white"
+                    onClick={closeModal}
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      strokeWidth={1.5}
+                      stroke="currentColor"
+                      className="h-6 w-6"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M6 18L18 6M6 6l12 12"
+                      />
+                    </svg>
+                  </button>
+                </div>
+              </Dialog.Panel>
+            </Transition.Child>
+          </div>
+        </div>
+      </Dialog>
+    </Transition>
+  );
+}
+
 const Navbar: FC<{}> = () => {
   // const { innerWidth } = useContext(SizeContext);
   const { scrollY } = useContext(ScrollContext);
   const [showNav, setShowNav] = useState(true);
-  const [isOpen, setIsOpen] = useState(true);
 
+  // const [user, loading, error] = useAuthState(auth);
+
+  const [isOpen, setIsOpen] = useState(false);
   function closeModal() {
     setIsOpen(false);
   }
@@ -35,7 +134,6 @@ const Navbar: FC<{}> = () => {
   function openModal() {
     setIsOpen(true);
   }
-
   const handleScroll = () => {
     setShowNav(window.scrollY < scrollY);
   };
@@ -92,16 +190,15 @@ const Navbar: FC<{}> = () => {
           </li>
           <li className="hidden md:inline-block">
             <Atropos className="atropos">
-              <button data-atropos-offset={10}>
+              <div data-atropos-offset={10}>
                 {/* The button to open modal */}
                 <button
-                  type="button"
                   onClick={openModal}
                   className="border-none text-white hover:text-leadistroWhite"
                 >
                   Sign In
                 </button>
-              </button>
+              </div>
             </Atropos>
           </li>
           <li className="hidden md:inline-block">
@@ -159,7 +256,6 @@ const Navbar: FC<{}> = () => {
                 className="dropdown-content rounded-box  my-4 flex h-[75vh] w-[87.5vw] flex-col items-center justify-start gap-2 bg-leadistroDark/50  p-2  shadow transition-all"
               >
                 {/* <Image /> */}
-
                 <Image
                   // eslint-disable-next-line global-require
                   src={Logo}
@@ -168,7 +264,6 @@ const Navbar: FC<{}> = () => {
                   width={150}
                   height={150}
                 />
-
                 <li className={` border-2 border-white`}>
                   <Link
                     href="/about/"
@@ -186,100 +281,19 @@ const Navbar: FC<{}> = () => {
                   </Link>
                 </li>
                 <li className={` border-2 border-white`}>
-                  <button
-                    type="button"
+                  <div
                     onClick={openModal}
                     className={`${comfortaa.className} text-2xl md:text-4xl `}
                   >
                     Sign In
-                  </button>
+                  </div>
                 </li>
-                <Transition appear show={isOpen} as={Fragment}>
-                  <Dialog
-                    as="div"
-                    className="relative z-10"
-                    onClose={closeModal}
-                  >
-                    <Transition.Child
-                      as={Fragment}
-                      enter="ease-out duration-300"
-                      enterFrom="opacity-0"
-                      enterTo="opacity-100"
-                      leave="ease-in duration-200"
-                      leaveFrom="opacity-100"
-                      leaveTo="opacity-0"
-                    >
-                      <div className="fixed inset-0 bg-leadistroDark/25 " />
-                    </Transition.Child>
-                    <div className="fixed inset-0 overflow-y-auto">
-                      <div className="flex min-h-full items-center justify-center p-4 text-center">
-                        <Transition.Child
-                          as={Fragment}
-                          enter="ease-out duration-300"
-                          enterFrom="opacity-0 scale-95"
-                          enterTo="opacity-100 scale-100"
-                          leave="ease-in duration-200"
-                          leaveFrom="opacity-100 scale-100"
-                          leaveTo="opacity-0 scale-95"
-                        >
-                          <Dialog.Panel className="w-full max-w-screen-lg overflow-hidden rounded-2xl bg-leadistroDark/70 p-6 text-left align-middle shadow-xl backdrop-blur-[6px] transition-all">
-                            <Dialog.Title
-                              as="h2"
-                              className="text-2xl font-medium leading-6 text-leadistroWhite"
-                            >
-                              Sign In
-                            </Dialog.Title>
-                            <div className="mt-2">
-                              <div className="form-control">
-                                <label className="label">
-                                  <span className="label-text text-xs text-white">
-                                    Your Email
-                                  </span>
-                                </label>
-                                <label className="input-group">
-                                  <span>Email</span>
-                                  <input
-                                    type="email"
-                                    placeholder="example@mail.com"
-                                    className="input-bordered input"
-                                  />
-                                </label>
-                                <label className="label">
-                                  <span className="label-text text-xs text-white">
-                                    Your Password
-                                  </span>
-                                </label>
-                                <label className="input-group">
-                                  <span>Password</span>
-                                  <input
-                                    type="password"
-                                    placeholder="Password"
-                                    className="input-bordered input"
-                                  />
-                                </label>
-                              </div>
-                            </div>
-
-                            <div className="mt-4">
-                              <button
-                                type="button"
-                                className="inline-flex justify-center rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
-                                onClick={closeModal}
-                              >
-                                Got it, thanks!
-                              </button>
-                            </div>
-                          </Dialog.Panel>
-                        </Transition.Child>
-                      </div>
-                    </div>
-                  </Dialog>
-                </Transition>
               </ul>
             </button>
           </li>
         </ul>
       </ul>
+      {TransitionModal(isOpen, closeModal)}
     </nav>
   );
 };
