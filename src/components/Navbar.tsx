@@ -30,7 +30,18 @@ function AuthModal(isOpen: boolean, closeModal: VoidFunction) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const router = useRouter();
-  const handleForm = async (event: React.ChangeEvent<HTMLInputElement>) => {
+  // const handleSubmit = useCallback(async (event: any) => {
+  //   event.preventDefault();
+  //   console.log(email, password);
+  //   const { result, error } = await signIn(email, password);
+  //   if (error) {
+  //     console.log(error);
+  //     return alert(`Something Went Wrong ${error}`);
+  //   }
+  //   console.log(result);
+  //   return router.push('/dashboard');
+  // }, []);
+  const handleForm = async (event: any) => {
     event.preventDefault();
     console.log(email, password);
     const { result, error } = await signIn(email, password);
