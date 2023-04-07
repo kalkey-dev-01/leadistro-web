@@ -3,7 +3,7 @@ import { signInWithEmailAndPassword } from 'firebase/auth';
 // import {} from "react-firebase-hooks/auth";
 import { auth } from './config';
 
-export default async function signUp(email: string, password: string) {
+export default async function signIn(email: string, password: string) {
   let result = null;
   let error = null;
   try {

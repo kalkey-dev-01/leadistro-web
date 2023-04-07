@@ -1,3 +1,4 @@
+/* eslint-disable no-alert */
 /* eslint-disable tailwindcss/no-custom-classname */
 // eslint-disable-next-line import/no-extraneous-dependencies
 // import { Dialog, Transition } from '@headlessui/react';
@@ -6,9 +7,11 @@ import { Comfortaa, Poppins } from '@next/font/google';
 import Atropos from 'atropos/react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import type { FC } from 'react';
 import React, { Fragment, useContext, useEffect, useState } from 'react';
 
+import signIn from '@/firebase/signIn';
 import { ScrollContext } from '@/utils/scroll-observer';
 
 // import { SizeContext } from '@/utils/size-observer';
@@ -23,7 +26,22 @@ const poppins = Poppins({
   weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
 });
 
-function TransitionModal(isOpen: boolean, closeModal: VoidFunction) {
+function AuthModal(isOpen: boolean, closeModal: VoidFunction) {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const router = useRouter();
+  const handleForm = async (event: React.ChangeEvent<HTMLInputElement>) => {
+    event.preventDefault();
+    console.log(email, password);
+    const { result, error } = await signIn(email, password);
+    if (error) {
+      console.log(error);
+      return alert(`Something Went Wrong ${error}`);
+    }
+    console.log(result);
+    return router.push('/dashboard');
+  };
+
   return (
     <Transition appear show={isOpen} as={Fragment}>
       <Dialog as="div" className="relative z-10" onClose={closeModal}>
@@ -66,7 +84,10 @@ function TransitionModal(isOpen: boolean, closeModal: VoidFunction) {
                     <label className="input-group-md input-group">
                       <span className="text-base font-bold">Email</span>
                       <input
-                        value={''}
+                        onChange={(e) => {
+                          setEmail(e.target.value);
+                          console.log('Email ID', email);
+                        }}
                         type="email"
                         placeholder="example@mail.com"
                         className="input-bordered input bg-leadistroDark text-leadistroWhite"
@@ -80,13 +101,19 @@ function TransitionModal(isOpen: boolean, closeModal: VoidFunction) {
                     <label className="input-group-md input-group">
                       <span className="text-base font-bold">Password</span>
                       <input
-                        value={''}
+                        onChange={(e) => {
+                          setPassword(e.target.value);
+                          console.log('Password ID', password);
+                        }}
                         type="password"
                         placeholder="Password"
                         className="input-bordered input bg-leadistroDark text-leadistroWhite"
                       />
                     </label>
                   </div>
+                  <button type="submit" onClick={handleForm}>
+                    Sign In
+                  </button>
                 </div>
                 <div className="mt-4">
                   <button
@@ -293,7 +320,7 @@ const Navbar: FC<{}> = () => {
           </li>
         </ul>
       </ul>
-      {TransitionModal(isOpen, closeModal)}
+      {AuthModal(isOpen, closeModal)}
     </nav>
   );
 };

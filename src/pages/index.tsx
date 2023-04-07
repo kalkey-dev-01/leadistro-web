@@ -6,16 +6,18 @@ import { Comfortaa, Poppins } from '@next/font/google';
 import Atropos from 'atropos/react';
 import Link from 'next/link';
 import React, { useCallback, useContext, useRef, useState } from 'react';
+// eslint-disable-next-line unused-imports/no-unused-imports
+import { useAuthState } from 'react-firebase-hooks/auth';
 
 import { Features } from '@/components/Features';
 import HowItWorks from '@/components/HowItWorks';
+import { auth } from '@/firebase/config';
 // import ImageSequence from '@/components/ImageSequence';
 import { Meta } from '@/layouts/Meta';
 // import { Main } from '@/templates/Main';
 import MainWithThree from '@/templates/r3fMain';
 import { ScrollContext } from '@/utils/scroll-observer';
 import { SizeContext } from '@/utils/size-observer';
-// eslint-disable-next-line unused-imports/no-unused-imports
 
 const comfortaa = Comfortaa({
   subsets: ['latin'],
@@ -29,7 +31,7 @@ const poppins = Poppins({
 // HOME PAGE
 
 const Index = () => {
-  // const [user, loading, error] = useAuthState(auth);
+  const [user, loading, error] = useAuthState(auth);
   const { innerWidth } = useContext(SizeContext);
   const { scrollY } = useContext(ScrollContext);
   const ref = useRef<HTMLVideoElement>(null);
@@ -43,9 +45,9 @@ const Index = () => {
   if (elContainer) {
     progress = Math.min(1, scrollY / elContainer.clientHeight);
   }
-  // console.log(user, 'User');
-  // console.log(loading, 'loading');
-  // console.log(error, 'error');
+  console.log(user, 'User');
+  console.log(loading, 'loading');
+  console.log(error, 'error');
   return (
     <MainWithThree
       meta={

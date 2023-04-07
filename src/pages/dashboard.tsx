@@ -1,6 +1,8 @@
 import { Comfortaa, Poppins } from '@next/font/google';
 import React from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
 
+import { auth } from '@/firebase/config';
 import { Meta } from '@/layouts/Meta';
 import DashboardMain from '@/templates/dashboardMain';
 
@@ -14,6 +16,13 @@ const poppins = Poppins({
 });
 
 const DashBoard = () => {
+  const [user, loading, error] = useAuthState(auth);
+  if (loading) {
+    return <h1>Loading</h1>;
+  }
+  if (error) {
+    return <h1>Error {error.message}</h1>;
+  }
   return (
     <DashboardMain
       meta={
@@ -24,7 +33,7 @@ const DashBoard = () => {
       }
     >
       <div
-        className={`${poppins.className} flex flex-col items-center justify-center`}
+        className={`${poppins.className}  flex flex-col items-center justify-center`}
       >
         <h1 className={`${comfortaa.className} text-4xl font-extrabold`}>
           leadistro Dashboard
