@@ -2,7 +2,7 @@
 /* eslint-disable tailwindcss/no-custom-classname */
 // eslint-disable-next-line import/no-extraneous-dependencies
 // import { Dialog, Transition } from '@headlessui/react';
-import { Dialog, Transition } from '@headlessui/react';
+import { Dialog, Tab, Transition } from '@headlessui/react';
 import { Comfortaa, Poppins } from '@next/font/google';
 import Atropos from 'atropos/react';
 import Image from 'next/image';
@@ -10,11 +10,15 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import type { FC } from 'react';
 import React, { Fragment, useContext, useEffect, useState } from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
 
+import { auth } from '@/firebase/config';
 import signIn from '@/firebase/signIn';
+import signUp from '@/firebase/signUp';
+import ModalImage from '@/public/assets/images/SignInModalDesign.png';
+// import { SizeContext } from '@/utils/size-observer';
 import { ScrollContext } from '@/utils/scroll-observer';
 
-// import { SizeContext } from '@/utils/size-observer';
 import Logo from '../../public/assets/images/CircLogoBlack.png';
 
 const comfortaa = Comfortaa({
@@ -41,18 +45,28 @@ function AuthModal(isOpen: boolean, closeModal: VoidFunction) {
   //   console.log(result);
   //   return router.push('/dashboard');
   // }, []);
-  const handleForm = async (event: any) => {
+  const handleSignIn = async (event: any) => {
     event.preventDefault();
-    console.log(email, password);
     const { result, error } = await signIn(email, password);
     if (error) {
-      console.log(error);
       return alert(`Something Went Wrong ${error}`);
     }
-    console.log(result);
+    if (result) {
+      return alert(`You Have been successfully signed in`);
+    }
     return router.push('/dashboard');
   };
-
+  const handleRegister = async (event: any) => {
+    event.preventDefault();
+    const { result, error } = await signUp(email, password);
+    if (error) {
+      return alert(`Something Went Wrong ${error}`);
+    }
+    if (result) {
+      return alert(`You have successfully registered your account.`);
+    }
+    return router.push('/dashboard');
+  };
   return (
     <Transition appear show={isOpen} as={Fragment}>
       <Dialog as="div" className="relative z-10" onClose={closeModal}>
@@ -78,55 +92,141 @@ function AuthModal(isOpen: boolean, closeModal: VoidFunction) {
               leaveFrom="opacity-100 scale-100"
               leaveTo="opacity-0 scale-95"
             >
-              <Dialog.Panel className="w-full max-w-screen-lg overflow-hidden rounded-2xl bg-leadistroDark/70 p-6 text-left align-middle shadow-xl backdrop-blur-[6px] transition-all">
+              <Dialog.Panel className="w-full max-w-screen-xl overflow-hidden rounded-2xl bg-leadistroDark/70 p-6 text-left align-middle shadow-xl backdrop-blur-[6px] transition-all">
                 <Dialog.Title
                   as="h2"
-                  className="text-2xl font-medium leading-6 text-leadistroWhite"
+                  className="text-2xl font-medium leading-6 text-leadistroWhite md:text-4xl"
                 >
-                  Sign In
+                  Authenticate Yourself
                 </Dialog.Title>
-                <div className="mt-2">
-                  <div className="form-control gap-5">
-                    <label className="label">
-                      <span className="label-text text-xs text-white">
-                        Your Email
-                      </span>
-                    </label>
-                    <label className="input-group-md input-group">
-                      <span className="text-base font-bold">Email</span>
-                      <input
-                        onChange={(e) => {
-                          setEmail(e.target.value);
-                          console.log('Email ID', email);
-                        }}
-                        type="email"
-                        placeholder="example@mail.com"
-                        className="input-bordered input bg-leadistroDark text-leadistroWhite"
-                      />
-                    </label>
-                    <label className="label">
-                      <span className="label-text text-xs text-white">
-                        Your Password
-                      </span>
-                    </label>
-                    <label className="input-group-md input-group">
-                      <span className="text-base font-bold">Password</span>
-                      <input
-                        onChange={(e) => {
-                          setPassword(e.target.value);
-                          console.log('Password ID', password);
-                        }}
-                        type="password"
-                        placeholder="Password"
-                        className="input-bordered input bg-leadistroDark text-leadistroWhite"
-                      />
-                    </label>
+                <div className="mt-2 flex min-h-[75vh] flex-col items-center justify-center md:flex-row">
+                  <div className=" flex flex-1 flex-col items-start">
+                    <Tab.Group>
+                      <Tab.List>
+                        <Tab>
+                          <div className="btn-md btn bg-leadistroGray text-xl font-semibold text-leadistroWhite">
+                            {' '}
+                            Sign In{' '}
+                          </div>
+                        </Tab>
+                        <Tab>
+                          <div className="btn-md btn bg-leadistroGray text-xl font-semibold text-leadistroWhite">
+                            {' '}
+                            Register{' '}
+                          </div>
+                        </Tab>
+                      </Tab.List>
+                      <Tab.Panels>
+                        {/* Sign In Panel */}
+                        <Tab.Panel>
+                          <div className="form-control">
+                            <label className="label">
+                              <span className="label-text text-xs text-white">
+                                Your Email
+                              </span>
+                            </label>
+                            <label className="input-group-md input-group">
+                              <span className="text-base font-bold">Email</span>
+                              <input
+                                onChange={(e) => {
+                                  setEmail(e.target.value);
+                                  console.log('Email ID', email);
+                                }}
+                                type="email"
+                                placeholder="example@mail.com"
+                                className="input-bordered input bg-leadistroDark text-leadistroWhite"
+                              />
+                            </label>
+                            <label className="label">
+                              <span className="label-text text-xs text-white">
+                                Your Password
+                              </span>
+                            </label>
+                            <label className="input-group-md input-group">
+                              <span className="text-base font-bold">
+                                Password
+                              </span>
+                              <input
+                                onChange={(e) => {
+                                  setPassword(e.target.value);
+                                  console.log('Password ID', password);
+                                }}
+                                type="password"
+                                placeholder="Password"
+                                className="input-bordered input bg-leadistroDark text-leadistroWhite"
+                              />
+                            </label>
+                          </div>
+                          <button
+                            className="btn-md btn bg-leadistroWhite text-leadistroDark"
+                            type="submit"
+                            onClick={handleSignIn}
+                          >
+                            Sign In
+                          </button>
+                        </Tab.Panel>
+                        {/* Sign Up / Register Panel */}
+                        <Tab.Panel>
+                          <div className="form-control">
+                            <label className="label">
+                              <span className="label-text text-xs text-white">
+                                Your Email
+                              </span>
+                            </label>
+                            <label className="input-group-md input-group">
+                              <span className="text-base font-bold">Email</span>
+                              <input
+                                onChange={(e) => {
+                                  setEmail(e.target.value);
+                                  console.log('Email ID', email);
+                                }}
+                                type="email"
+                                placeholder="example@mail.com"
+                                className="input-bordered input bg-leadistroDark text-leadistroWhite"
+                              />
+                            </label>
+                            <label className="label">
+                              <span className="label-text text-xs text-white">
+                                Your Password
+                              </span>
+                            </label>
+                            <label className="input-group-md input-group">
+                              <span className="text-base font-bold">
+                                Password
+                              </span>
+                              <input
+                                onChange={(e) => {
+                                  setPassword(e.target.value);
+                                  console.log('Password ID', password);
+                                }}
+                                type="password"
+                                placeholder="Password"
+                                className="input-bordered input bg-leadistroDark text-leadistroWhite"
+                              />
+                            </label>
+                          </div>
+                          <button
+                            className="btn-md btn bg-leadistroWhite text-leadistroDark"
+                            type="submit"
+                            onClick={handleRegister}
+                          >
+                            Sign Up
+                          </button>
+                        </Tab.Panel>
+                      </Tab.Panels>
+                    </Tab.Group>
                   </div>
-                  <button type="submit" onClick={handleForm}>
-                    Sign In
-                  </button>
+                  <div>
+                    <Image
+                      src={ModalImage}
+                      height={960}
+                      width={1080}
+                      alt="Modal"
+                    />
+                  </div>
                 </div>
-                <div className="mt-4">
+                {/* Close Modal X */}
+                <div className="">
                   <button
                     type="button"
                     className="absolute top-5 right-5 text-white"
@@ -162,7 +262,7 @@ const Navbar: FC<{}> = () => {
   const { scrollY } = useContext(ScrollContext);
   const [showNav, setShowNav] = useState(true);
 
-  // const [user, loading, error] = useAuthState(auth);
+  const [user] = useAuthState(auth);
 
   const [isOpen, setIsOpen] = useState(false);
   function closeModal() {
@@ -230,12 +330,22 @@ const Navbar: FC<{}> = () => {
             <Atropos className="atropos">
               <div data-atropos-offset={10}>
                 {/* The button to open modal */}
-                <button
-                  onClick={openModal}
-                  className="border-none text-white hover:text-leadistroWhite"
-                >
-                  Sign In
-                </button>
+                {!user?.email && (
+                  <button
+                    onClick={openModal}
+                    className="border-none text-white hover:text-leadistroWhite"
+                  >
+                    Sign In
+                  </button>
+                )}
+                {user?.email && (
+                  <Link
+                    href="/dashboard/"
+                    className="border-none text-white hover:text-leadistroWhite"
+                  >
+                    Dashboard
+                  </Link>
+                )}
               </div>
             </Atropos>
           </li>

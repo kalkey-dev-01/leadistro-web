@@ -36,7 +36,7 @@ const DashBoard = () => {
         className={`${poppins.className}  flex flex-col items-center justify-center`}
       >
         <h1 className={`${comfortaa.className} text-4xl font-extrabold`}>
-          leadistro Dashboard
+          leadistro Dashboard {user?.email}
         </h1>
       </div>
     </DashboardMain>
