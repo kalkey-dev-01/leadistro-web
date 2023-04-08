@@ -15,11 +15,10 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth } from '@/firebase/config';
 import signIn from '@/firebase/signIn';
 import signUp from '@/firebase/signUp';
+import Logo from '@/public/assets/images/CircLogoBlack.png';
 import ModalImage from '@/public/assets/images/SignInModalDesign.png';
-// import { SizeContext } from '@/utils/size-observer';
 import { ScrollContext } from '@/utils/scroll-observer';
-
-import Logo from '../../public/assets/images/CircLogoBlack.png';
+import { SizeContext } from '@/utils/size-observer';
 
 const comfortaa = Comfortaa({
   subsets: ['latin'],
@@ -31,6 +30,7 @@ const poppins = Poppins({
 });
 
 function AuthModal(isOpen: boolean, closeModal: VoidFunction) {
+  const { innerWidth } = useContext(SizeContext);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const router = useRouter();
@@ -81,8 +81,8 @@ function AuthModal(isOpen: boolean, closeModal: VoidFunction) {
         >
           <div className="fixed inset-0 bg-leadistroDark/25 " />
         </Transition.Child>
-        <div className="fixed inset-0 overflow-y-auto">
-          <div className="flex min-h-full items-center justify-center p-4 text-center">
+        <div className="fixed inset-0 mt-14 overflow-y-hidden">
+          <div className="flex min-h-full items-center justify-center p-4 ">
             <Transition.Child
               as={Fragment}
               enter="ease-out duration-300"
@@ -92,135 +92,157 @@ function AuthModal(isOpen: boolean, closeModal: VoidFunction) {
               leaveFrom="opacity-100 scale-100"
               leaveTo="opacity-0 scale-95"
             >
-              <Dialog.Panel className="w-full max-w-screen-xl overflow-hidden rounded-2xl bg-leadistroDark/70 p-6 text-left align-middle shadow-xl backdrop-blur-[6px] transition-all">
-                <Dialog.Title
-                  as="h2"
-                  className="text-2xl font-medium leading-6 text-leadistroWhite md:text-4xl"
-                >
-                  Authenticate Yourself
-                </Dialog.Title>
-                <div className="mt-2 flex min-h-[75vh] flex-col items-center justify-center md:flex-row">
-                  <div className=" flex flex-1 flex-col items-start">
+              <Dialog.Panel className="w-full max-w-screen-lg overflow-hidden rounded-2xl bg-leadistroDark/80 p-6 text-left align-middle shadow-xl backdrop-blur-[10px] transition-all">
+                <div className=" flex min-h-[75vh] flex-1 flex-col-reverse items-center justify-center md:flex-row">
+                  <div className="flex  flex-1 flex-col items-center gap-5 md:items-start">
                     <Tab.Group>
+                      <Tab.Panels>
+                        {/* Sign In Panel */}
+                        <Tab.Panel>
+                          <Dialog.Title
+                            as="h2"
+                            className="my-5 text-2xl font-medium text-leadistroWhite  md:mb-8 md:text-4xl"
+                          >
+                            Authenticate Yourself
+                          </Dialog.Title>
+                          <div className="form-control gap-2">
+                            <div className="flex-1">
+                              <label className="label">
+                                <span className="label-text text-xs text-white">
+                                  Your Email
+                                </span>
+                              </label>
+                              <label className="input-group-md input-group">
+                                <span className="text-base font-bold">
+                                  Email
+                                </span>
+                                <input
+                                  onChange={(e) => {
+                                    setEmail(e.target.value);
+                                    console.log('Email ID', email);
+                                  }}
+                                  type="email"
+                                  placeholder="example@mail.com"
+                                  className="input-bordered input bg-leadistroDark text-leadistroWhite"
+                                />
+                              </label>
+                            </div>
+                            <div>
+                              <label className="label">
+                                <span className="label-text text-xs text-white">
+                                  Your Password
+                                </span>
+                              </label>
+                              <label className="input-group-md input-group">
+                                <span className="text-base font-bold">
+                                  Password
+                                </span>
+                                <input
+                                  onChange={(e) => {
+                                    setPassword(e.target.value);
+                                    console.log('Password ID', password);
+                                  }}
+                                  type="password"
+                                  placeholder="Password"
+                                  className="input-bordered input bg-leadistroDark text-leadistroWhite"
+                                />
+                              </label>
+                            </div>
+                            <button
+                              className="btn-md btn bg-leadistroWhite text-leadistroDark"
+                              type="submit"
+                              onClick={handleSignIn}
+                            >
+                              Sign In
+                            </button>
+                          </div>
+                        </Tab.Panel>
+                        {/* Sign Up / Register Panel */}
+                        <Tab.Panel>
+                          <Dialog.Title
+                            as="h2"
+                            className="my-5 text-2xl font-medium text-leadistroWhite  md:mb-8 md:text-4xl"
+                          >
+                            Register Your Account
+                          </Dialog.Title>
+                          <div className="form-control gap-2">
+                            <div className="flex-1">
+                              <label className="label">
+                                <span className="label-text text-xs text-white">
+                                  Your Email
+                                </span>
+                              </label>
+                              <label className="input-group-md input-group">
+                                <span className="text-base font-bold">
+                                  Email
+                                </span>
+                                <input
+                                  onChange={(e) => {
+                                    setEmail(e.target.value);
+                                    console.log('Email ID', email);
+                                  }}
+                                  type="email"
+                                  placeholder="example@mail.com"
+                                  className="input-bordered input bg-leadistroDark text-leadistroWhite"
+                                />
+                              </label>
+                            </div>
+                            <div className="flex-1">
+                              <label className="label">
+                                <span className="label-text text-xs text-white">
+                                  Your Password
+                                </span>
+                              </label>
+                              <label className="input-group-md input-group">
+                                <span className="text-base font-bold">
+                                  Password
+                                </span>
+                                <input
+                                  onChange={(e) => {
+                                    setPassword(e.target.value);
+                                    console.log('Password ID', password);
+                                  }}
+                                  type="password"
+                                  placeholder="Password"
+                                  className="input-bordered input bg-leadistroDark text-leadistroWhite"
+                                />
+                              </label>
+                            </div>
+                            <button
+                              className="btn-md btn bg-leadistroWhite text-leadistroDark"
+                              type="submit"
+                              onClick={handleRegister}
+                            >
+                              Sign Up
+                            </button>
+                          </div>
+                        </Tab.Panel>
+                      </Tab.Panels>
                       <Tab.List>
                         <Tab>
-                          <div className="btn-md btn bg-leadistroGray text-xl font-semibold text-leadistroWhite">
+                          <div className="btn-md btn mx-2 bg-leadistroGray text-xl font-semibold text-leadistroWhite">
                             {' '}
                             Sign In{' '}
                           </div>
                         </Tab>
                         <Tab>
-                          <div className="btn-md btn bg-leadistroGray text-xl font-semibold text-leadistroWhite">
+                          <div className="btn-md btn mx-2 bg-leadistroGray text-xl font-semibold text-leadistroWhite">
                             {' '}
                             Register{' '}
                           </div>
                         </Tab>
                       </Tab.List>
-                      <Tab.Panels>
-                        {/* Sign In Panel */}
-                        <Tab.Panel>
-                          <div className="form-control">
-                            <label className="label">
-                              <span className="label-text text-xs text-white">
-                                Your Email
-                              </span>
-                            </label>
-                            <label className="input-group-md input-group">
-                              <span className="text-base font-bold">Email</span>
-                              <input
-                                onChange={(e) => {
-                                  setEmail(e.target.value);
-                                  console.log('Email ID', email);
-                                }}
-                                type="email"
-                                placeholder="example@mail.com"
-                                className="input-bordered input bg-leadistroDark text-leadistroWhite"
-                              />
-                            </label>
-                            <label className="label">
-                              <span className="label-text text-xs text-white">
-                                Your Password
-                              </span>
-                            </label>
-                            <label className="input-group-md input-group">
-                              <span className="text-base font-bold">
-                                Password
-                              </span>
-                              <input
-                                onChange={(e) => {
-                                  setPassword(e.target.value);
-                                  console.log('Password ID', password);
-                                }}
-                                type="password"
-                                placeholder="Password"
-                                className="input-bordered input bg-leadistroDark text-leadistroWhite"
-                              />
-                            </label>
-                          </div>
-                          <button
-                            className="btn-md btn bg-leadistroWhite text-leadistroDark"
-                            type="submit"
-                            onClick={handleSignIn}
-                          >
-                            Sign In
-                          </button>
-                        </Tab.Panel>
-                        {/* Sign Up / Register Panel */}
-                        <Tab.Panel>
-                          <div className="form-control">
-                            <label className="label">
-                              <span className="label-text text-xs text-white">
-                                Your Email
-                              </span>
-                            </label>
-                            <label className="input-group-md input-group">
-                              <span className="text-base font-bold">Email</span>
-                              <input
-                                onChange={(e) => {
-                                  setEmail(e.target.value);
-                                  console.log('Email ID', email);
-                                }}
-                                type="email"
-                                placeholder="example@mail.com"
-                                className="input-bordered input bg-leadistroDark text-leadistroWhite"
-                              />
-                            </label>
-                            <label className="label">
-                              <span className="label-text text-xs text-white">
-                                Your Password
-                              </span>
-                            </label>
-                            <label className="input-group-md input-group">
-                              <span className="text-base font-bold">
-                                Password
-                              </span>
-                              <input
-                                onChange={(e) => {
-                                  setPassword(e.target.value);
-                                  console.log('Password ID', password);
-                                }}
-                                type="password"
-                                placeholder="Password"
-                                className="input-bordered input bg-leadistroDark text-leadistroWhite"
-                              />
-                            </label>
-                          </div>
-                          <button
-                            className="btn-md btn bg-leadistroWhite text-leadistroDark"
-                            type="submit"
-                            onClick={handleRegister}
-                          >
-                            Sign Up
-                          </button>
-                        </Tab.Panel>
-                      </Tab.Panels>
                     </Tab.Group>
                   </div>
                   <div>
                     <Image
                       src={ModalImage}
-                      height={960}
-                      width={1080}
+                      height={100}
+                      width={
+                        innerWidth > 480
+                          ? 9 * 50
+                          : ((innerWidth * 9) / 16) * 1.55
+                      }
                       alt="Modal"
                     />
                   </div>
@@ -229,7 +251,7 @@ function AuthModal(isOpen: boolean, closeModal: VoidFunction) {
                 <div className="">
                   <button
                     type="button"
-                    className="absolute top-5 right-5 text-white"
+                    className="absolute top-1 right-1 rounded-full bg-leadistroDark p-2 text-leadistroWhite md:top-5 md:left-5 md:rounded-none md:bg-transparent md:p-0"
                     onClick={closeModal}
                   >
                     <svg
