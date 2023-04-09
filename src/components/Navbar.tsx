@@ -10,7 +10,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import type { FC } from 'react';
 import React, { Fragment, useContext, useEffect, useState } from 'react';
-import { useAuthState } from 'react-firebase-hooks/auth';
+import { useAuthState, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 
 import { auth } from '@/firebase/config';
 import signIn from '@/firebase/signIn';
@@ -34,17 +34,7 @@ function AuthModal(isOpen: boolean, closeModal: VoidFunction) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const router = useRouter();
-  // const handleSubmit = useCallback(async (event: any) => {
-  //   event.preventDefault();
-  //   console.log(email, password);
-  //   const { result, error } = await signIn(email, password);
-  //   if (error) {
-  //     console.log(error);
-  //     return alert(`Something Went Wrong ${error}`);
-  //   }
-  //   console.log(result);
-  //   return router.push('/dashboard');
-  // }, []);
+  const [handleGoogleSignIn] = useSignInWithGoogle(auth);
   const handleSignIn = async (event: any) => {
     event.preventDefault();
     const { result, error } = await signIn(email, password);
@@ -81,15 +71,15 @@ function AuthModal(isOpen: boolean, closeModal: VoidFunction) {
         >
           <div className="fixed inset-0 bg-leadistroDark/25 " />
         </Transition.Child>
-        <div className="fixed inset-0 mt-14 overflow-y-hidden">
-          <div className="flex min-h-full items-center justify-center p-4 ">
+        <div className="fixed inset-0 mt-10 overflow-y-auto">
+          <div className="flex min-h-full  items-center justify-center p-4 ">
             <Transition.Child
               as={Fragment}
-              enter="ease-out duration-300"
-              enterFrom="opacity-0 scale-95"
-              enterTo="opacity-100 scale-100"
+              enter="ease-out duration-500"
+              enterFrom="opacity-0 translate-y-6  scale-95"
+              enterTo="opacity-100 translate-y-0 scale-100"
               leave="ease-in duration-200"
-              leaveFrom="opacity-100 scale-100"
+              leaveFrom="opacity-100 translate-y-6 scale-100"
               leaveTo="opacity-0 scale-95"
             >
               <Dialog.Panel className="w-full max-w-screen-lg overflow-hidden rounded-2xl bg-leadistroDark/80 p-6 text-left align-middle shadow-xl backdrop-blur-[10px] transition-all">
@@ -106,7 +96,7 @@ function AuthModal(isOpen: boolean, closeModal: VoidFunction) {
                             Authenticate Yourself
                           </Dialog.Title>
                           <div className="form-control gap-2">
-                            <div className="flex-1">
+                            <div className="my-2 flex-1">
                               <label className="label">
                                 <span className="label-text text-xs text-white">
                                   Your Email
@@ -127,7 +117,7 @@ function AuthModal(isOpen: boolean, closeModal: VoidFunction) {
                                 />
                               </label>
                             </div>
-                            <div>
+                            <div className="mb-2 flex-1">
                               <label className="label">
                                 <span className="label-text text-xs text-white">
                                   Your Password
@@ -149,7 +139,7 @@ function AuthModal(isOpen: boolean, closeModal: VoidFunction) {
                               </label>
                             </div>
                             <button
-                              className="btn-md btn bg-leadistroWhite text-leadistroDark"
+                              className="btn-md btn bg-leadistroWhite text-leadistroDark hover:border-2 hover:border-leadistroWhite hover:bg-transparent hover:text-leadistroWhite"
                               type="submit"
                               onClick={handleSignIn}
                             >
@@ -166,7 +156,7 @@ function AuthModal(isOpen: boolean, closeModal: VoidFunction) {
                             Register Your Account
                           </Dialog.Title>
                           <div className="form-control gap-2">
-                            <div className="flex-1">
+                            <div className="my-2 flex-1">
                               <label className="label">
                                 <span className="label-text text-xs text-white">
                                   Your Email
@@ -187,7 +177,7 @@ function AuthModal(isOpen: boolean, closeModal: VoidFunction) {
                                 />
                               </label>
                             </div>
-                            <div className="flex-1">
+                            <div className="my-2 flex-1">
                               <label className="label">
                                 <span className="label-text text-xs text-white">
                                   Your Password
@@ -209,7 +199,7 @@ function AuthModal(isOpen: boolean, closeModal: VoidFunction) {
                               </label>
                             </div>
                             <button
-                              className="btn-md btn bg-leadistroWhite text-leadistroDark"
+                              className=" btn border-2 border-leadistroGray text-leadistroWhite hover:bg-leadistroGray"
                               type="submit"
                               onClick={handleRegister}
                             >
@@ -220,7 +210,7 @@ function AuthModal(isOpen: boolean, closeModal: VoidFunction) {
                       </Tab.Panels>
                       <Tab.List>
                         <Tab>
-                          <div className="btn-md btn mx-2 bg-leadistroGray text-xl font-semibold text-leadistroWhite">
+                          <div className="btn-md btn bg-leadistroGray text-xl font-semibold text-leadistroWhite">
                             {' '}
                             Sign In{' '}
                           </div>
@@ -233,16 +223,39 @@ function AuthModal(isOpen: boolean, closeModal: VoidFunction) {
                         </Tab>
                       </Tab.List>
                     </Tab.Group>
+                    <div
+                      onClick={() => {
+                        handleGoogleSignIn().then(() =>
+                          router.push('/dashboard')
+                        );
+                      }}
+                      className="btn flex w-full flex-row items-center justify-between bg-leadistroWhite px-4 md:w-[55%]"
+                    >
+                      <h3 className="text-xl font-semibold">
+                        Sign In With Google
+                      </h3>
+                      <svg
+                        width="60"
+                        height="62"
+                        viewBox="0 0 60 62"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="h-6 w-6"
+                      >
+                        <path
+                          d="M59.4377 25.3719C59.3218 24.7222 58.9848 24.1343 58.4853 23.711C57.9859 23.2877 57.3557 23.0558 56.7049 23.0558H30.5493C29.8127 23.0558 29.1063 23.3526 28.5855 23.881C28.0647 24.4095 27.7721 25.1262 27.7721 25.8734V36.7722C27.7721 37.5195 28.0647 38.2362 28.5855 38.7646C29.1063 39.293 29.8127 39.5899 30.5493 39.5899H41.5525C40.7689 40.9319 39.6948 42.0756 38.4115 42.9345C36.064 44.4444 33.3279 45.2142 30.5493 45.1464C27.6682 45.113 24.8708 44.1594 22.5545 42.4208C20.2382 40.6823 18.5208 38.2474 17.6464 35.462V35.4564C16.6737 32.5637 16.6737 29.4255 17.6464 26.5328V26.5271C18.5216 23.7425 20.2393 21.3085 22.5555 19.5705C24.8717 17.8326 27.6687 16.8792 30.5493 16.8456C32.1498 16.8082 33.7418 17.0919 35.234 17.6804C36.7262 18.2688 38.0892 19.1505 39.2447 20.2747C39.7691 20.7845 40.4695 21.0656 41.1958 21.0577C41.9221 21.0498 42.6164 20.7536 43.13 20.2325L51.095 12.1514C51.3589 11.8839 51.567 11.5651 51.7068 11.2143C51.8467 10.8634 51.9154 10.4875 51.9089 10.1091C51.9024 9.73065 51.8209 9.35742 51.6691 9.01168C51.5173 8.66593 51.2985 8.35475 51.0256 8.09671C45.4823 2.82361 38.1475 -0.0761694 30.5493 0.00152174C24.8834 -0.0156069 19.3254 1.57371 14.5023 4.59023C9.67914 7.60676 5.78262 11.9305 3.25216 17.0738L3.24938 17.0795C1.10416 21.3951 -0.00900547 26.1626 5.48678e-05 30.996C0.00668345 35.8284 1.11899 40.5933 3.24938 44.9153L3.25216 44.9181C5.78262 50.0615 9.67914 54.3852 14.5023 57.4017C19.3254 60.4183 24.8834 62.0076 30.5493 61.9905C38.0073 62.1824 45.2555 59.4737 50.8089 54.4194L50.8117 54.4165C53.8219 51.4787 56.1933 47.9346 57.7735 44.0118C59.3537 40.0891 60.1079 35.8744 59.9876 31.6384C59.9887 29.5371 59.8046 27.4399 59.4377 25.3719ZM30.5493 5.63688C35.7452 5.58595 40.8183 7.23938 45.0129 10.3509L40.9776 14.4449C37.9163 12.2955 34.2719 11.1651 30.5493 11.2102C27.1504 11.2273 23.8175 12.163 20.8936 13.9212C17.9697 15.6793 15.5604 18.1963 13.9138 21.213L10.9478 18.88L9.32312 17.6007C11.558 13.9319 14.6828 10.9057 18.3989 8.81122C22.1149 6.7167 26.2983 5.62379 30.5493 5.63688ZM6.88751 39.1757C5.11248 33.8712 5.11248 28.1207 6.88751 22.8163L11.8365 26.7103C11.2037 29.5314 11.2037 32.4606 11.8365 35.2817L6.88751 39.1757ZM30.5493 56.3551C26.2978 56.3687 22.1139 55.276 18.3973 53.1814C14.6807 51.0869 11.5555 48.0605 9.32034 44.3912L10.3729 43.5628L13.9166 40.7733C15.562 43.7909 17.9705 46.3089 20.894 48.0681C23.8175 49.8272 27.1503 50.7639 30.5493 50.7817C33.731 50.8205 36.8769 50.0964 39.7307 48.6685L44.4269 52.3681C40.2953 55.0689 35.4632 56.4572 30.5493 56.3551ZM48.6733 48.5783L48.165 48.1754L44.3408 45.1633C46.3471 42.9645 47.6956 40.2321 48.2289 37.285C48.3031 36.8783 48.2881 36.46 48.1851 36.0598C48.082 35.6596 47.8933 35.2874 47.6325 34.9695C47.3716 34.6516 47.045 34.3959 46.6758 34.2204C46.3066 34.045 45.9038 33.9543 45.4961 33.9546H33.3265V28.6911H54.2915C54.386 29.6632 54.4332 30.6494 54.4332 31.6384C54.5952 37.805 52.5488 43.8251 48.6733 48.5783Z"
+                          fill="black"
+                        />
+                      </svg>
+                    </div>
                   </div>
-                  <div>
+                  <div className="">
                     <Image
                       src={ModalImage}
-                      height={100}
-                      width={
-                        innerWidth > 480
-                          ? 9 * 50
-                          : ((innerWidth * 9) / 16) * 1.55
-                      }
+                      fill={false}
+                      height={innerWidth > 480 ? 3 * 120 : innerWidth * 0.75}
+                      width={innerWidth > 480 ? 4 * 120 : innerWidth * 0.75}
+                      className="object-cover object-center"
                       alt="Modal"
                     />
                   </div>
@@ -251,7 +264,7 @@ function AuthModal(isOpen: boolean, closeModal: VoidFunction) {
                 <div className="">
                   <button
                     type="button"
-                    className="absolute top-1 right-1 rounded-full bg-leadistroDark p-2 text-leadistroWhite md:top-5 md:left-5 md:rounded-none md:bg-transparent md:p-0"
+                    className="absolute top-2 right-2 rounded-full bg-leadistroDark p-2 text-leadistroWhite md:top-5 md:left-5 md:rounded-none md:bg-transparent md:p-0"
                     onClick={closeModal}
                   >
                     <svg
