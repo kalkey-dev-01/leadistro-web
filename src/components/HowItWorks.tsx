@@ -131,7 +131,7 @@ const HowItWorks: React.FC = () => {
       ref={blockRefContainer}
       className="overflow-x-hidden bg-transparent text-white "
     >
-      <div className=" flex min-h-screen max-w-screen-xl flex-col items-center justify-center px-2 py-24 text-[27.5px] font-medium drop-shadow-[0_5px_3px_rgba(0,0,0,0.4)] md:py-28 md:text-4xl   md:font-semibold lg:px-20 lg:py-36  lg:text-[50px]">
+      <div className="flex min-h-screen max-w-screen-xl flex-col items-center justify-center px-2 py-24 text-[27.5px] font-medium drop-shadow-[0_5px_3px_rgba(0,0,0,0.4)] md:py-28 md:text-4xl   md:font-semibold lg:px-20 lg:py-36  lg:text-[50px]">
         <div
           className={`font-poppins leading-snug tracking-wider md:tracking-wide`}
         >
@@ -165,7 +165,7 @@ const HowItWorks: React.FC = () => {
             }}
           >
             <div className="flex flex-col-reverse items-center justify-between gap-2 md:flex-row-reverse ">
-              <h1>
+              <h1 className="md:pl-4">
                 Select a pre-designed template or create your own custom design.
                 Use our drag-and-drop editor to add elements and preview on
                 different devices.
@@ -230,7 +230,7 @@ const HowItWorks: React.FC = () => {
             }}
           >
             <div className="flex flex-col-reverse items-center justify-between gap-2 md:flex-row-reverse ">
-              <h1>
+              <h1 className="md:pl-4">
                 To optimise future campaigns, view comprehensive analytics on
                 email performance, including open rates and click-through rates.
               </h1>
