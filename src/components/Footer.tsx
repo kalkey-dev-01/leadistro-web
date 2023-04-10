@@ -1,21 +1,10 @@
 /* eslint-disable tailwindcss/no-custom-classname */
-import { Comfortaa, Poppins } from '@next/font/google';
 import Image from 'next/image';
 import React from 'react';
 
 import { AppConfig } from '@/utils/AppConfig';
 
 import logo from '../../public/assets/images/CircLogoBlack.png';
-
-const comfortaa = Comfortaa({
-  subsets: ['latin'],
-  variable: '--font-comfortaa',
-});
-
-const poppins = Poppins({
-  subsets: ['latin'],
-  weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
-});
 
 const Footer: React.FC = () => {
   return (
@@ -29,11 +18,9 @@ const Footer: React.FC = () => {
           alt="logo"
         />
         <div className={` mx-5 flex flex-col items-start justify-center`}>
-          <p className={`${comfortaa.className}  text-2xl font-semibold`}>
-            leadistro
-          </p>
+          <p className={`font-comfortaa  text-2xl font-semibold`}>leadistro</p>
           <span
-            className={`${poppins.className}  max-w-xs text-sm font-extralight tracking-wide`}
+            className={`max-w-xs  font-poppins text-sm font-extralight tracking-wide`}
           >
             © Copyright {new Date().getFullYear()} {AppConfig.title} Made For
             Power Users.
@@ -42,7 +29,7 @@ const Footer: React.FC = () => {
       </div>
       <div className="my-4 mx-3 items-center justify-self-center rounded-3xl bg-leadistroDark/5 p-5 backdrop-blur-sm md:m-0 md:h-full md:w-full">
         <span
-          className={` ${poppins.className} hidden text-lg font-light md:inline-block  `}
+          className={` hidden font-poppins text-lg font-light md:inline-block  `}
         >
           Social
         </span>

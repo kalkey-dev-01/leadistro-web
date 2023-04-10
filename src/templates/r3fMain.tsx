@@ -1,3 +1,4 @@
+import { Comfortaa, Poppins } from '@next/font/google';
 import { MeshDistortMaterial } from '@react-three/drei';
 import { Canvas, useFrame } from '@react-three/fiber';
 import React, { useContext, useRef } from 'react';
@@ -14,6 +15,16 @@ type Props = {
   meta: React.ReactNode;
   children: React.ReactNode;
 };
+
+const comfortaa = Comfortaa({
+  subsets: ['latin'],
+  variable: '--font-comfortaa',
+});
+const poppins = Poppins({
+  subsets: ['latin'],
+  weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
+  variable: '--font-poppins',
+});
 
 function Box() {
   const { scrollY } = useContext(ScrollContext);
@@ -110,7 +121,7 @@ const MainWithThree: React.FC<Props> = ({ children, meta }) => {
   return (
     <>
       <div
-        className={`flex min-w-full  flex-col items-center justify-between bg-black text-center md:text-start `}
+        className={`flex min-w-full flex-col items-center justify-between bg-black text-center md:text-start ${comfortaa.variable} ${poppins.variable}`}
       >
         {meta}
         <div className="fixed h-screen w-full bg-black">

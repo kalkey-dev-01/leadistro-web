@@ -2,7 +2,6 @@
 /* eslint-disable tailwindcss/no-custom-classname */
 /* eslint-disable unused-imports/no-unused-vars */
 /* eslint-disable no-plusplus */
-import { Comfortaa, Poppins } from '@next/font/google';
 import Atropos from 'atropos/react';
 import Link from 'next/link';
 import React, { useCallback, useContext, useRef, useState } from 'react';
@@ -18,15 +17,6 @@ import { Meta } from '@/layouts/Meta';
 import MainWithThree from '@/templates/r3fMain';
 import { ScrollContext } from '@/utils/scroll-observer';
 import { SizeContext } from '@/utils/size-observer';
-
-const comfortaa = Comfortaa({
-  subsets: ['latin'],
-  variable: '--font-comfortaa',
-});
-const poppins = Poppins({
-  subsets: ['latin'],
-  weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
-});
 
 // HOME PAGE
 
@@ -65,18 +55,18 @@ const Index = () => {
         {/* Title && Subtitle */}
         <div className="hero-content flex flex-col items-center justify-center text-white drop-shadow-[0_5px_3px_rgba(0,0,0,0.4)]  md:items-start">
           <h1
-            className={` ${poppins.className} text-3xl font-normal leading-snug   lg:text-4xl xl:text-5xl`}
+            className={` font-poppins text-3xl font-normal leading-snug   lg:text-4xl xl:text-5xl`}
           >
             Generate More Leads and Close More Deals with{' '}
             <span
-              className={` ${comfortaa.className} text-3xl font-bold lg:text-4xl xl:text-6xl `}
+              className={` font-comfortaa text-3xl font-bold lg:text-4xl xl:text-6xl `}
             >
               {' '}
               leadistro{' '}
             </span>{' '}
           </h1>
           <h6
-            className={`my-5 ${poppins.className} text-base font-light leading-normal lg:text-lg xl:text-xl `}
+            className={`my-5 font-poppins text-base font-light leading-normal lg:text-lg xl:text-xl `}
           >
             {' '}
             Say goodbye to manual lead generation and create effective email

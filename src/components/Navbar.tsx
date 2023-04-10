@@ -3,7 +3,6 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
 // import { Dialog, Transition } from '@headlessui/react';
 import { Dialog, Tab, Transition } from '@headlessui/react';
-import { Comfortaa, Poppins } from '@next/font/google';
 import Atropos from 'atropos/react';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -19,15 +18,6 @@ import Logo from '@/public/assets/images/CircLogoBlack.png';
 import ModalImage from '@/public/assets/images/SignInModalDesign.png';
 import { ScrollContext } from '@/utils/scroll-observer';
 import { SizeContext } from '@/utils/size-observer';
-
-const comfortaa = Comfortaa({
-  subsets: ['latin'],
-  variable: '--font-comfortaa',
-});
-const poppins = Poppins({
-  subsets: ['latin'],
-  weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
-});
 
 function AuthModal(isOpen: boolean, closeModal: VoidFunction) {
   const { innerWidth } = useContext(SizeContext);
@@ -324,7 +314,7 @@ const Navbar: FC<{}> = () => {
         <li className="px-2 py-1.5">
           <Link
             href="/"
-            className={`${comfortaa.className} border-none text-white hover:text-leadistroWhite`}
+            className={`border-none font-comfortaa text-white hover:text-leadistroWhite`}
           >
             <div className=" glass flex flex-row items-center justify-center gap-2 rounded-3xl border-2 border-leadistroGray pr-4">
               <Image src={Logo} alt="Logo" width={35} height={35} />
@@ -450,7 +440,7 @@ const Navbar: FC<{}> = () => {
                 <li className={` border-2 border-white`}>
                   <Link
                     href="/about/"
-                    className={`${poppins.className} btn-block btn border-none bg-leadistroDark font-extrabold text-white hover:text-leadistroWhite`}
+                    className={`btn-block btn border-none bg-leadistroDark font-poppins font-extrabold text-white hover:text-leadistroWhite`}
                   >
                     About Us
                   </Link>
@@ -458,7 +448,7 @@ const Navbar: FC<{}> = () => {
                 <li className={` border-2 border-white`}>
                   <Link
                     href="/about/"
-                    className={`${poppins.className} btn-block btn border-none bg-leadistroDark font-extrabold text-white hover:text-leadistroWhite`}
+                    className={`btn-block btn border-none bg-leadistroDark font-poppins font-extrabold text-white hover:text-leadistroWhite`}
                   >
                     Downloads
                   </Link>
@@ -466,7 +456,7 @@ const Navbar: FC<{}> = () => {
                 <li className={` border-2 border-white`}>
                   <div
                     onClick={openModal}
-                    className={`${comfortaa.className} text-2xl md:text-4xl `}
+                    className={`font-comfortaa text-2xl md:text-4xl `}
                   >
                     Sign In
                   </div>

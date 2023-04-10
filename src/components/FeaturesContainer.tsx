@@ -1,4 +1,3 @@
-import { Poppins } from '@next/font/google';
 import React, { useContext, useRef } from 'react';
 
 import { ScrollContext } from '../utils/scroll-observer';
@@ -65,11 +64,6 @@ interface Props {
   renderContent: (props: { progress: number }) => any;
 }
 
-const poppins = Poppins({
-  subsets: ['latin'],
-  weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
-});
-
 export const Feature: React.FC<Props> = ({ page, renderContent }) => {
   const { currentPage, numOfPages } = useContext(FContext);
   const refContainer = useRef<HTMLDivElement>(null);
@@ -97,7 +91,7 @@ export const FeaturesContainer: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => (
   <div
-    className={`${poppins.className} grid min-h-screen w-full grid-cols-1 lg:grid-cols-2`}
+    className={`grid min-h-screen w-full grid-cols-1 font-poppins lg:grid-cols-2`}
   >
     {children}
   </div>

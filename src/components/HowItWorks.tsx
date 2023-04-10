@@ -1,4 +1,3 @@
-import { Poppins } from '@next/font/google';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import Image from 'next/image';
@@ -22,10 +21,6 @@ const opacityForBlock = (sectionProgress: number, blockNo: number) => {
 //   subsets: ['latin'],
 //   variable: '--font-comfortaa',
 // });
-const poppins = Poppins({
-  subsets: ['latin'],
-  weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
-});
 
 const HowItWorks: React.FC = () => {
   const { innerWidth } = useContext(SizeContext);
@@ -138,7 +133,7 @@ const HowItWorks: React.FC = () => {
     >
       <div className=" flex min-h-screen max-w-screen-xl flex-col items-center justify-center px-2 py-24 text-[27.5px] font-medium drop-shadow-[0_5px_3px_rgba(0,0,0,0.4)] md:py-28 md:text-4xl   md:font-semibold lg:px-20 lg:py-36  lg:text-[50px]">
         <div
-          className={`leading-snug tracking-wider md:tracking-wide ${poppins.className}`}
+          className={`font-poppins leading-snug tracking-wider md:tracking-wide`}
         >
           <div
             className={s.hiworkText}

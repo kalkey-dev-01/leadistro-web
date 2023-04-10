@@ -27,8 +27,8 @@ module.exports = {
         },
       },
       fontFamily: {
-        poppins: 'var(--font-poppins)',
-        comfortaa: 'var(--font-comfortaa)',
+        poppins: ['var(--font-poppins)'],
+        comfortaa: ['var(--font-comfortaa)'],
       },
       height: {
         halfScreen: '50vh',
