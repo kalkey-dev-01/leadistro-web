@@ -1,7 +1,9 @@
+import Image from 'next/image';
 import React, { useContext, useRef } from 'react';
 
+import BackdropImage from '@/public/assets/images/Backdrop.png';
+
 import { ScrollContext } from '../utils/scroll-observer';
-// import { BackgroundPointsCanvas } from "./misc/backgroundPoints";
 
 interface WrapperProps {
   numOfPages: number;
@@ -100,7 +102,13 @@ export const FeaturesContainer: React.FC<{ children: React.ReactNode }> = ({
 export const FeaturesBackground: React.FC = () => (
   <div className="sticky top-0 grid min-h-screen w-full grid-cols-1 bg-transparent lg:grid-cols-2">
     <div className="h-[40vh] bg-leadistroDark lg:h-auto"></div>
-    <div className="h-[60vh] bg-inherit lg:min-h-screen"></div>
+    <div className="h-[60vh] bg-inherit lg:min-h-screen">
+      <Image
+        src={BackdropImage}
+        alt="backdrop"
+        className="min-h-full max-w-full object-fill object-center"
+      />
+    </div>
   </div>
 );
 export const FeaturesLeft: React.FC<{

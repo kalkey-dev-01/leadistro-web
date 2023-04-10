@@ -22,11 +22,9 @@ const DashBoard = () => {
         />
       }
     >
-      <div
-        className={`flex  flex-col items-center justify-center font-poppins`}
-      >
+      <div className={`flex flex-col items-center justify-center font-poppins`}>
         <h1 className={`font-comfortaa text-4xl font-extrabold`}>
-          leadistro Dashboard {user?.email}
+          leadistro Dashboard {user?.displayName ?? user?.email}
         </h1>
       </div>
     </DashboardMain>
