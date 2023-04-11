@@ -1,11 +1,13 @@
 /* eslint-disable no-alert */
 /* eslint-disable tailwindcss/no-custom-classname */
 import { Comfortaa, Poppins } from '@next/font/google';
+import Image from 'next/image';
 import { useRouter } from 'next/router';
 import React from 'react';
-import { useSignOut } from 'react-firebase-hooks/auth';
+import { useAuthState, useSignOut } from 'react-firebase-hooks/auth';
 
 import { auth } from '@/firebase/config';
+import logo from '@/public/assets/images/leadistroWhite.png';
 
 type Props = {
   meta: React.ReactNode;
@@ -21,6 +23,7 @@ const poppins = Poppins({
   variable: '--font-poppins',
 });
 const DashboardMain: React.FC<Props> = ({ meta, children }) => {
+  const [user] = useAuthState(auth);
   const router = useRouter();
   const [SignOut] = useSignOut(auth);
   return (
@@ -54,26 +57,43 @@ const DashboardMain: React.FC<Props> = ({ meta, children }) => {
         </div>
         <div className="drawer-side">
           <label htmlFor="my-drawer-3" className="drawer-overlay">
-            Ebezener
+            leadistro
           </label>
-          <ul className="menu w-60 space-y-10 bg-leadistroDark">
-            <li>
-              <a role={'button'}>leadistro Dashboard</a>
+          <ul className="menu w-[70vw] items-center space-y-8 bg-leadistroDark py-10 text-center font-poppins text-leadistroWhite md:w-[22.50vw]">
+            <li className="flex flex-col items-center justify-center gap-2  ">
+              <Image
+                src={logo}
+                alt={'logo'}
+                width={75}
+                height={75}
+                className="rounded-2xl"
+              />
+              <h1 className="font-comfortaa text-lg font-bold md:text-3xl">
+                leadistro
+              </h1>
+              <h2 className="font-light">Welcome Back</h2>
+              <h3 className="font-normal">
+                {user?.displayName ?? user?.email}
+              </h3>
             </li>
             <li>
-              <a role={'button'}>Generate Leads via domain.</a>
+              <button className="btn-wide btn text-lg">Research Leads.</button>
             </li>
             <li>
-              <a role={'button'}>Create an email campaign</a>
+              <button className="btn-wide btn text-lg">
+                Create an email campaign
+              </button>
             </li>
             <li>
-              <a role={'button'}>Design Your Email or Search Templates</a>
+              <button className="btn-wide btn text-lg">
+                Design Your Email or Search Templates
+              </button>
             </li>
             <li>
-              <a role={'button'}>Settings</a>
+              <button className="btn-wide btn text-lg">Settings</button>
             </li>
             <li>
-              <a
+              <button
                 onClick={async () => {
                   const success = await SignOut();
                   if (success) {
@@ -83,7 +103,7 @@ const DashboardMain: React.FC<Props> = ({ meta, children }) => {
                 }}
               >
                 Sign Out
-              </a>
+              </button>
             </li>
           </ul>
         </div>

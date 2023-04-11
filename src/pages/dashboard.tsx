@@ -22,7 +22,18 @@ const DashBoard = () => {
         />
       }
     >
-      <div className={`flex flex-col items-center justify-center font-poppins`}>
+      <div
+        className={`grid min-h-screen min-w-full grid-cols-1 items-center justify-center bg-white font-poppins md:grid-cols-3`}
+      >
+        <h1 className={`font-comfortaa text-4xl font-extrabold`}>
+          leadistro Dashboard {user?.displayName ?? user?.email}
+        </h1>
+        <h1 className={`font-comfortaa text-4xl font-extrabold`}>
+          leadistro Dashboard {user?.displayName ?? user?.email}
+        </h1>
+        <h1 className={`font-comfortaa text-4xl font-extrabold`}>
+          leadistro Dashboard {user?.displayName ?? user?.email}
+        </h1>
         <h1 className={`font-comfortaa text-4xl font-extrabold`}>
           leadistro Dashboard {user?.displayName ?? user?.email}
         </h1>

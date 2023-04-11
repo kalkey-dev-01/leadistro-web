@@ -34,7 +34,7 @@ module.exports = {
         halfScreen: '50vh',
       },
       colors: {
-        leadistroDark: '#0a0708',
+        leadistroDark: '#0A0708',
         slate00: '#0f0f0f',
         slate10: '#0A0708',
         slate20: '#292929',
