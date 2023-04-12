@@ -29,7 +29,7 @@ const DashboardMain: React.FC<Props> = ({ meta, children }) => {
   return (
     <>
       <div
-        className={`${comfortaa.variable} ${poppins.variable} drawer-mobile drawer `}
+        className={`${comfortaa.variable} ${poppins.variable} drawer drawer-mobile `}
       >
         <input id="my-drawer-3" type="checkbox" className="drawer-toggle" />
         <div className="drawer-content flex flex-col">
@@ -67,7 +67,7 @@ const DashboardMain: React.FC<Props> = ({ meta, children }) => {
           <label htmlFor="my-drawer-3" className="drawer-overlay">
             leadistro
           </label>
-          <ul className="menu w-64 items-center space-y-3 bg-leadistroDark py-10  font-poppins text-leadistroWhite">
+          <ul className="menu w-64 items-center space-y-4 bg-leadistroDark py-10 font-poppins  text-leadistroWhite md:space-y-3">
             <li className="flex flex-col items-center justify-center   ">
               <Image
                 src={logo}
@@ -250,7 +250,7 @@ const DashboardMain: React.FC<Props> = ({ meta, children }) => {
                   }
                 }}
                 role="button"
-                className="btn-wide btn flex flex-row-reverse  items-center justify-end gap-5 font-comfortaa text-xl"
+                className="btn-wide btn flex flex-row-reverse items-center justify-end gap-5 font-comfortaa text-xl"
               >
                 <p>Sign Out</p>
                 <svg
@@ -265,6 +265,27 @@ const DashboardMain: React.FC<Props> = ({ meta, children }) => {
                     strokeLinecap="round"
                     strokeLinejoin="round"
                     d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15m3 0l3-3m0 0l-3-3m3 3H9"
+                  />
+                </svg>
+              </div>
+            </li>
+            <li>
+              <div
+                onClick={() => {}}
+                role="button"
+                className="btn-wide btn flex flex-row-reverse  items-center justify-end gap-5 font-comfortaa text-xl"
+              >
+                <p>{user?.displayName ?? user?.email}</p>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 25 25"
+                  fill="currentColor"
+                  className="h-6 w-6"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M18.685 19.097A9.723 9.723 0 0021.75 12c0-5.385-4.365-9.75-9.75-9.75S2.25 6.615 2.25 12a9.723 9.723 0 003.065 7.097A9.716 9.716 0 0012 21.75a9.716 9.716 0 006.685-2.653zm-12.54-1.285A7.486 7.486 0 0112 15a7.486 7.486 0 015.855 2.812A8.224 8.224 0 0112 20.25a8.224 8.224 0 01-5.855-2.438zM15.75 9a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z"
+                    clipRule="evenodd"
                   />
                 </svg>
               </div>
