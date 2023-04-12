@@ -23,7 +23,7 @@ const DashBoard = () => {
       }
     >
       <div
-        className={`grid min-h-screen min-w-full grid-cols-1 items-center justify-center bg-white font-poppins md:grid-cols-3`}
+        className={`grid min-h-screen min-w-full grid-cols-1 items-center justify-center bg-leadistroWhite font-poppins md:grid-cols-3`}
       >
         <h1 className={`font-comfortaa text-4xl font-extrabold`}>
           leadistro Dashboard {user?.displayName ?? user?.email}
