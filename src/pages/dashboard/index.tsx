@@ -1,3 +1,4 @@
+/* eslint-disable import/no-extraneous-dependencies */
 import React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import {
@@ -77,12 +78,12 @@ const DashBoard = () => {
       }
     >
       <div
-        className={`grid min-h-screen min-w-full grid-cols-1 items-center justify-center bg-leadistroWhite pl-3 font-poppins md:grid-cols-2`}
+        className={`grid min-h-full min-w-full grid-cols-1 items-center justify-center bg-leadistroWhite pl-3 font-poppins md:grid-cols-2`}
       >
-        <ResponsiveContainer width="80%" height="80%">
+        <ResponsiveContainer width="100%" height="75%">
           <LineChart
-            width={500}
-            height={300}
+            width={480}
+            height={360}
             data={data}
             margin={{
               top: 5,
@@ -100,7 +101,7 @@ const DashBoard = () => {
               type="monotone"
               dataKey="pv"
               stroke="#8884d8"
-              activeDot={{ r: 8 }}
+              activeDot={{ r: 4 }}
             />
             <Line type="monotone" dataKey="uv" stroke="#82ca9d" />
           </LineChart>

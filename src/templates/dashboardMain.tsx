@@ -31,11 +31,11 @@ const DashboardMain: React.FC<Props> = ({ meta, children }) => {
       <div
         className={`${comfortaa.variable} ${poppins.variable} drawer-mobile drawer `}
       >
+        {meta}
         <input id="my-drawer-3" type="checkbox" className="drawer-toggle" />
         <div className="drawer-content flex flex-col">
-          <div className="navbar flex-col items-start bg-leadistroWhite">
-            {meta}
-            <div className="w-full flex-none border-b-2 border-b-leadistroDark lg:hidden">
+          <div className="navbar flex-col items-start bg-leadistroWhite lg:hidden">
+            <div className="w-full flex-none border-b-2 border-b-leadistroDark ">
               <label
                 htmlFor="my-drawer-3"
                 className="btn-ghost btn-circle btn text-leadistroDark"
@@ -67,14 +67,18 @@ const DashboardMain: React.FC<Props> = ({ meta, children }) => {
           <label htmlFor="my-drawer-3" className="drawer-overlay">
             leadistro
           </label>
-          <ul className="menu w-64 items-start space-y-4 bg-leadistroDark py-10 font-poppins   text-leadistroWhite md:space-y-2">
-            <li className="flex flex-col items-center justify-center self-center   ">
+          <ul className=" w-64 items-start space-y-4 bg-leadistroDark py-10 font-poppins   text-leadistroWhite md:space-y-2">
+            <li
+              onClick={() => router.push('/dashboard')}
+              role="button"
+              className="no-animation flex flex-col items-center justify-center self-center"
+            >
               <Image
                 src={logo}
                 alt={'logo'}
-                width={100}
-                height={100}
-                className="mb-8 rounded-3xl"
+                width={80}
+                height={80}
+                className="mb-8 rounded-xl"
               />
               <h1 className="mb-4 font-comfortaa text-3xl font-semibold md:text-3xl">
                 leadistro
@@ -82,6 +86,7 @@ const DashboardMain: React.FC<Props> = ({ meta, children }) => {
             </li>
             <li>
               <div
+                onClick={() => router.push('/dashboard/leads')}
                 role="button"
                 className="btn-ghost btn flex flex-row-reverse items-center justify-end gap-5 text-lg normal-case"
               >
@@ -112,6 +117,7 @@ const DashboardMain: React.FC<Props> = ({ meta, children }) => {
             </li>
             <li>
               <div
+                onClick={() => router.push('/dashboard/import')}
                 role="button"
                 className="btn-ghost btn flex flex-row-reverse items-center justify-end gap-5 text-lg normal-case"
               >
@@ -156,6 +162,7 @@ const DashboardMain: React.FC<Props> = ({ meta, children }) => {
             </li>
             <li>
               <div
+                onClick={() => router.push('/dashboard/templates')}
                 role="button"
                 className="btn-ghost btn flex flex-row-reverse items-center justify-end gap-5 text-lg normal-case"
               >
@@ -200,6 +207,7 @@ const DashboardMain: React.FC<Props> = ({ meta, children }) => {
             </li>
             <li>
               <div
+                onClick={() => router.push('/dashboard/campaigns')}
                 role="button"
                 className="btn-ghost btn flex flex-row-reverse  items-center justify-end gap-5 text-lg normal-case"
               >
@@ -222,6 +230,7 @@ const DashboardMain: React.FC<Props> = ({ meta, children }) => {
             </li>
             <li>
               <div
+                // onClick={() => router.push('/dashboard/leads')}
                 role="button"
                 className="btn-ghost btn flex flex-row-reverse  items-center justify-end gap-5 text-lg normal-case"
               >
@@ -271,7 +280,7 @@ const DashboardMain: React.FC<Props> = ({ meta, children }) => {
             </li>
             <li>
               <div
-                onClick={() => {}}
+                onClick={() => router.push('/dashboard/profile')}
                 role="button"
                 className="btn-ghost btn flex flex-row-reverse items-center  justify-end gap-5 font-comfortaa text-lg normal-case"
               >
