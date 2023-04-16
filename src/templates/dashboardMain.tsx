@@ -101,16 +101,16 @@ const DashboardMain: React.FC<Props> = ({ meta, children }) => {
                   <path
                     d="M16.0417 27.7083C22.485 27.7083 27.7083 22.485 27.7083 16.0417C27.7083 9.59835 22.485 4.3100 16.0417 4.3100C9.59835 4.3100 4.3100 9.59835 4.3100 16.0417C4.3100 22.485 9.59835 27.7083 16.0417 27.7083Z"
                     stroke="#FBFBFB"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
                   />
                   <path
                     d="M30.625 30.625L24.2812 24.2812"
                     stroke="#FBFBFB"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
                   />
                 </svg>
               </div>
@@ -132,30 +132,30 @@ const DashboardMain: React.FC<Props> = ({ meta, children }) => {
                   <path
                     d="M23.334 30.625V27.7083C23.334 26.1612 22.7194 24.67100 21.6254 23.5835C20.5315 22.4896 19.0477 21.8100 17.5007 21.8100H7.29232C5.74522 21.8100 4.26149 22.4896 3.161003 23.5835C2.07357 24.67100 1.45898 26.1612 1.45898 27.7083V30.625"
                     stroke="#FBFBFB"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
                   />
                   <path
                     d="M12.3958 16.0417C15.61100 16.0417 18.2292 13.43 18.2292 10.2083C18.2292 6.98667 15.61100 4.3100 12.3958 4.3100C9.17417 4.3100 6.5625 6.98667 6.5625 10.2083C6.5625 13.43 9.17417 16.0417 12.3958 16.0417Z"
                     stroke="#FBFBFB"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
                   />
                   <path
                     d="M29.166 11.668V20.418"
                     stroke="#FBFBFB"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
                   />
                   <path
                     d="M33.541 16.043H24.791"
                     stroke="#FBFBFB"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
                   />
                 </svg>
               </div>
@@ -177,30 +177,30 @@ const DashboardMain: React.FC<Props> = ({ meta, children }) => {
                   <path
                     d="M14.5833 4.3100H4.3100V14.5833H14.5833V4.3100Z"
                     stroke="#FBFBFB"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
                   />
                   <path
                     d="M30.6243 4.3100H20.416V14.5833H30.6243V4.3100Z"
                     stroke="#FBFBFB"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
                   />
                   <path
                     d="M30.6243 20.418H20.416V30.6263H30.6243V20.418Z"
                     stroke="#FBFBFB"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
                   />
                   <path
                     d="M14.5833 20.418H4.3100V30.6263H14.5833V20.418Z"
                     stroke="#FBFBFB"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
                   />
                 </svg>
               </div>
