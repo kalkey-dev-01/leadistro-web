@@ -1,22 +1,22 @@
 import type { FirebaseApp } from 'firebase/app';
 import { collection, getFirestore } from 'firebase/firestore';
 import React from 'react';
-import { useCollection } from 'react-firebase-hooks/firestore';
+import { useCollectionData } from 'react-firebase-hooks/firestore';
 
-import firebaseApp from '@/firebase/config';
+import firebaseApp, { auth } from '@/firebase/config';
 
 const SavedLeadsList: React.FC<{}> = () => {
+  const userEmail = auth.currentUser?.email as string;
   const db = getFirestore(firebaseApp as FirebaseApp);
-  const leadsCollection = collection(db, 'user/leads');
-
-  const [data, loading, error] = useCollection(leadsCollection, {
-    snapshotListenOptions: { includeMetadataChanges: true },
-  });
-  console.log(data);
+  const pathStr = `users/${userEmail}/leads`;
+  const [values, loading, error] = useCollectionData(collection(db, pathStr));
+  console.log(values);
 
   return (
     <>
-      <div>SavedLeadsList</div>
+      {loading && <p>Loading</p>}
+      {error && <p>error</p>}
+      <h1>values</h1>
     </>
   );
 };

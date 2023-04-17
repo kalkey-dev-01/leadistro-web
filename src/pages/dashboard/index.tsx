@@ -12,6 +12,7 @@ import {
   YAxis,
 } from 'recharts';
 
+import SavedLeadsList from '@/components/tmp/Recent-Saved-Leads';
 import { auth } from '@/firebase/config';
 import { Meta } from '@/layouts/Meta';
 import DashboardMain from '@/templates/dashboardMain';
@@ -110,9 +111,7 @@ const DashBoard = () => {
         <h1 className={`font-comfortaa text-4xl font-extrabold`}>
           leadistro Dashboard {user?.displayName}
         </h1>
-        <h1 className={`font-comfortaa text-4xl font-extrabold`}>
-          leadistro Dashboard {user?.displayName}
-        </h1>
+        <SavedLeadsList />
         <h1 className={`font-comfortaa text-4xl font-extrabold`}>
           leadistro Dashboard {user?.displayName}
         </h1>
