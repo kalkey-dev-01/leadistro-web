@@ -1,18 +1,21 @@
+import type { FirebaseApp } from 'firebase/app';
+import { doc, getFirestore } from 'firebase/firestore';
 import React from 'react';
+import { useDocument } from 'react-firebase-hooks/firestore';
 
+import firebaseApp, { auth } from '@/firebase/config';
 import { Meta } from '@/layouts/Meta';
 import DashboardMain from '@/templates/dashboardMain';
 
 const UserProfile = () => {
-  // const userEmail = auth.currentUser?.email as string;
-
-  // const [values, loading, error] = useDocument(
-  //   doc(getFirestore(firebaseApp as FirebaseApp), 'users', userEmail),
-  //   {
-  //     snapshotListenOptions: { includeMetadataChanges: true },
-  //   }
-  // );
-  // console.log(values?.data());
+  const userEmail = auth.currentUser?.email as string;
+  const db = getFirestore(firebaseApp as FirebaseApp);
+  const [values, loading, error] = useDocument(doc(db, 'users', userEmail), {
+    snapshotListenOptions: { includeMetadataChanges: true },
+  });
+  console.log(values?.data());
+  console.log(loading);
+  console.log(error);
   return (
     <DashboardMain
       meta={

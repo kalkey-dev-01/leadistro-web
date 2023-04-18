@@ -1,6 +1,9 @@
 /* eslint-disable import/no-extraneous-dependencies */
+import type { FirebaseApp } from 'firebase/app';
+import { collection, getFirestore } from 'firebase/firestore';
 import React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
+import { useCollectionData } from 'react-firebase-hooks/firestore';
 import {
   CartesianGrid,
   Legend,
@@ -13,62 +16,24 @@ import {
 } from 'recharts';
 
 import SavedLeadsList from '@/components/tmp/Recent-Saved-Leads';
-import { auth } from '@/firebase/config';
+import firebaseApp, { auth } from '@/firebase/config';
 import { Meta } from '@/layouts/Meta';
 import DashboardMain from '@/templates/dashboardMain';
 
 const DashBoard = () => {
+  const db = getFirestore(firebaseApp as FirebaseApp);
   const [user, loading, error] = useAuthState(auth);
+  const pathStr = `users/${user?.email}/searches`;
+  const [searchesData, searchesloading, searchesError] = useCollectionData(
+    collection(db, pathStr)
+  );
   if (loading) {
     return <h1>Loading</h1>;
   }
   if (error) {
     return <h1>Error {error.message}</h1>;
   }
-  const data = [
-    {
-      name: 'Page A',
-      uv: 4000,
-      pv: 2400,
-      amt: 2400,
-    },
-    {
-      name: 'Page B',
-      uv: 3000,
-      pv: 1398,
-      amt: 2210,
-    },
-    {
-      name: 'Page C',
-      uv: 2000,
-      pv: 9800,
-      amt: 2290,
-    },
-    {
-      name: 'Page D',
-      uv: 2780,
-      pv: 3908,
-      amt: 2000,
-    },
-    {
-      name: 'Page E',
-      uv: 1890,
-      pv: 4800,
-      amt: 2181,
-    },
-    {
-      name: 'Page F',
-      uv: 2390,
-      pv: 3800,
-      amt: 2500,
-    },
-    {
-      name: 'Page G',
-      uv: 3490,
-      pv: 4300,
-      amt: 2100,
-    },
-  ];
+
   return (
     <DashboardMain
       meta={
@@ -85,7 +50,7 @@ const DashBoard = () => {
           <LineChart
             width={480}
             height={360}
-            data={data}
+            data={searchesData}
             margin={{
               top: 5,
               right: 30,
@@ -94,24 +59,27 @@ const DashBoard = () => {
             }}
           >
             <CartesianGrid strokeDasharray="3 3" />
-            <XAxis dataKey="name" />
+            <XAxis dataKey="time" />
             <YAxis />
             <Tooltip />
             <Legend />
             <Line
               type="monotone"
-              dataKey="pv"
+              dataKey="possibleLeads"
               stroke="#8884d8"
               activeDot={{ r: 4 }}
             />
-            <Line type="monotone" dataKey="uv" stroke="#82ca9d" />
+            <Line type="monotone" dataKey="searchQuery" stroke="#82ca9d" />
           </LineChart>
         </ResponsiveContainer>
 
         <h1 className={`font-comfortaa text-4xl font-extrabold`}>
           leadistro Dashboard {user?.displayName}
         </h1>
-        <SavedLeadsList />
+        {/* / <SavedLeadsList /> needs to be wrapped in a scrollable container height needs to be half screen and width should be automatic */}
+        <div className=" max-h-[30vh] max-w-full overflow-y-scroll ">
+          <SavedLeadsList />
+        </div>
         <h1 className={`font-comfortaa text-4xl font-extrabold`}>
           leadistro Dashboard {user?.displayName}
         </h1>
