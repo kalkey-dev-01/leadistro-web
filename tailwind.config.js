@@ -17,15 +17,15 @@ module.exports = {
       '6xl': '4rem',
     },
     extend: {
-      animation: {
-        'drawer-right': 'drawer-right 0.3s',
-      },
-      keyframes: {
-        'drawer-right': {
-          '0%, 100%': { right: '-500px' },
-          '100%': { right: '0' },
-        },
-      },
+      // animation: {
+      //   'drawer-right': 'drawer-right 0.3s',
+      // },
+      // keyframes: {
+      //   'drawer-right': {
+      //     '0%, 100%': { right: '-500px' },
+      //     '100%': { right: '0' },
+      //   },
+      // },
       fontFamily: {
         poppins: ['var(--font-poppins)'],
         comfortaa: ['var(--font-comfortaa)'],
@@ -42,6 +42,7 @@ module.exports = {
         slate40: '#3d3d3d',
         leadistroGray: '#767577',
         leadistroWhite: '#FBFBFB',
+        leadistroDarkComp: '#131212',
         gray: {
           100: '#f7fafc',
           200: '#edf2f7',

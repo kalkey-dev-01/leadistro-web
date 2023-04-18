@@ -33,9 +33,15 @@ const SavedLeadsList: React.FC<{}> = () => {
                 key={value.id}
                 className="card my-2 h-auto w-auto bg-neutral-800 p-4 text-leadistroWhite"
               >
-                <h1 className="font-comfortaa text-lg">{value.fullName}</h1>
-                <p className="font-poppins text-base">{value.emailId}</p>
-                <p className="font-poppins text-base">{value.company_name}</p>
+                <h1 className="font-comfortaa text-lg font-semibold">
+                  {value.fullName}
+                </h1>
+                <p className="font-poppins text-base font-medium">
+                  {value.emailId}
+                </p>
+                <p className="font-poppins text-base font-bold">
+                  {value.company_name}
+                </p>
               </div>
             );
           })}
