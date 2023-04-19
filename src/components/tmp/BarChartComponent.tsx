@@ -1,13 +1,12 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import {
+  BarElement,
   CategoryScale,
   Chart as ChartJS,
   Filler,
   Legend,
   LinearScale,
-  LineElement,
   PointElement,
-  Title,
   Tooltip,
 } from 'chart.js';
 import type {
@@ -16,14 +15,13 @@ import type {
   Timestamp,
 } from 'firebase/firestore';
 import React from 'react';
-import { Line } from 'react-chartjs-2';
+import { Bar } from 'react-chartjs-2';
 
 ChartJS.register(
   CategoryScale,
   LinearScale,
   PointElement,
-  LineElement,
-  Title,
+  BarElement,
   Tooltip,
   Filler,
   Legend
@@ -42,35 +40,28 @@ export interface ChartDataType {
 }
 
 const SearchesChart: React.FC<Props> = ({ data, dataError, dataLoading }) => {
-  // Filling The Labels with the timestamps and The Name of The Search i.e searchQuery
-  // The data is in the form of [{time: Timestamp, searchQuery: string, possibleLeads: number}
   const labels: string[] = [];
   data?.forEach((element) => {
     labels.push(
       `
       ${element.searchQuery}
-      ${element.time.toDate().toLocaleString()} 
+      ${element.time.toDate().toLocaleDateString()}
+      ${element.time.toDate().toLocaleTimeString()}
       `
     );
   });
-  // Filling the datasets with the data
+
   const dataSet = {
     labels,
-    // Filling it with ChartDataType
     datasets: [
       {
         fill: true,
         label: 'Possible Leads',
         data: data?.map((element) => element.possibleLeads),
-        borderColor: 'rgb(19, 18, 18)',
-        backgroundColor: 'rgba(19, 18, 18, 0.2)',
-      },
-      {
-        fill: false,
-        label: 'Searches',
-        data: data?.map((element) => element.searchQuery),
-        borderColor: 'rgb(12, 144, 1)',
-        backgroundColor: 'rgba(19, 18, 18, 0.2)',
+        borderWidth: 1.5,
+        borderRadius: 30,
+        borderColor: 'rgba(19, 18, 18, 0.3)',
+        backgroundColor: 'rgb(19, 18, 18)',
       },
     ],
   };
@@ -78,10 +69,20 @@ const SearchesChart: React.FC<Props> = ({ data, dataError, dataLoading }) => {
   if (dataError) return <div>Error: {dataError.message}</div>;
   return (
     <>
-      <div className=" min-h-[40vh] max-w-screen-sm border-2 border-leadistroDark">
-        <Line
+      <div style={{ width: 900, height: 900 }}>
+        <Bar
           options={{
             responsive: true,
+            scales: {
+              y: {
+                min: 0,
+                max: 1000,
+              },
+              x: {
+                display: false,
+              },
+            },
+            plugins: {},
           }}
           data={dataSet}
         />

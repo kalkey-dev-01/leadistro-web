@@ -7,7 +7,6 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { useCollectionData } from 'react-firebase-hooks/firestore';
 
 import SearchesChart from '@/components/tmp/BarChartComponent';
-import SavedLeadsList from '@/components/tmp/Recent-Saved-Leads';
 import firebaseApp, { auth } from '@/firebase/config';
 import { Meta } from '@/layouts/Meta';
 import DashboardMain from '@/templates/dashboardMain';
@@ -48,16 +47,11 @@ const DashBoard = () => {
           dataError={searchesError}
           dataLoading={searchesloading}
         />
-        <h1 className={`font-comfortaa text-4xl font-extrabold`}>
-          leadistro Dashboard {user?.displayName}
-        </h1>
+
         {/* / <SavedLeadsList /> needs to be wrapped in a scrollable container height needs to be half screen and width should be automatic */}
-        <div className=" max-h-[30vh] max-w-full overflow-y-scroll ">
+        {/* <div className=" max-h-[30vh] max-w-full overflow-y-scroll ">
           <SavedLeadsList />
-        </div>
-        <h1 className={`font-comfortaa text-4xl font-extrabold`}>
-          leadistro Dashboard {user?.displayName}
-        </h1>
+        </div> */}
       </div>
     </DashboardMain>
   );
