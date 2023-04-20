@@ -31,7 +31,7 @@ const SavedLeadsList: React.FC<{}> = () => {
             return (
               <div
                 key={value.id}
-                className="card my-2 h-auto w-auto bg-neutral-800 p-4 text-leadistroWhite"
+                className="card my-2 h-auto w-auto bg-leadistroDark p-4 text-leadistroWhite"
               >
                 <h1 className="font-comfortaa text-lg font-semibold">
                   {value.fullName}
