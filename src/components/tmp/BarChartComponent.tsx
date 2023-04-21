@@ -93,6 +93,7 @@ function ListOfSearches({ searches }: { searches: string[] }) {
 
 const SearchesChart: React.FC<Props> = ({ data, dataError, dataLoading }) => {
   const TypedData = data as ChartDataType[];
+  const SearchTerms: string[] = [];
   const labels: string[] = [];
   TypedData?.forEach((element) => {
     labels.push(
@@ -102,9 +103,8 @@ const SearchesChart: React.FC<Props> = ({ data, dataError, dataLoading }) => {
       Time: ${element.time.toDate().toLocaleTimeString()}
       `
     );
+    SearchTerms.push(element.searchQuery);
   });
-  const SearchTerms: string[] = [];
-  TypedData.forEach((element) => SearchTerms.push(element.searchQuery));
   const dataSet = {
     labels,
     datasets: [
@@ -122,7 +122,7 @@ const SearchesChart: React.FC<Props> = ({ data, dataError, dataLoading }) => {
   if (dataLoading) return <div>Loading...</div>;
   if (dataError) return <div>Error: {dataError.message}</div>;
   return (
-    <div className="card absolute top-3 right-3 max-h-min max-w-sm rounded-[30px] bg-leadistroDarkComp/90 drop-shadow-[0_5px_3px_rgba(0,0,0,0.4)] backdrop-blur-md">
+    <div className="card sticky rounded-[30px] bg-leadistroDarkComp/90 drop-shadow-[0_5px_3px_rgba(0,0,0,0.4)] backdrop-blur-md">
       <div className="card-body">
         <Bar
           options={{

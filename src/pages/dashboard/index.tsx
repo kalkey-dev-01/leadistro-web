@@ -7,6 +7,7 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { useCollectionData } from 'react-firebase-hooks/firestore';
 
 import SearchesChart from '@/components/tmp/BarChartComponent';
+import SavedLeadsList from '@/components/tmp/Recent-Saved-Leads';
 import firebaseApp, { auth } from '@/firebase/config';
 import { Meta } from '@/layouts/Meta';
 import DashboardMain from '@/templates/dashboardMain';
@@ -24,12 +25,6 @@ const DashBoard = () => {
   if (error) {
     return <h1>Error {error.message}</h1>;
   }
-  // Change the timestamp in the searchesData to a readable date
-  // if (searchesData) {
-  //   searchesData.forEach((search) => {
-  //     search.time = new Date(search.time.seconds * 1000).toLocaleString();
-  //   });
-  // }
   return (
     <DashboardMain
       meta={
@@ -40,18 +35,25 @@ const DashBoard = () => {
       }
     >
       <div
-        className={`grid min-h-full min-w-full grid-cols-1 items-center justify-center bg-leadistroWhite pl-3 font-poppins md:grid-cols-2`}
+        className={`grid min-h-full min-w-full grid-cols-1 items-start justify-start gap-1 bg-leadistroWhite font-poppins md:grid-cols-2 lg:grid-cols-3 `}
       >
-        <SearchesChart
-          data={searchesData}
-          dataError={searchesError}
-          dataLoading={searchesloading}
-        />
-
-        {/* / <SavedLeadsList /> needs to be wrapped in a scrollable container height needs to be half screen and width should be automatic */}
-        {/* <div className=" max-h-[30vh] max-w-full overflow-y-scroll ">
+        <div className="col-span-2 h-full w-full rounded-md bg-black/30">
+          <SearchesChart
+            data={searchesData}
+            dataError={searchesError}
+            dataLoading={searchesloading}
+          />
+        </div>
+        <div className="row-span-3 h-full w-full overflow-y-scroll rounded-md bg-black/20 p-3">
           <SavedLeadsList />
-        </div> */}
+        </div>
+        <div className="col-span-2 h-full w-full rounded-md bg-black/40">
+          <SearchesChart
+            data={searchesData}
+            dataError={searchesError}
+            dataLoading={searchesloading}
+          />
+        </div>
       </div>
     </DashboardMain>
   );
