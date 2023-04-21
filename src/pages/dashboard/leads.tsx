@@ -1,5 +1,6 @@
 import React from 'react';
 
+import SalesFunnelChart from '@/components/tmp/Campaign';
 import { Meta } from '@/layouts/Meta';
 import DashboardMain from '@/templates/dashboardMain';
 
@@ -13,7 +14,9 @@ const leads = () => {
         />
       }
     >
-      <div className="min-w-full bg-black text-white">Researh leads</div>
+      <div className="flex min-h-full min-w-full flex-col items-center justify-center bg-black text-white">
+        <SalesFunnelChart data={null} error={null} loading={false} />
+      </div>
     </DashboardMain>
   );
 };

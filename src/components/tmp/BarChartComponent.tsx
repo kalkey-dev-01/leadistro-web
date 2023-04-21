@@ -95,6 +95,7 @@ const SearchesChart: React.FC<Props> = ({ data, dataError, dataLoading }) => {
   const TypedData = data as ChartDataType[];
   const SearchTerms: string[] = [];
   const labels: string[] = [];
+
   TypedData?.forEach((element) => {
     labels.push(
       `
@@ -105,6 +106,12 @@ const SearchesChart: React.FC<Props> = ({ data, dataError, dataLoading }) => {
     );
     SearchTerms.push(element.searchQuery);
   });
+  // BgCol is an array of colors for the bars the number of colors is equal to the number of search terms and the only color it can use is rgba(251, 251, 251,0.2) to rgba(251, 251, 251,1)
+  const BgCol: string[] = [];
+  // eslint-disable-next-line no-plusplus
+  for (let i = 0; i < SearchTerms.length; i++) {
+    BgCol.push(`rgba(251, 251, 251,${i / SearchTerms.length})`);
+  }
   const dataSet = {
     labels,
     datasets: [
@@ -114,8 +121,8 @@ const SearchesChart: React.FC<Props> = ({ data, dataError, dataLoading }) => {
         data: TypedData?.map((element) => element.possibleLeads),
         borderWidth: 1.5,
         borderRadius: 30,
-        borderColor: 'rgba(251 251 251)',
-        backgroundColor: 'rgb(251 251 251)',
+        borderColor: 'rgba(251, 251, 251,1)',
+        backgroundColor: BgCol,
       },
     ],
   };
