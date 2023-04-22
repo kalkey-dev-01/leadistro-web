@@ -14,7 +14,7 @@ const leads = () => {
         />
       }
     >
-      <div className="flex min-h-full min-w-full flex-col items-center justify-center bg-black text-white">
+      <div className="flex min-h-full min-w-full flex-col items-center justify-center border-2 bg-black text-white">
         <SalesFunnelChart data={null} error={null} loading={false} />
       </div>
     </DashboardMain>

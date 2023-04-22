@@ -12,7 +12,9 @@ import {
   Tooltip,
 } from 'chart.js';
 import React from 'react';
-import { Bar } from 'react-chartjs-2';
+
+// Importing Inner Width from sizecontext
+// import { SizeContext } from '@/utils/size-observer';
 
 ChartJS.register(
   CategoryScale,
@@ -29,6 +31,7 @@ const SalesFunnelChart: React.FC<{
   loading: boolean;
   error: any;
 }> = ({ error, loading }) => {
+  // const { innerWidth } = React.useContext(SizeContext);
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error :(</p>;
   // Using A Fake Data for The sales funnel chart
@@ -56,17 +59,48 @@ const SalesFunnelChart: React.FC<{
       },
     ],
   };
+  // console.warn(innerWidth, 'Inner Width');
+
   return (
-    <div className="min-h-full min-w-full bg-leadistroDarkComp/75">
-      <h1 className="border-2 border-white bg-transparent font-comfortaa text-2xl font-bold text-leadistroWhite">
-        Sales Funnel
-      </h1>
-      <div className="flex w-full items-center justify-between">
-        {/* Creating a chart using chart.js and react-chartjs-2 */}
-        <Bar data={data} options={{ responsive: true }} />
+    <>
+      <div className="grid h-auto max-h-72 w-auto max-w-screen-sm grid-cols-3 items-start justify-start gap-2">
+        <div className="col-span-2 flex flex-col items-center justify-center">
+          <h1 className="font-poppins text-2xl font-semibold">Sales Funnel</h1>
+          <div className="flex grow flex-row">
+            <div>Last Quarter</div>
+            <div>What Has Influenced</div>
+            <div>Forecast for next Quarter</div>
+            <div>What Can Be Improved</div>
+          </div>
+        </div>
+        <h1 className="font-poppins text-2xl font-semibold">Sales Funnel</h1>
+        <div className="row-span-2 flex flex-col items-center justify-center">
+          <div>38%</div>
+          <div>5000 growth in closed sales</div>
+          <div>New Marketing Material have helped boost deals</div>
+        </div>
+        <div className="row-span-2 flex flex-col items-center justify-center">
+          <div className="flex grow flex-row">
+            <div>148984</div>
+            <div>84792</div>
+            <div>4048</div>
+            <div>738</div>
+          </div>
+          <div className="flex grow flex-row">
+            <div>Total Market</div>
+            <div>Prospects</div>
+            <div>leads</div>
+            <div>Sales</div>
+          </div>
+          <div className="min-h-full min-w-full bg-lime-400">Chart</div>
+        </div>
+        <h1 className="font-poppins text-2xl font-semibold">Sales Funnel</h1>
+        <h1 className="font-poppins text-2xl font-semibold">Sales Funnel</h1>
       </div>
-    </div>
+    </>
   );
 };
+
+// {/* <Bar data={data} options={{ responsive: true }} /> */}
 
 export default SalesFunnelChart;

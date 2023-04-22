@@ -47,13 +47,7 @@ const DashBoard = () => {
         <div className="row-span-3 h-full w-full overflow-y-scroll rounded-md bg-black/20 p-3">
           <SavedLeadsList />
         </div>
-        <div className="col-span-2 h-full w-full rounded-md bg-black/40">
-          <SearchesChart
-            data={searchesData}
-            dataError={searchesError}
-            dataLoading={searchesloading}
-          />
-        </div>
+        <div className="col-span-2 h-full w-full rounded-md bg-black/40"></div>
       </div>
     </DashboardMain>
   );
