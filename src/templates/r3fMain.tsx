@@ -51,6 +51,13 @@ function Box() {
   );
 }
 
+// Render Boxes in scene
+
+// const boxes: Function[] = [
+//   Box,
+
+//  ];
+
 function Scene() {
   return (
     <Canvas
