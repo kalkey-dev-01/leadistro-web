@@ -35,7 +35,7 @@ const DashBoard = () => {
       }
     >
       <div
-        className={`grid min-h-full min-w-full grid-cols-1 items-start justify-start gap-1 bg-leadistroWhite font-poppins md:grid-cols-2 lg:grid-cols-3 `}
+        className={`grid min-h-full min-w-full grid-cols-1 items-start justify-start gap-1 bg-leadistroWhite font-poppins md:grid-cols-2 lg:grid-cols-3  `}
       >
         <div className="col-span-2 h-full w-full rounded-md bg-black/30">
           <SearchesChart

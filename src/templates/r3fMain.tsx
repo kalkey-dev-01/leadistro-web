@@ -1,8 +1,9 @@
 import { Comfortaa, Poppins } from '@next/font/google';
-import { MeshDistortMaterial } from '@react-three/drei';
+import { MeshWobbleMaterial } from '@react-three/drei';
 import { Canvas, useFrame } from '@react-three/fiber';
 import React, { useContext, useRef } from 'react';
 import type { Mesh, SphereGeometry } from 'three';
+import { Vector3 } from 'three';
 
 import Footer from '@/components/Footer';
 import Navbar from '@/components/Navbar';
@@ -26,27 +27,39 @@ const poppins = Poppins({
   variable: '--font-poppins',
 });
 
-function Box() {
-  const { scrollY } = useContext(ScrollContext);
+function Box({
+  position,
+  color,
+  rotY,
+  rotX,
+  posY,
+  posX,
+  radius,
+}: {
+  position: Vector3 | undefined;
+  color: string;
+  rotY: number;
+  rotX: number;
+  posY: number;
+  posX: number;
+  radius: number;
+}) {
   const ref = useRef<Mesh>(null!);
   const sphereRef = useRef<SphereGeometry>(null!);
+  const PositionY = posY;
+  const RotationY = rotY;
+  const RotationX = rotX;
+  const PositionX = posX;
   useFrame(() => {
-    ref.current.rotation.y += 0.0005;
-    ref.current.rotation.x += 0.0002;
-    ref.current.position.y = -scrollY * 0.0001;
-    // ref.current.position.x =
-    //   Math.sin(-scrollY * Math.PI * 0.0001) +
-    //   Math.cos(scrollY * Math.PI * 0.0001);
+    ref.current.rotation.y += RotationY;
+    ref.current.rotation.x += RotationX;
+    ref.current.position.y = PositionY;
+    ref.current.position.x = PositionX;
   });
   return (
-    <mesh ref={ref}>
-      <sphereGeometry args={[1, 500, 500, 0]} ref={sphereRef} />
-      <MeshDistortMaterial
-        color="#fff"
-        attach="material"
-        speed={1}
-        distort={0.5}
-      />
+    <mesh ref={ref} position={position}>
+      <sphereGeometry args={[radius, 500, 500, 0]} ref={sphereRef} />
+      <MeshWobbleMaterial color={color} attach="material" speed={10} />
     </mesh>
   );
 }
@@ -59,6 +72,7 @@ function Box() {
 //  ];
 
 function Scene() {
+  const { scrollY } = useContext(ScrollContext);
   return (
     <Canvas
       orthographic
@@ -71,12 +85,43 @@ function Scene() {
         zoom: 325,
       }}
     >
-      {/* <Canvas camera={{ position: [0, 0, 2], fov: 60, near: 1, far: 3 }}> */}
-      <ambientLight intensity={0.05} />
-
-      {/* <axesHelper args={[10]} /> */}
-      <Box />
-      {/* <Box /> */}
+      <ambientLight intensity={0.06} />
+      <Box
+        radius={0.85}
+        posX={
+          Math.sin(-scrollY * Math.PI * 0.0001) +
+          Math.cos(scrollY * Math.PI * 0.0001)
+        }
+        posY={-scrollY * 0.0001}
+        rotX={0.0002}
+        rotY={0.0005}
+        color="#E7E1EB"
+        position={new Vector3(0, -1, 0)}
+      />
+      <Box
+        radius={0.95}
+        posX={
+          Math.cos(scrollY * Math.PI * 0.0001) +
+          Math.sin(scrollY * Math.PI * 0.0001)
+        }
+        posY={-scrollY * 0.0003}
+        rotX={0.0001}
+        rotY={0.0009}
+        color="#E0D5D5"
+        position={new Vector3(1, 0, -1)}
+      />
+      <Box
+        radius={1}
+        posX={
+          Math.atan(scrollY * Math.PI * 0.0001) +
+          -Math.atanh(scrollY * Math.PI * 0.0001)
+        }
+        posY={-scrollY * 0.0005}
+        rotX={0.0004}
+        rotY={0.0001}
+        color="#fefefe"
+        position={new Vector3(-1, 1, 1)}
+      />
     </Canvas>
   );
 }
