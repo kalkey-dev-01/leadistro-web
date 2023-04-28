@@ -21,14 +21,12 @@ interface AdditionalInfo {
 }
 
 const UserProfile = () => {
-  // const userEmail = auth.currentUser?.email as string;
   const db = getFirestore(firebaseApp as FirebaseApp);
-  const [values, loading, error] = useDocument(
-    doc(db, 'users', auth.currentUser?.email!),
-    {
-      snapshotListenOptions: { includeMetadataChanges: true },
-    }
-  );
+  const userEmail = auth.currentUser?.email as string;
+  const [values, loading, error] = useDocument(doc(db, 'users', userEmail), {
+    snapshotListenOptions: { includeMetadataChanges: true },
+  });
+
   const TypedValues = values?.data() as UserProfileInterface;
   if (loading) {
     return <div className="text-center text-2xl">loading</div>;
