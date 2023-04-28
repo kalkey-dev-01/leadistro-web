@@ -63,13 +63,13 @@ const SalesFunnelChart: React.FC<{
   return (
     <>
       <div className="grid place-items-center  ">
-        <div className="grid grid-cols-[minmax(600px,1fr)_50px] gap-1">
+        <div className="grid grid-rows-[100px_75px_100px_minmax(300px_1fr)] gap-1 md:grid-cols-[minmax(600px,1fr)_50px]">
           {/* 01 Heading Which is a flexbox column it has 2 sections which one of them is a heading the other things are buttons */}
           <div className="flex h-full w-full flex-col items-start justify-start gap-1 rounded-tl-[30px] border-leadistroWhite bg-leadistroDark p-2 text-white">
             <h1 className="font-poppins text-2xl font-semibold">
               Sales Funnel
             </h1>
-            <div className="flex flex-row items-center justify-between gap-[2px]">
+            <div className="inline-block flex-row items-center justify-between gap-[2px] md:flex">
               <div className="btn-xs btn rounded-full bg-leadistroWhite text-leadistroDarkComp">
                 Last Quarter
               </div>
@@ -85,7 +85,7 @@ const SalesFunnelChart: React.FC<{
             </div>
           </div>
           {/* 02 List Of All Icons */}
-          <div className="row-span-5 flex h-full w-full flex-col items-center justify-evenly rounded-r-[30px] border-leadistroWhite  bg-leadistroDark p-2 text-leadistroWhite">
+          <div className="row-span-5 flex h-full w-full flex-row items-center justify-evenly rounded-r-[30px] border-leadistroWhite bg-leadistroDark  p-2 text-leadistroWhite md:flex-col">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -151,7 +151,7 @@ const SalesFunnelChart: React.FC<{
               />
             </svg>
           </div>
-          <div className="row-span-4 grid h-full w-full grid-cols-[100px_minmax(300px,1fr)] gap-1 rounded-bl-[30px]    text-leadistroDark">
+          <div className="row-span-4 grid h-full w-full grid-cols-[75_minmax(200px_1fr)] gap-1 rounded-bl-[30px] text-leadistroDark    md:grid-cols-[100px_minmax(300px,1fr)]">
             {/* 03 Info on How the new things helped in sales */}
             <div className="flex h-full w-full flex-col items-center justify-evenly rounded-bl-[30px] bg-leadistroDark text-center  text-leadistroDark">
               <div className="text-sm font-bold text-leadistroWhite">38%</div>
