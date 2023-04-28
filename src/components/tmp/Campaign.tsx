@@ -62,30 +62,30 @@ const SalesFunnelChart: React.FC<{
 
   return (
     <>
-      <div className="grid place-items-center">
-        <div className="grid grid-cols-[minmax(600px,1fr)_50px] gap-2">
+      <div className="grid place-items-center  ">
+        <div className="grid grid-cols-[minmax(600px,1fr)_50px] gap-1">
           {/* 01 Heading Which is a flexbox column it has 2 sections which one of them is a heading the other things are buttons */}
-          <div className="flex h-full w-full flex-col items-start justify-center gap-1 bg-white p-2 text-leadistroDark">
+          <div className="flex h-full w-full flex-col items-start justify-start gap-1 rounded-tl-[30px] border-leadistroWhite bg-leadistroDark p-2 text-white">
             <h1 className="font-poppins text-2xl font-semibold">
               Sales Funnel
             </h1>
             <div className="flex flex-row items-center justify-between gap-[2px]">
-              <div className="btn-xs btn rounded-full bg-leadistroGray text-leadistroWhite">
+              <div className="btn-xs btn rounded-full bg-leadistroWhite text-leadistroDarkComp">
                 Last Quarter
               </div>
-              <div className="btn-xs btn rounded-full bg-leadistroGray text-leadistroWhite">
+              <div className="btn-xs btn rounded-full bg-leadistroWhite text-leadistroDarkComp">
                 What Has Influenced
               </div>
-              <div className="btn-xs btn rounded-full bg-leadistroGray text-leadistroWhite">
+              <div className="btn-xs btn rounded-full bg-leadistroWhite text-leadistroDarkComp">
                 Forecast for next Quarter
               </div>
-              <div className="btn-xs btn rounded-full bg-leadistroGray text-leadistroWhite">
+              <div className="btn-xs btn rounded-full bg-leadistroWhite text-leadistroDarkComp">
                 What Can Be Improved
               </div>
             </div>
           </div>
           {/* 02 List Of All Icons */}
-          <div className="row-span-5 flex h-full w-full flex-col items-center justify-evenly bg-white p-2 text-leadistroDark">
+          <div className="row-span-5 flex h-full w-full flex-col items-center justify-evenly rounded-r-[30px] border-leadistroWhite  bg-leadistroDark p-2 text-leadistroWhite">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -151,18 +151,20 @@ const SalesFunnelChart: React.FC<{
               />
             </svg>
           </div>
-          <div className="row-span-4 grid h-full  w-full grid-cols-[100px_minmax(300px,1fr)] gap-2  text-leadistroDark">
+          <div className="row-span-4 grid h-full w-full grid-cols-[100px_minmax(300px,1fr)] gap-1 rounded-bl-[30px]    text-leadistroDark">
             {/* 03 Info on How the new things helped in sales */}
-            <div className="flex h-full w-full flex-col items-center justify-between bg-white p-2 text-leadistroDark">
-              <div className="badge">38%</div>
-              <div className="badge">5000 growth in closed sales</div>
-              <div className="badge">
+            <div className="flex h-full w-full flex-col items-center justify-evenly rounded-bl-[30px] bg-leadistroDark text-center  text-leadistroDark">
+              <div className="text-sm font-bold text-leadistroWhite">38%</div>
+              <div className="text-sm font-bold text-leadistroWhite">
+                5000 growth in closed sales
+              </div>
+              <div className="text-sm font-bold text-leadistroWhite">
                 New Marketing Material have helped boost deals
               </div>
             </div>
             {/* 04 A Column That has 2 sections one of them are badges and the next item is the graph itself */}
-            <div className="flex h-full w-full flex-col items-start justify-center bg-white p-2 text-leadistroDark">
-              <div className="flex grow flex-row items-start justify-between text-center">
+            <div className="flex h-full w-full flex-col items-center justify-center bg-leadistroDark p-2 text-leadistroWhite">
+              <div className="flex w-full flex-row items-center justify-between text-center">
                 <div className="badge">148984 Total Market</div>
                 <div className="badge">84792 Prospects</div>
                 <div className="badge">4048 leads</div>
@@ -198,16 +200,16 @@ export default SalesFunnelChart;
 //       <div className="col-span-2 flex flex-col items-start justify-start">
 // {/* <h1 className="font-poppins text-2xl font-semibold">Sales Funnel</h1>
 // <div className="flex flex-row items-center justify-between gap-2">
-//   <div className="btn-xs btn rounded-full bg-leadistroGray text-leadistroWhite">
+//   <div className="btn-xs btn rounded-full bg-leadistroWhite text-leadistroDarkComp">
 //     Last Quarter
 //   </div>
-//   <div className="btn-xs btn rounded-full bg-leadistroGray text-leadistroWhite">
+//   <div className="btn-xs btn rounded-full bg-leadistroWhite text-leadistroDarkComp">
 //     What Has Influenced
 //   </div>
-//   <div className="btn-xs btn rounded-full bg-leadistroGray text-leadistroWhite">
+//   <div className="btn-xs btn rounded-full bg-leadistroWhite text-leadistroDarkComp">
 //     Forecast for next Quarter
 //   </div>
-//   <div className="btn-xs btn rounded-full bg-leadistroGray text-leadistroWhite">
+//   <div className="btn-xs btn rounded-full bg-leadistroWhite text-leadistroDarkComp">
 //     What Can Be Improved
 //   </div>
 // </div> */}
