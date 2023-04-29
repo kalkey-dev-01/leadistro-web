@@ -1,9 +1,11 @@
+/* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable no-alert */
 /* eslint-disable tailwindcss/no-custom-classname */
 // eslint-disable-next-line import/no-extraneous-dependencies
 // import { Dialog, Transition } from '@headlessui/react';
 import { Dialog, Tab, Transition } from '@headlessui/react';
 import Atropos from 'atropos/react';
+import Cookies from 'js-cookie';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
@@ -28,6 +30,7 @@ function AuthModal(isOpen: boolean, closeModal: VoidFunction) {
   const handleSignIn = async (event: any) => {
     event.preventDefault();
     const { result, error } = await signIn(email, password);
+    Cookies.set('user', JSON.stringify(result));
     if (error) {
       return alert(`Something Went Wrong ${error}`);
     }
@@ -39,6 +42,7 @@ function AuthModal(isOpen: boolean, closeModal: VoidFunction) {
   const handleRegister = async (event: any) => {
     event.preventDefault();
     const { result, error } = await signUp(email, password);
+    Cookies.set('user', JSON.stringify(result));
     if (error) {
       return alert(`Something Went Wrong ${error}`);
     }
@@ -99,7 +103,7 @@ function AuthModal(isOpen: boolean, closeModal: VoidFunction) {
                                 <input
                                   onChange={(e) => {
                                     setEmail(e.target.value);
-                                    console.log('Email ID', email);
+                                    // console.log('Email ID', email);
                                   }}
                                   type="email"
                                   placeholder="example@mail.com"
@@ -120,7 +124,7 @@ function AuthModal(isOpen: boolean, closeModal: VoidFunction) {
                                 <input
                                   onChange={(e) => {
                                     setPassword(e.target.value);
-                                    console.log('Password ID', password);
+                                    // console.log('Password ID', password);
                                   }}
                                   type="password"
                                   placeholder="Password"
@@ -159,7 +163,7 @@ function AuthModal(isOpen: boolean, closeModal: VoidFunction) {
                                 <input
                                   onChange={(e) => {
                                     setEmail(e.target.value);
-                                    console.log('Email ID', email);
+                                    // console.log('Email ID', email);
                                   }}
                                   type="email"
                                   placeholder="example@mail.com"
@@ -180,7 +184,7 @@ function AuthModal(isOpen: boolean, closeModal: VoidFunction) {
                                 <input
                                   onChange={(e) => {
                                     setPassword(e.target.value);
-                                    console.log('Password ID', password);
+                                    // console.log('Password ID', password);
                                   }}
                                   type="password"
                                   placeholder="Password"
@@ -215,9 +219,10 @@ function AuthModal(isOpen: boolean, closeModal: VoidFunction) {
                     </Tab.Group>
                     <div
                       onClick={() => {
-                        handleGoogleSignIn().then(() =>
-                          router.push('/dashboard')
-                        );
+                        handleGoogleSignIn().then((res) => {
+                          Cookies.set('user', JSON.stringify(res));
+                          router.push('/dashboard');
+                        });
                       }}
                       className="btn flex w-full flex-row items-center justify-between bg-leadistroWhite px-4 md:w-[55%]"
                     >

@@ -1,9 +1,11 @@
+/* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable no-alert */
 /* eslint-disable tailwindcss/no-custom-classname */
 import { Comfortaa, Poppins } from '@next/font/google';
+import Cookies from 'js-cookie';
 import Image from 'next/image';
-import { useRouter } from 'next/router';
-import React from 'react';
+import router from 'next/router';
+import React, { useEffect } from 'react';
 import { useAuthState, useSignOut } from 'react-firebase-hooks/auth';
 
 import { auth } from '@/firebase/config';
@@ -23,9 +25,16 @@ const poppins = Poppins({
   variable: '--font-poppins',
 });
 const DashboardMain: React.FC<Props> = ({ meta, children }) => {
-  const [user] = useAuthState(auth);
-  const router = useRouter();
   const [SignOut] = useSignOut(auth);
+  const [user] = useAuthState(auth);
+  useEffect(() => {
+    if (user) {
+      // user has accesss
+    } else if (user == null || user === undefined) {
+      router.push('/');
+    }
+  }, [user]);
+  if (!user) return null;
   return (
     <>
       <div
@@ -254,6 +263,7 @@ const DashboardMain: React.FC<Props> = ({ meta, children }) => {
                 onClick={async () => {
                   const success = await SignOut();
                   if (success) {
+                    Cookies.remove('user');
                     alert('You are sign out');
                     router.push('/');
                   }
