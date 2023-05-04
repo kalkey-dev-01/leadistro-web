@@ -311,7 +311,7 @@ const Navbar: FC<{}> = () => {
   }, [scrollY]);
   return (
     <nav
-      className={`fixed z-50  w-full border-b-[0.75px] border-b-leadistroWhite/25 px-4 backdrop-blur-[6px]  transition-all duration-300 ${
+      className={`fixed z-50  w-full border-b-[0.75px] border-b-leadistroWhite/25 px-8 backdrop-blur-[6px]  transition-all duration-300 ${
         showNav ? 'top-0' : '-top-16'
       }`}
     >
