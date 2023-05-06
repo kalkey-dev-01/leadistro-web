@@ -25,7 +25,7 @@ const opacityForBlock = (sectionProgress: number, blockNo: number) => {
 const HowItWorks: React.FC = () => {
   const { innerWidth } = useContext(SizeContext);
   const { scrollY } = useContext(ScrollContext);
-  const VideoRef = useRef<HTMLVideoElement>(null);
+  // const VideoRef = useRef<HTMLVideoElement>(null);
   const blockRefContainer = useRef<HTMLDivElement>(null);
   const refImageContainer = useRef<HTMLImageElement>(null);
   const refImageContainer1 = useRef<HTMLImageElement>(null);
@@ -103,9 +103,7 @@ const HowItWorks: React.FC = () => {
         }
       );
     }
-    if (progress >= 3.15) {
-      VideoRef.current?.play();
-    }
+
     if (opacityForBlock(progress, 4)) {
       gsap.fromTo(
         ImageContainer3,
@@ -211,17 +209,22 @@ const HowItWorks: React.FC = () => {
               opacity: opacityForBlock(progress, 3),
             }}
           >
-            <video
-              ref={VideoRef}
-              controls={false}
-              autoPlay={true}
-              muted
-              loop={!!opacityForBlock(progress, 3)}
-              playsInline
-              className="pointer-events-none h-full w-full scale-150 bg-transparent object-cover md:scale-125 "
-            >
-              <source src="/horiz.webm" type="video/webm" />
-            </video>
+            <div className="flex flex-col items-center justify-between gap-2 md:flex-row ">
+              <h1>
+                Send emails right away or schedule them for later, and segment
+                your collection according to specific criteria.
+              </h1>
+              <Image
+                ref={refImageContainer2}
+                className={`p-1`}
+                src={singleContact}
+                alt={'Welome To leadistro'}
+                height={innerWidth > 480 ? 16 * 27 : 16 * 18}
+                width={
+                  innerWidth > 480 ? 9 * 27 : ((innerWidth * 9) / 16) * 1.55
+                }
+              />
+            </div>
           </div>
           <div
             className={`${s.hiworkText} inline-block`}

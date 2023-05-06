@@ -7,6 +7,8 @@ import Link from 'next/link';
 import React, { useCallback, useContext, useRef, useState } from 'react';
 // eslint-disable-next-line unused-imports/no-unused-imports
 import { useAuthState } from 'react-firebase-hooks/auth';
+// eslint-disable-next-line unused-imports/no-unused-imports
+import { Typewriter } from 'react-simple-typewriter';
 
 import { Features } from '@/components/Features';
 import HowItWorks from '@/components/HowItWorks';
@@ -35,6 +37,7 @@ const Index = () => {
   if (elContainer) {
     progress = Math.min(1, scrollY / elContainer.clientHeight);
   }
+
   console.log(user, 'User');
   console.log(loading, 'loading');
   console.log(error, 'error');
@@ -50,41 +53,52 @@ const Index = () => {
       <div
         ref={refContainer}
         style={{ transform: `translateY(-${progress * 20}vh)` }}
-        className=" hero mt-9 flex min-h-screen min-w-full flex-col items-center justify-between overflow-x-hidden bg-transparent py-24 px-4 md:flex-row md:px-6 "
+        className=" hero mt-9 flex min-h-screen w-full flex-col items-center justify-start overflow-x-hidden bg-transparent py-24 px-4"
       >
         {/* Title && Subtitle */}
-        <div className="hero-content flex flex-col items-center justify-center text-white drop-shadow-[0_5px_3px_rgba(0,0,0,0.4)]  md:items-start">
+        <div className="hero-content flex flex-col items-center justify-center text-center  text-white drop-shadow-[0_5px_3px_rgba(0,0,0,0.4)]">
           <h1
-            className={` font-poppins text-3xl font-normal leading-snug   lg:text-4xl xl:text-5xl`}
+            className={`font-poppins text-3xl font-normal leading-snug md:text-4xl  lg:text-5xl xl:text-6xl`}
           >
-            Generate More Leads and Close More Deals with{' '}
-            <span
-              className={` font-comfortaa text-3xl font-bold lg:text-4xl xl:text-6xl `}
-            >
-              {' '}
-              leadistro{' '}
-            </span>{' '}
+            <Typewriter
+              words={[
+                'Send Smart Emails',
+                'Scrape More Leads',
+                'Close More Deals',
+              ]}
+              loop={0}
+              typeSpeed={80}
+              deleteSpeed={40}
+              delaySpeed={5000}
+              cursor={true}
+              cursorStyle={'_'}
+            />
           </h1>
-          <h6
-            className={`my-5 font-poppins text-base font-light leading-normal lg:text-lg xl:text-xl `}
+          <span
+            className={`font-comfortaa text-4xl font-bold md:text-[3rem] lg:text-6xl xl:text-[4.5rem] `}
           >
             {' '}
-            Say goodbye to manual lead generation and create effective email
-            campaigns with the app that helps you reach your target audience and
-            increase your sales.
+            leadistro{' '}
+          </span>{' '}
+          <h6
+            className={`my-5 font-poppins text-lg font-light leading-normal md:text-xl lg:text-2xl xl:text-3xl `}
+          >
+            Take the guesswork out of email marketing and achieve success with
+            Leadistro.
           </h6>
+          {/* Button */}
           <div className="my-5">
             <Atropos className="atropos">
               <button data-atropos-offset={2}>
                 <div
                   data-atropos-offset={7}
-                  className="flex flex-row items-center justify-between space-x-2 rounded-full border-[1.75px] border-white bg-black px-4 py-2 text-white"
+                  className="btn flex flex-row items-center justify-between space-x-3 rounded-full border-[1.75px] border-white bg-leadistroDark text-white md:btn-lg xl:btn-xl hover:bg-leadistroDarkComp"
                 >
                   <Link
                     href="/download/"
                     className="border-none text-white hover:text-leadistroWhite"
                   >
-                    Learn More
+                    Download
                   </Link>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -97,7 +111,7 @@ const Index = () => {
                     <path
                       strokeLinecap="round"
                       strokeLinejoin="round"
-                      d="M8.25 4.5l7.5 7.5-7.5 7.5"
+                      d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3"
                     />
                   </svg>
                 </div>
@@ -105,35 +119,12 @@ const Index = () => {
             </Atropos>
           </div>
         </div>
-        {/* Video */}
-        <video
-          controls={false}
-          ref={ref}
-          autoPlay={true}
-          muted
-          playsInline
-          className={` h-full ${
-            innerWidth < 640 ? 'max-w-md' : 'max-w-xl'
-          }   pointer-events-none scale-100 bg-transparent object-cover md:scale-150 ${
-            imageLoaded
-              ? 'opacity-0'
-              : '-translate-y-10 opacity-100 md:-translate-y-5'
-          } ${
-            scrollY > 300
-              ? 'scale-[1.75] opacity-10 transition-opacity md:scale-150'
-              : 'scale-150 opacity-100'
-          }   
-            `}
-          onLoad={handleImageLoaded}
-        >
-          <source
-            // eslint-disable-next-line global-require
-            src={'/outtro.webm'}
-            type="video/webm"
-          />
-        </video>
+        {/* Second Sec */}
+        <div className="grid h-full w-full grid-cols-[3fr_0.5fr] place-items-center gap-4 text-4xl text-white">
+          <div className="h-full w-full bg-white">Section 1</div>
+          <div className="h-full w-full bg-white">Section 2</div>
+        </div>
       </div>
-      {/* !!!!//! START SECOND SECTION */}
       <div className="min-h-screen min-w-full bg-transparent">
         <HowItWorks />
       </div>
