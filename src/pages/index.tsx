@@ -3,6 +3,7 @@
 /* eslint-disable unused-imports/no-unused-vars */
 /* eslint-disable no-plusplus */
 import Atropos from 'atropos/react';
+import Image from 'next/image';
 import Link from 'next/link';
 import React, { useCallback, useContext, useRef, useState } from 'react';
 // eslint-disable-next-line unused-imports/no-unused-imports
@@ -15,6 +16,7 @@ import HowItWorks from '@/components/HowItWorks';
 import { auth } from '@/firebase/config';
 // import ImageSequence from '@/components/ImageSequence';
 import { Meta } from '@/layouts/Meta';
+import Img from '@/public/assets/images/LaptopMockup.png';
 // import { Main } from '@/templates/Main';
 import MainWithThree from '@/templates/r3fMain';
 import { ScrollContext } from '@/utils/scroll-observer';
@@ -120,10 +122,15 @@ const Index = () => {
           </div>
         </div>
         {/* Second Sec */}
-        <div className="grid h-full w-full grid-cols-[3fr_0.5fr] place-items-center gap-4 text-4xl text-white">
+        <Image
+          alt={'Web Mockup'}
+          src={Img}
+          className="h-full max-w-[392px] object-contain object-center md:max-w-screen-md lg:max-w-screen-lg xl:max-w-screen-xl"
+        />
+        {/* <div className="grid h-full w-full grid-cols-[3fr_0.5fr] place-items-center gap-4 text-4xl text-white">
           <div className="h-full w-full bg-white">Section 1</div>
           <div className="h-full w-full bg-white">Section 2</div>
-        </div>
+        </div> */}
       </div>
       <div className="min-h-screen min-w-full bg-transparent">
         <HowItWorks />
