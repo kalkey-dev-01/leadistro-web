@@ -7,13 +7,13 @@ import Image from 'next/image';
 import Link from 'next/link';
 import React, { useCallback, useContext, useRef, useState } from 'react';
 // eslint-disable-next-line unused-imports/no-unused-imports
-import { useAuthState } from 'react-firebase-hooks/auth';
+// import { useAuthState } from 'react-firebase-hooks/auth';
 // eslint-disable-next-line unused-imports/no-unused-imports
 import { Typewriter } from 'react-simple-typewriter';
 
 import { Features } from '@/components/Features';
 import HowItWorks from '@/components/HowItWorks';
-import { auth } from '@/firebase/config';
+// import { auth } from '@/firebase/config';
 // import ImageSequence from '@/components/ImageSequence';
 import { Meta } from '@/layouts/Meta';
 import Img from '@/public/assets/images/LaptopMockup.png';
@@ -25,10 +25,10 @@ import { SizeContext } from '@/utils/size-observer';
 // HOME PAGE
 
 const Index = () => {
-  const [user, loading, error] = useAuthState(auth);
+  // const [user, loading, error] = useAuthState(auth);
   const { innerWidth } = useContext(SizeContext);
   const { scrollY } = useContext(ScrollContext);
-  const ref = useRef<HTMLVideoElement>(null);
+  // const ref = useRef<HTMLVideoElement>(null);
   const [imageLoaded, setImageLoaded] = useState(false);
   const handleImageLoaded = useCallback(() => {
     setImageLoaded(true);
@@ -40,9 +40,9 @@ const Index = () => {
     progress = Math.min(1, scrollY / elContainer.clientHeight);
   }
 
-  console.log(user, 'User');
-  console.log(loading, 'loading');
-  console.log(error, 'error');
+  // console.log(user, 'User');
+  // console.log(loading, 'loading');
+  // console.log(error, 'error');
   return (
     <MainWithThree
       meta={
@@ -58,28 +58,43 @@ const Index = () => {
         className=" hero mt-9 flex min-h-screen w-full flex-col items-center justify-start overflow-x-hidden bg-transparent py-24 px-4"
       >
         {/* Title && Subtitle */}
-        <div className="hero-content flex flex-col items-center justify-center text-center  text-white drop-shadow-[0_5px_3px_rgba(0,0,0,0.4)]">
+        <div className="hero-content flex flex-col items-center  justify-center text-center text-white drop-shadow-[0_5px_3px_rgba(0,0,0,0.4)]">
           <h1
-            className={`font-poppins text-3xl font-normal leading-snug md:text-4xl  lg:text-5xl xl:text-6xl`}
+            className={`font-poppins text-3xl font-normal leading-5 md:text-4xl  md:leading-normal lg:text-5xl xl:text-6xl`}
           >
             <Typewriter
-              words={[
-                'Send Smart Emails',
-                'Scrape More Leads',
-                'Close More Deals',
-              ]}
+              words={
+                innerWidth < 480
+                  ? [
+                      'Send Smart Emails',
+                      'Scrape More Leads',
+                      'Close More Deals',
+                    ]
+                  : [
+                      'Send Smart Emails with',
+                      'Scrape More Leads with',
+                      'Close More Deals with',
+                    ]
+              }
               loop={0}
-              typeSpeed={80}
-              deleteSpeed={40}
+              typeSpeed={40}
+              deleteSpeed={60}
               delaySpeed={5000}
               cursor={true}
               cursorStyle={'_'}
             />
           </h1>
           <span
-            className={`font-comfortaa text-4xl font-bold md:text-[3rem] lg:text-6xl xl:text-[4.5rem] `}
+            className={`font-comfortaa text-4xl font-bold  md:text-[3rem] lg:text-6xl xl:text-[4.5rem] `}
           >
-            {' '}
+            {innerWidth < 480 ? (
+              <>
+                <span className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl">
+                  with
+                </span>
+                <br />
+              </>
+            ) : null}
             leadistro{' '}
           </span>{' '}
           <h6
@@ -125,7 +140,10 @@ const Index = () => {
         <Image
           alt={'Web Mockup'}
           src={Img}
-          className="h-full max-w-[392px] object-contain object-center md:max-w-screen-md lg:max-w-screen-lg xl:max-w-screen-xl"
+          onLoad={handleImageLoaded}
+          className={`${
+            imageLoaded ? 'opacity-100' : 'opacity-0'
+          } h-full max-w-sm object-contain object-center md:max-w-screen-md lg:max-w-screen-lg xl:max-w-screen-xl`}
         />
         {/* <div className="grid h-full w-full grid-cols-[3fr_0.5fr] place-items-center gap-4 text-4xl text-white">
           <div className="h-full w-full bg-white">Section 1</div>
