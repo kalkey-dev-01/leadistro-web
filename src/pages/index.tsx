@@ -16,7 +16,7 @@ import HowItWorks from '@/components/HowItWorks';
 // import { auth } from '@/firebase/config';
 // import ImageSequence from '@/components/ImageSequence';
 import { Meta } from '@/layouts/Meta';
-import Img from '@/public/assets/images/LaptopMockup.png';
+import Img from '@/public/assets/images/MockupLaptop.png';
 // import { Main } from '@/templates/Main';
 import MainWithThree from '@/templates/r3fMain';
 import { ScrollContext } from '@/utils/scroll-observer';
