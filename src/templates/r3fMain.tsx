@@ -96,7 +96,7 @@ function Scene() {
         rotX={0.0002}
         rotY={0.0005}
         color="#E7E1EB"
-        position={new Vector3(0, -1, 0)}
+        position={new Vector3(1, -1, 2)}
       />
       <Box
         radius={0.95}

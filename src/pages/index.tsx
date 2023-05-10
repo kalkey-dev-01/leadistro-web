@@ -13,6 +13,7 @@ import { Typewriter } from 'react-simple-typewriter';
 
 import { Features } from '@/components/Features';
 import HowItWorks from '@/components/HowItWorks';
+import Pricing from '@/components/Pricing';
 // import { auth } from '@/firebase/config';
 // import ImageSequence from '@/components/ImageSequence';
 import { Meta } from '@/layouts/Meta';
@@ -98,10 +99,10 @@ const Index = () => {
             leadistro{' '}
           </span>{' '}
           <h6
-            className={`my-5 font-poppins text-lg font-light leading-normal md:text-xl lg:text-2xl xl:text-3xl `}
+            className={`my-5 font-poppins text-sm font-normal leading-normal md:text-base lg:text-lg xl:text-xl `}
           >
             Take the guesswork out of email marketing and achieve success with
-            Leadistro.
+            leadistro.
           </h6>
           {/* Button */}
           <div className="my-5">
@@ -143,7 +144,7 @@ const Index = () => {
           onLoad={handleImageLoaded}
           className={`${
             imageLoaded ? 'opacity-100' : 'opacity-0'
-          } h-full max-w-sm object-contain object-center md:max-w-screen-md lg:max-w-screen-lg xl:max-w-screen-xl`}
+          } aspect-video h-full max-w-sm object-contain object-center md:max-w-screen-md lg:max-w-screen-lg xl:max-w-screen-xl`}
         />
         {/* <div className="grid h-full w-full grid-cols-[3fr_0.5fr] place-items-center gap-4 text-4xl text-white">
           <div className="h-full w-full bg-white">Section 1</div>
@@ -155,6 +156,9 @@ const Index = () => {
       </div>
       <div className="min-h-screen min-w-full">
         <Features />
+      </div>
+      <div className="min-h-screen min-w-full">
+        <Pricing />
       </div>
     </MainWithThree>
   );
