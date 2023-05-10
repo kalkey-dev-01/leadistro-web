@@ -4,8 +4,8 @@ interface PricingProps {}
 
 const Pricing: React.FC<PricingProps> = () => {
   return (
-    <div className="absolute h-full w-full bg-leadistroDarkComp py-16 text-leadistroWhite">
-      <div className="flex flex-col items-center justify-start gap-4">
+    <div className="relative my-10 min-h-screen text-leadistroWhite">
+      <div className="flex min-h-screen w-full flex-col items-center justify-center gap-2">
         <h1 className="font-comfortaa text-4xl font-bold md:text-5xl lg:text-6xl xl:text-[5rem]">
           Pricing
         </h1>
@@ -17,7 +17,7 @@ const Pricing: React.FC<PricingProps> = () => {
           needs. Both tiers offer robust features and powerful tools to help you
           optimize your email marketing campaigns and drive sales.
         </p>
-        <div className="grid w-full grid-rows-2 gap-2 py-10 md:max-w-screen-md md:grid-cols-2 md:gap-4 lg:max-w-screen-lg lg:gap-5 xl:max-w-screen-xl xl:gap-6">
+        <div className="grid w-full grid-cols-1 gap-2 py-4 md:max-w-screen-md md:grid-cols-2 md:gap-4 lg:max-w-screen-lg lg:gap-5 xl:max-w-screen-xl xl:gap-6">
           <div className="card-bordered card flex flex-col items-center justify-between rounded-2xl border-2 border-leadistroWhite py-5">
             <h6 className="text-base md:text-lg lg:text-xl xl:text-2xl">
               Free Tier

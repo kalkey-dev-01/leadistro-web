@@ -157,9 +157,7 @@ const Index = () => {
       <div className="min-h-screen min-w-full">
         <Features />
       </div>
-      <div className="min-h-screen min-w-full">
-        <Pricing />
-      </div>
+      <Pricing />
     </MainWithThree>
   );
 };
