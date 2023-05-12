@@ -1,7 +1,7 @@
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
+// import { gsap } from 'gsap';
+// import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import Image from 'next/image';
-import React, { useContext, useEffect, useRef } from 'react';
+import React, { useContext, useRef } from 'react';
 
 import { ScrollContext } from '@/utils/scroll-observer';
 import { SizeContext } from '@/utils/size-observer';
@@ -10,7 +10,7 @@ import btmsheet from '../../public/assets/images/btmsheet.png';
 import singleContact from '../../public/assets/images/singleContact.png';
 import s from '../styles/hiw.module.css';
 
-gsap.registerPlugin(ScrollTrigger);
+// gsap.registerPlugin(ScrollTrigger);
 const opacityForBlock = (sectionProgress: number, blockNo: number) => {
   const blockProgress = sectionProgress - blockNo;
   if (blockProgress >= 0 && blockProgress < 1) return 1;
@@ -56,74 +56,74 @@ const HowItWorks: React.FC = () => {
 
   // console.log(progress, 'Progress');
   // !! Need To use progress to play the video
-  useEffect(() => {
-    const ImageContainer = refImageContainer.current;
-    const ImageContainer1 = refImageContainer1.current;
-    const ImageContainer2 = refImageContainer2.current;
-    const ImageContainer3 = refImageContainer3.current;
-    if (opacityForBlock(progress, 0)) {
-      gsap.fromTo(
-        ImageContainer,
-        { x: 250, opacity: 0.5 },
-        {
-          x: 0,
-          opacity: 1,
-          duration: 1.5,
-          scrollTrigger: {
-            trigger: ImageContainer,
-          },
-        }
-      );
-    }
-    if (opacityForBlock(progress, 1)) {
-      gsap.fromTo(
-        ImageContainer1,
-        { x: -250, opacity: 0.5 },
-        {
-          x: 0,
-          opacity: 1,
-          duration: 1.5,
-          scrollTrigger: {
-            trigger: ImageContainer1,
-          },
-        }
-      );
-    }
-    if (opacityForBlock(progress, 2)) {
-      gsap.fromTo(
-        ImageContainer2,
-        { x: 250, opacity: 0.5 },
-        {
-          x: 0,
-          opacity: 1,
-          duration: 1.5,
-          scrollTrigger: {
-            trigger: ImageContainer2,
-          },
-        }
-      );
-    }
+  // useEffect(() => {
+  //   const ImageContainer = refImageContainer.current;
+  //   const ImageContainer1 = refImageContainer1.current;
+  //   const ImageContainer2 = refImageContainer2.current;
+  //   const ImageContainer3 = refImageContainer3.current;
+  //   if (opacityForBlock(progress, 0)) {
+  //     gsap.fromTo(
+  //       ImageContainer,
+  //       { x: 250, opacity: 0.5 },
+  //       {
+  //         x: 0,
+  //         opacity: 1,
+  //         duration: 1.5,
+  //         scrollTrigger: {
+  //           trigger: ImageContainer,
+  //         },
+  //       }
+  //     );
+  //   }
+  //   if (opacityForBlock(progress, 1)) {
+  //     gsap.fromTo(
+  //       ImageContainer1,
+  //       { x: -250, opacity: 0.5 },
+  //       {
+  //         x: 0,
+  //         opacity: 1,
+  //         duration: 1.5,
+  //         scrollTrigger: {
+  //           trigger: ImageContainer1,
+  //         },
+  //       }
+  //     );
+  //   }
+  //   if (opacityForBlock(progress, 2)) {
+  //     gsap.fromTo(
+  //       ImageContainer2,
+  //       { x: 250, opacity: 0.5 },
+  //       {
+  //         x: 0,
+  //         opacity: 1,
+  //         duration: 1.5,
+  //         scrollTrigger: {
+  //           trigger: ImageContainer2,
+  //         },
+  //       }
+  //     );
+  //   }
 
-    if (opacityForBlock(progress, 4)) {
-      gsap.fromTo(
-        ImageContainer3,
-        { x: -250, opacity: 0.5 },
-        {
-          x: 0,
-          opacity: 1,
-          duration: 1.5,
-          scrollTrigger: {
-            trigger: ImageContainer3,
-          },
-        }
-      );
-    }
-  }, [
-    refImageContainer,
-    refImageContainer1,
-    refImageContainer2,
-    refImageContainer3,
-  ]);
+  //   if (opacityForBlock(progress, 4)) {
+  //     gsap.fromTo(
+  //       ImageContainer3,
+  //       { x: -250, opacity: 0.5 },
+  //       {
+  //         x: 0,
+  //         opacity: 1,
+  //         duration: 1.5,
+  //         scrollTrigger: {
+  //           trigger: ImageContainer3,
+  //         },
+  //       }
+  //     );
+  //   }
+  // }, [
+  //   refImageContainer,
+  //   refImageContainer1,
+  //   refImageContainer2,
+  //   refImageContainer3,
+  // ]);
   return (
     <div
       ref={blockRefContainer}

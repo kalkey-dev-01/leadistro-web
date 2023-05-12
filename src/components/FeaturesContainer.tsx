@@ -124,7 +124,7 @@ export const FeaturesLeft: React.FC<{
       }}
       className="flex h-[40vh] flex-col items-center justify-center text-3xl md:items-start lg:h-auto lg:text-3xl"
     >
-      <div className="leading-tight"> {children}</div>
+      <div className="leading-tight">{children}</div>
     </div>
   );
 };

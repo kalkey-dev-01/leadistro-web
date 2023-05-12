@@ -1,5 +1,5 @@
-// import gsap from 'gsap';
-// import ScrollTrigger from 'gsap';
+// eslint-disable-next-line import/no-extraneous-dependencies
+// import { useAnimate, usePresence } from 'framer-motion';
 import Image from 'next/image';
 import * as React from 'react';
 
@@ -23,15 +23,23 @@ import {
 interface FeatureProps {}
 
 export const Features: React.FC<FeatureProps> = () => {
-  // const ref = React.useRef<HTMLDivElement>(null)
+  // const [scope, animate] = useAnimate<HTMLHeadingElement>();
+  // const [isPresent, safeToRemove] = usePresence();
   // React.useEffect(() => {
-  //     const el = ref.current
-  //     gsap.fromTo(el, { translateX: -1000, }, {
-  //         translateX: 0, duration: 1, scrollTrigger: {
-  //             trigger: el,
-  //         }
-  //     })
-  // }, [])
+  //   if (isPresent) {
+  //     const enterAnimation = async () => {
+  //       await animate(scope.current, { x: 100 });
+  //     };
+  //     enterAnimation();
+  //   } else {
+  //     const exitAnimation = async () => {
+  //       await animate(scope.current, { x: 0 });
+  //       safeToRemove();
+  //     };
+  //     exitAnimation();
+  //   }
+  // }, [isPresent, safeToRemove]);
+  // console.log('Is the Element is in Present', isPresent);
   const { innerWidth } = React.useContext(SizeContext);
   return (
     <TitleWrapper numOfPages={5}>
