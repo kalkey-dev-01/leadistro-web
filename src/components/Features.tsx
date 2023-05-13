@@ -18,8 +18,6 @@ import {
   TitleWrapper,
 } from './FeaturesContainer';
 
-// gsap.registerPlugin(ScrollTrigger);
-
 interface FeatureProps {}
 
 export const Features: React.FC<FeatureProps> = () => {
@@ -219,24 +217,3 @@ export const Features: React.FC<FeatureProps> = () => {
     </TitleWrapper>
   );
 };
-// {/* <div id="paypal-button-container-P-6TE0221320438462WMQVH5IA"></div>
-// <script src="https://www.paypal.com/sdk/js?client-id=AfO40mKtn7ll7133hVLYZ-LrTNC-aY3ec_V0g2iImLlZAygxBzl4oJNSf2LLRRTUd_ACUIiYirAuVSlM&vault=true&intent=subscription" data-sdk-integration-source="button-factory"></script>
-// <script>
-//   paypal.Buttons({
-//       style: {
-//           shape: 'pill',
-//           color: 'black',
-//           layout: 'vertical',
-//           label: 'subscribe'
-//       },
-//       createSubscription: function(data, actions) {
-//         return actions.subscription.create({
-//           /* Creates the subscription */
-//           plan_id: 'P-6TE0221320438462WMQVH5IA'
-//         });
-//       },
-//       onApprove: function(data, actions) {
-//         alert(data.subscriptionID); // You can add optional success message for the subscriber here
-//       }
-//   }).render('#paypal-button-container-P-6TE0221320438462WMQVH5IA'); // Renders the PayPal button
-// </script> */}
